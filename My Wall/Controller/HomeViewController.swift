@@ -49,7 +49,21 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Dispose of any resources that can be recreated.
     }
     
-
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        var size = CGSize.zero
+        
+        if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
+            size = layout.itemSize;
+            size.width = collectionView.bounds.width
+        }
+        
+        return size
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
     /*
     // MARK: - Navigation
 

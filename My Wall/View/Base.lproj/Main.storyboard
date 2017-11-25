@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="det-Xj-mPl">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,7 +15,7 @@
             <objects>
                 <viewController id="Lqw-B4-lQ2" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s0B-sk-ZLH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="hgL-pV-bZ8"/>
@@ -31,31 +31,32 @@
             <objects>
                 <viewController id="txT-DK-gTI" customClass="HomeViewController" customModule="My_Wall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IYa-94-WuZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search for your dream..." translatesAutoresizingMaskIntoConstraints="NO" id="mEZ-xL-PPm">
-                                <rect key="frame" x="0.0" y="64" width="414" height="56"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <searchBar contentMode="redraw" placeholder="Search for your dream..." translatesAutoresizingMaskIntoConstraints="NO" id="mEZ-xL-PPm">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="O8J-vF-URY">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="O8J-vF-URY">
                                 <rect key="frame" x="0.0" y="120" width="375" height="211"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="211" id="qYJ-m2-Mj4"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dZA-Dl-8hV" customClass="UPCarouselFlowLayout" customModule="UPCarouselFlowLayout">
-                                    <size key="itemSize" width="375" height="205"/>
+                                    <size key="itemSize" width="372" height="205"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeCarouselCell" id="p5S-DX-6wX" customClass="HomeCarouselCell" customModule="My_Wall" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="3" width="375" height="205"/>
+                                        <rect key="frame" x="0.0" y="3" width="377" height="205"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="205"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="377" height="205"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shadow" translatesAutoresizingMaskIntoConstraints="NO" id="r1p-wh-rfA">
@@ -63,16 +64,20 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wall1" translatesAutoresizingMaskIntoConstraints="NO" id="WWu-Dz-2be">
-                                                    <rect key="frame" x="10" y="4" width="355" height="185"/>
+                                                    <rect key="frame" x="7" y="4" width="362" height="185"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="185" id="IHX-zI-OqJ"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="WWu-Dz-2be" firstAttribute="top" secondItem="p5S-DX-6wX" secondAttribute="top" constant="4" id="1Ib-w5-9lf"/>
-                                            <constraint firstItem="WWu-Dz-2be" firstAttribute="leading" secondItem="p5S-DX-6wX" secondAttribute="leading" constant="10" id="36L-xY-l0t"/>
-                                            <constraint firstAttribute="trailing" secondItem="WWu-Dz-2be" secondAttribute="trailing" constant="10" id="7zB-Nd-NHu"/>
-                                            <constraint firstAttribute="bottom" secondItem="WWu-Dz-2be" secondAttribute="bottom" constant="16" id="CKb-ZF-6OC"/>
+                                            <constraint firstItem="WWu-Dz-2be" firstAttribute="leading" secondItem="p5S-DX-6wX" secondAttribute="leading" constant="7" id="3Xb-37-lNS"/>
+                                            <constraint firstItem="WWu-Dz-2be" firstAttribute="top" secondItem="p5S-DX-6wX" secondAttribute="top" constant="4" id="GNf-um-u1h"/>
+                                            <constraint firstAttribute="bottom" secondItem="WWu-Dz-2be" secondAttribute="bottom" constant="16" id="ZHH-8P-gCc"/>
+                                            <constraint firstAttribute="trailing" secondItem="WWu-Dz-2be" secondAttribute="trailing" constant="7" id="bNG-Lj-kx9"/>
                                         </constraints>
+                                        <size key="customSize" width="377" height="205"/>
                                         <connections>
                                             <outlet property="image" destination="WWu-Dz-2be" id="wSZ-S5-Xu4"/>
                                         </connections>
@@ -85,6 +90,15 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="O8J-vF-URY" firstAttribute="leading" secondItem="r1G-eL-fYj" secondAttribute="leading" id="0iI-aX-fpF"/>
+                            <constraint firstItem="O8J-vF-URY" firstAttribute="top" secondItem="mEZ-xL-PPm" secondAttribute="bottom" id="5dK-TK-fm7"/>
+                            <constraint firstItem="O8J-vF-URY" firstAttribute="trailing" secondItem="r1G-eL-fYj" secondAttribute="trailing" id="NXH-qZ-fc7"/>
+                            <constraint firstItem="O8J-vF-URY" firstAttribute="top" secondItem="mEZ-xL-PPm" secondAttribute="bottom" id="b8s-S2-lG7"/>
+                            <constraint firstItem="mEZ-xL-PPm" firstAttribute="trailing" secondItem="r1G-eL-fYj" secondAttribute="trailing" id="eja-cE-ncA"/>
+                            <constraint firstItem="mEZ-xL-PPm" firstAttribute="leading" secondItem="r1G-eL-fYj" secondAttribute="leading" id="iIK-Tj-07K"/>
+                            <constraint firstItem="mEZ-xL-PPm" firstAttribute="top" secondItem="r1G-eL-fYj" secondAttribute="top" id="iwH-kv-h7T"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="r1G-eL-fYj"/>
                     </view>
                     <navigationItem key="navigationItem" title="Your Wall" id="XUI-UR-3K5"/>
@@ -95,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YIB-au-iMF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1604" y="-348.57571214392806"/>
+            <point key="canvasLocation" x="1602.4000000000001" y="-349.50738916256159"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4jm-rK-KpY">
@@ -122,7 +136,7 @@
                     <tabBarItem key="tabBarItem" title="Item 1" id="HLH-YP-JFO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ddj-Ph-FPC">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
@@ -145,7 +159,7 @@
                     <tabBarItem key="tabBarItem" title="Item 2" id="611-6m-A1y"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hL9-Wx-rAT">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -159,7 +173,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="shadow" width="193" height="242"/>
-        <image name="wall1" width="329" height="210"/>
+        <image name="shadow" width="289" height="363"/>
+        <image name="wall1" width="493" height="315"/>
     </resources>
 </document>
