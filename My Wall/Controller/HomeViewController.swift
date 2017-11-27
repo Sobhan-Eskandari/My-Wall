@@ -8,13 +8,14 @@
 
 import UIKit
 import UPCarouselFlowLayout
+import Cards
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     // MARK: - Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var imageCardLayout: UIImageView!
+    @IBOutlet weak var first: Card!
     
     // MARK: - Variables
     var items = [UIImage]() // for now fake images
@@ -26,10 +27,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         items.append(UIImage(named: "wall2")!) // fake images
         items.append(UIImage(named: "wall3")!) // fake images
         self.setupLayout()
+        
+        first.delegate = self
+        first.hasParallax = true
+      
 
         // Do any additional setup after loading the view.
         ViewCustomization.customiseSearchBox(searchBar: searchBar)
-        ViewCustomization.customiseCard(s: imageCardLayout)
     }
 
     override func didReceiveMemoryWarning() {
@@ -114,6 +118,14 @@ extension HomeViewController {
     func setupLayout() {
         let layout = self.collectionView.collectionViewLayout as! UPCarouselFlowLayout
         layout.spacingMode = UPCarouselFlowLayoutSpacingMode.overlap(visibleOffset: 30)
+    }
+}
+
+
+extension HomeViewController: CardDelegate {
+
+    func cardDidTapInside(card: Card) {
+        
     }
 }
 

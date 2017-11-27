@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +32,7 @@
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="txT-DK-gTI" customClass="HomeViewController" customModule="My_Wall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IYa-94-WuZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1630"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Search for your dream..." translatesAutoresizingMaskIntoConstraints="NO" id="mEZ-xL-PPm">
@@ -44,16 +45,16 @@
                                 </scopeButtonTitles>
                             </searchBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NuL-HD-KFQ">
-                                <rect key="frame" x="0.0" y="120" width="375" height="880"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="1510"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tnb-ue-g0J">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1510"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="O8J-vF-URY">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="211" id="rdK-SA-O2n"/>
+                                                    <constraint firstAttribute="width" secondItem="O8J-vF-URY" secondAttribute="height" multiplier="375:211" id="NTZ-oD-tl4"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dZA-Dl-8hV" customClass="UPCarouselFlowLayout" customModule="UPCarouselFlowLayout">
                                                     <size key="itemSize" width="372" height="205"/>
@@ -73,12 +74,17 @@
                                                                     <rect key="frame" x="68" y="80" width="240" height="128"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 </imageView>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wall1" translatesAutoresizingMaskIntoConstraints="NO" id="WWu-Dz-2be">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wall1" translatesAutoresizingMaskIntoConstraints="NO" id="WWu-Dz-2be">
                                                                     <rect key="frame" x="7" y="4" width="363" height="185"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 </imageView>
                                                             </subviews>
                                                         </view>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="WWu-Dz-2be" secondAttribute="bottom" constant="16" id="F4U-na-cfg"/>
+                                                            <constraint firstAttribute="trailing" secondItem="WWu-Dz-2be" secondAttribute="trailing" constant="7" id="IOO-PC-qg7"/>
+                                                            <constraint firstItem="WWu-Dz-2be" firstAttribute="top" secondItem="p5S-DX-6wX" secondAttribute="top" constant="4" id="kZc-g2-VVn"/>
+                                                            <constraint firstItem="WWu-Dz-2be" firstAttribute="leading" secondItem="p5S-DX-6wX" secondAttribute="leading" constant="7" id="yYa-lO-oRe"/>
+                                                        </constraints>
                                                         <size key="customSize" width="377" height="205"/>
                                                         <connections>
                                                             <outlet property="image" destination="WWu-Dz-2be" id="wSZ-S5-Xu4"/>
@@ -90,59 +96,462 @@
                                                     <outlet property="delegate" destination="txT-DK-gTI" id="KyQ-5p-3Kj"/>
                                                 </connections>
                                             </collectionView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaQ-lJ-9O9">
-                                                <rect key="frame" x="8" y="211" width="84" height="28"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaQ-lJ-9O9">
+                                                <rect key="frame" x="18" y="209" width="339" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wall2" translatesAutoresizingMaskIntoConstraints="NO" id="lwp-c0-i9v">
-                                                <rect key="frame" x="8" y="244" width="174" height="226"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K77-Dj-CKx" userLabel="Card5" customClass="CardGroup" customModule="Cards">
+                                                <rect key="frame" x="18" y="511" width="174" height="230"/>
+                                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="230" id="6r4-XH-KZ3"/>
+                                                    <constraint firstAttribute="width" constant="174" id="jip-89-zup"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall3"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
+                                                        <real key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="subtitleSize">
+                                                        <real key="value" value="7"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="Category:"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="contentInset">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cardRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                        <color key="value" red="0.6588235294" green="0.71372549019999998" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2nE-gi-gTK" userLabel="Card6" customClass="CardGroup" customModule="Cards">
+                                                <rect key="frame" x="18" y="770" width="339" height="150"/>
+                                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall3"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
+                                                        <real key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="subtitleSize">
+                                                        <real key="value" value="7"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="Category:"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="contentInset">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cardRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                        <color key="value" red="0.6588235294" green="0.71372549019999998" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PZp-2k-pqQ" userLabel="Card2" customClass="CardGroup" customModule="Cards">
+                                                <rect key="frame" x="222" y="245" width="135" height="135"/>
+                                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="135" id="VjP-gy-U2i"/>
+                                                    <constraint firstAttribute="width" constant="135" id="geY-UW-Pja"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall3"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
+                                                        <real key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="subtitleSize">
+                                                        <real key="value" value="7"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="Category:"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cardRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                        <color key="value" red="0.6588235294" green="0.71372549019999998" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4d-g2-AWL" userLabel="Card4" customClass="CardGroup" customModule="Cards">
+                                                <rect key="frame" x="222" y="600" width="135" height="141"/>
+                                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="141" id="q8R-ee-aL3"/>
+                                                    <constraint firstAttribute="width" constant="135" id="zBz-Mt-BRT"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall1"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
+                                                        <real key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="subtitleSize">
+                                                        <real key="value" value="7"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="Category:"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cardRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                        <color key="value" red="0.6588235294" green="0.71372549019999998" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lG2-yZ-3JW" userLabel="Card3" customClass="CardGroup" customModule="Cards">
+                                                <rect key="frame" x="222" y="398" width="135" height="179"/>
+                                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="179" id="0y6-2v-Q4G"/>
+                                                    <constraint firstAttribute="width" constant="135" id="I5b-Sf-Opw"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall2"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
+                                                        <real key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="subtitleSize">
+                                                        <real key="value" value="7"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="Category:"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cardRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                        <color key="value" red="0.6588235294" green="0.71372549019999998" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9TS-f5-Suq" userLabel="Card1" customClass="CardGroup" customModule="Cards">
+                                                <rect key="frame" x="18" y="245" width="174" height="230"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="230" id="lmQ-IS-Fhw"/>
+                                                    <constraint firstAttribute="width" constant="174" id="rUe-mU-cHp"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall1"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
+                                                        <real key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="subtitleSize">
+                                                        <real key="value" value="7"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="Category:"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="contentInset">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cardRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                        <color key="value" red="0.6588235294117647" green="0.71372549019607845" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOx-tY-OcB" userLabel="Card9" customClass="CardGroup" customModule="Cards">
+                                                <rect key="frame" x="183" y="1214" width="174" height="230"/>
+                                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="174" id="Jbm-VF-YtO"/>
+                                                    <constraint firstAttribute="height" constant="230" id="Xte-38-ExM"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall3"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
+                                                        <real key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="subtitleSize">
+                                                        <real key="value" value="7"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="Category:"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="contentInset">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cardRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                        <color key="value" red="0.6588235294" green="0.71372549019999998" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u0d-A6-Z1L" userLabel="Card8" customClass="CardGroup" customModule="Cards">
+                                                <rect key="frame" x="183" y="948" width="174" height="230"/>
+                                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="230" id="J2x-Mo-fNy"/>
+                                                    <constraint firstAttribute="width" constant="174" id="uWv-o3-IYy"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall1"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
+                                                        <real key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="subtitleSize">
+                                                        <real key="value" value="7"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="Category:"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="contentInset">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cardRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                        <color key="value" red="0.6588235294" green="0.71372549019999998" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7NW-8K-PbC" userLabel="Card7" customClass="CardGroup" customModule="Cards">
+                                                <rect key="frame" x="18" y="948" width="135" height="135"/>
+                                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="135" id="Ix7-ZU-6dA"/>
+                                                    <constraint firstAttribute="width" constant="135" id="duO-mx-k4r"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall3"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
+                                                        <real key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="subtitleSize">
+                                                        <real key="value" value="7"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="Category:"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cardRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                        <color key="value" red="0.6588235294" green="0.71372549019999998" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LZ9-pk-wPS" userLabel="Card11" customClass="CardGroup" customModule="Cards">
+                                                <rect key="frame" x="18" y="1303" width="135" height="141"/>
+                                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="141" id="8Qt-hb-ygG"/>
+                                                    <constraint firstAttribute="width" constant="135" id="u80-rz-QMC"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall1"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
+                                                        <real key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="subtitleSize">
+                                                        <real key="value" value="7"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="Category:"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cardRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                        <color key="value" red="0.6588235294" green="0.71372549019999998" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQM-LH-xfE" userLabel="Card10" customClass="CardGroup" customModule="Cards">
+                                                <rect key="frame" x="18" y="1101" width="135" height="179"/>
+                                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="135" id="29S-yM-eAU"/>
+                                                    <constraint firstAttribute="height" constant="179" id="b6h-uS-sDs"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall2"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
+                                                        <real key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="subtitleSize">
+                                                        <real key="value" value="7"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="Category:"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cardRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                        <color key="value" red="0.6588235294" green="0.71372549019999998" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="O8J-vF-URY" firstAttribute="top" secondItem="tnb-ue-g0J" secondAttribute="top" id="Dg3-TE-FDj"/>
-                                            <constraint firstAttribute="trailing" secondItem="O8J-vF-URY" secondAttribute="trailing" id="PzP-c5-88W"/>
-                                            <constraint firstAttribute="height" constant="1000" id="sjr-OH-dx5"/>
-                                            <constraint firstItem="O8J-vF-URY" firstAttribute="leading" secondItem="tnb-ue-g0J" secondAttribute="leading" id="zYo-jV-aLo"/>
+                                            <constraint firstItem="7NW-8K-PbC" firstAttribute="top" secondItem="2nE-gi-gTK" secondAttribute="bottom" constant="28" id="1Kh-dO-6aD"/>
+                                            <constraint firstItem="lG2-yZ-3JW" firstAttribute="leading" secondItem="9TS-f5-Suq" secondAttribute="trailing" constant="30" id="2cd-98-QxV"/>
+                                            <constraint firstItem="2nE-gi-gTK" firstAttribute="top" secondItem="K77-Dj-CKx" secondAttribute="bottom" constant="29" id="2oK-r0-NlS"/>
+                                            <constraint firstItem="OaQ-lJ-9O9" firstAttribute="top" secondItem="O8J-vF-URY" secondAttribute="bottom" constant="-2" id="47s-Eq-5zX"/>
+                                            <constraint firstItem="K77-Dj-CKx" firstAttribute="top" secondItem="9TS-f5-Suq" secondAttribute="bottom" constant="36" id="5eu-F8-Tjy"/>
+                                            <constraint firstItem="2nE-gi-gTK" firstAttribute="leading" secondItem="tnb-ue-g0J" secondAttribute="leading" constant="18" id="6Ng-jn-zkX"/>
+                                            <constraint firstItem="2nE-gi-gTK" firstAttribute="top" secondItem="E4d-g2-AWL" secondAttribute="bottom" constant="29" id="8yO-qC-uWY"/>
+                                            <constraint firstAttribute="trailing" secondItem="E4d-g2-AWL" secondAttribute="trailing" constant="18" id="9eb-GK-SpS"/>
+                                            <constraint firstAttribute="height" constant="1510" id="FkG-2F-T7u"/>
+                                            <constraint firstAttribute="trailing" secondItem="2nE-gi-gTK" secondAttribute="trailing" constant="18" id="HNv-8c-rcy"/>
+                                            <constraint firstAttribute="trailing" secondItem="FOx-tY-OcB" secondAttribute="trailing" constant="18" id="IxR-Rs-gur"/>
+                                            <constraint firstItem="9TS-f5-Suq" firstAttribute="top" secondItem="OaQ-lJ-9O9" secondAttribute="bottom" constant="15.5" id="JVn-nB-F2w"/>
+                                            <constraint firstAttribute="trailing" secondItem="lG2-yZ-3JW" secondAttribute="trailing" constant="18" id="N15-TX-UDD"/>
+                                            <constraint firstItem="u0d-A6-Z1L" firstAttribute="leading" secondItem="7NW-8K-PbC" secondAttribute="trailing" constant="30" id="Npj-eU-pxc"/>
+                                            <constraint firstItem="LZ9-pk-wPS" firstAttribute="top" secondItem="KQM-LH-xfE" secondAttribute="bottom" constant="23" id="Odg-DC-wfb"/>
+                                            <constraint firstAttribute="trailing" secondItem="O8J-vF-URY" secondAttribute="trailing" id="P4d-MV-Dug"/>
+                                            <constraint firstItem="O8J-vF-URY" firstAttribute="leading" secondItem="tnb-ue-g0J" secondAttribute="leading" id="SMU-5h-W3C"/>
+                                            <constraint firstAttribute="bottom" secondItem="LZ9-pk-wPS" secondAttribute="bottom" constant="66" id="U8f-yP-9pb"/>
+                                            <constraint firstAttribute="trailing" secondItem="OaQ-lJ-9O9" secondAttribute="trailing" constant="18" id="Vak-jd-0Ox"/>
+                                            <constraint firstItem="O8J-vF-URY" firstAttribute="top" secondItem="tnb-ue-g0J" secondAttribute="top" id="W1A-4K-aOE"/>
+                                            <constraint firstItem="E4d-g2-AWL" firstAttribute="leading" secondItem="K77-Dj-CKx" secondAttribute="trailing" constant="30" id="X2e-HX-hSt"/>
+                                            <constraint firstItem="OaQ-lJ-9O9" firstAttribute="leading" secondItem="tnb-ue-g0J" secondAttribute="leading" constant="18" id="XdB-0A-eof"/>
+                                            <constraint firstItem="FOx-tY-OcB" firstAttribute="leading" secondItem="LZ9-pk-wPS" secondAttribute="trailing" constant="30" id="Yms-R7-VL4"/>
+                                            <constraint firstItem="9TS-f5-Suq" firstAttribute="leading" secondItem="tnb-ue-g0J" secondAttribute="leading" constant="18" id="bqU-aV-RTj"/>
+                                            <constraint firstItem="KQM-LH-xfE" firstAttribute="top" secondItem="7NW-8K-PbC" secondAttribute="bottom" constant="18" id="dkw-ka-GF5"/>
+                                            <constraint firstItem="LZ9-pk-wPS" firstAttribute="leading" secondItem="tnb-ue-g0J" secondAttribute="leading" constant="18" id="huL-CE-WMs"/>
+                                            <constraint firstItem="E4d-g2-AWL" firstAttribute="top" secondItem="lG2-yZ-3JW" secondAttribute="bottom" constant="23" id="lVc-Md-nA3"/>
+                                            <constraint firstAttribute="trailing" secondItem="u0d-A6-Z1L" secondAttribute="trailing" constant="18" id="ljG-uM-G0Q"/>
+                                            <constraint firstAttribute="trailing" secondItem="PZp-2k-pqQ" secondAttribute="trailing" constant="18" id="mwf-TF-Kwe"/>
+                                            <constraint firstItem="lG2-yZ-3JW" firstAttribute="top" secondItem="PZp-2k-pqQ" secondAttribute="bottom" constant="18" id="ngk-mD-zci"/>
+                                            <constraint firstItem="FOx-tY-OcB" firstAttribute="leading" secondItem="KQM-LH-xfE" secondAttribute="trailing" constant="30" id="oTA-Kr-2uo"/>
+                                            <constraint firstAttribute="bottom" secondItem="FOx-tY-OcB" secondAttribute="bottom" constant="66" id="sIU-qQ-4ay"/>
+                                            <constraint firstItem="PZp-2k-pqQ" firstAttribute="top" secondItem="OaQ-lJ-9O9" secondAttribute="bottom" constant="15" id="uPP-jf-zTA"/>
+                                            <constraint firstItem="PZp-2k-pqQ" firstAttribute="leading" secondItem="9TS-f5-Suq" secondAttribute="trailing" constant="30" id="uTg-qG-rKm"/>
+                                            <constraint firstItem="7NW-8K-PbC" firstAttribute="leading" secondItem="tnb-ue-g0J" secondAttribute="leading" constant="18" id="uUE-2J-b1Q"/>
+                                            <constraint firstItem="FOx-tY-OcB" firstAttribute="top" secondItem="u0d-A6-Z1L" secondAttribute="bottom" constant="36" id="ugD-Kw-Fzj"/>
+                                            <constraint firstItem="K77-Dj-CKx" firstAttribute="leading" secondItem="tnb-ue-g0J" secondAttribute="leading" constant="18" id="xdA-eX-Ofn"/>
+                                            <constraint firstItem="u0d-A6-Z1L" firstAttribute="top" secondItem="2nE-gi-gTK" secondAttribute="bottom" constant="28" id="zKx-bS-hsC"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="tnb-ue-g0J" secondAttribute="trailing" id="YBS-Wq-MdM"/>
-                                    <constraint firstItem="tnb-ue-g0J" firstAttribute="leading" secondItem="NuL-HD-KFQ" secondAttribute="leading" id="f7k-af-oFn"/>
-                                    <constraint firstAttribute="bottom" secondItem="tnb-ue-g0J" secondAttribute="bottom" id="xYC-dL-HaP"/>
+                                    <constraint firstItem="tnb-ue-g0J" firstAttribute="leading" secondItem="NuL-HD-KFQ" secondAttribute="leading" id="1l2-Lo-glt"/>
+                                    <constraint firstAttribute="trailing" secondItem="tnb-ue-g0J" secondAttribute="trailing" id="QZZ-48-exb"/>
+                                    <constraint firstAttribute="bottom" secondItem="tnb-ue-g0J" secondAttribute="bottom" id="RdF-Ve-Ycj"/>
+                                    <constraint firstItem="tnb-ue-g0J" firstAttribute="top" secondItem="NuL-HD-KFQ" secondAttribute="top" id="wLB-hM-xvE"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="tnb-ue-g0J" firstAttribute="width" secondItem="IYa-94-WuZ" secondAttribute="width" id="3Y5-Ru-Xn5"/>
-                            <constraint firstItem="NuL-HD-KFQ" firstAttribute="trailing" secondItem="r1G-eL-fYj" secondAttribute="trailing" id="7A3-Dt-1Bh"/>
-                            <constraint firstItem="mEZ-xL-PPm" firstAttribute="trailing" secondItem="r1G-eL-fYj" secondAttribute="trailing" id="7Em-GP-rPZ"/>
-                            <constraint firstItem="mEZ-xL-PPm" firstAttribute="top" secondItem="r1G-eL-fYj" secondAttribute="top" id="MWC-sZ-3f6"/>
-                            <constraint firstItem="tnb-ue-g0J" firstAttribute="top" secondItem="mEZ-xL-PPm" secondAttribute="bottom" id="Mwe-Ca-kHm"/>
-                            <constraint firstItem="mEZ-xL-PPm" firstAttribute="leading" secondItem="r1G-eL-fYj" secondAttribute="leading" id="aWX-tK-6to"/>
-                            <constraint firstItem="NuL-HD-KFQ" firstAttribute="top" secondItem="IYa-94-WuZ" secondAttribute="top" constant="120" id="gxy-Wd-Xku"/>
-                            <constraint firstItem="NuL-HD-KFQ" firstAttribute="leading" secondItem="r1G-eL-fYj" secondAttribute="leading" id="qP9-A6-rX0"/>
-                            <constraint firstAttribute="bottom" secondItem="NuL-HD-KFQ" secondAttribute="bottom" id="tSa-A2-lCf"/>
+                            <constraint firstItem="NuL-HD-KFQ" firstAttribute="top" secondItem="mEZ-xL-PPm" secondAttribute="bottom" id="NWv-sY-fKE"/>
+                            <constraint firstAttribute="bottom" secondItem="NuL-HD-KFQ" secondAttribute="bottom" id="RBV-PL-6zq"/>
+                            <constraint firstItem="mEZ-xL-PPm" firstAttribute="top" secondItem="r1G-eL-fYj" secondAttribute="top" id="RbU-zo-Rrl"/>
+                            <constraint firstItem="tnb-ue-g0J" firstAttribute="width" secondItem="IYa-94-WuZ" secondAttribute="width" id="f5E-kE-vd0"/>
+                            <constraint firstItem="mEZ-xL-PPm" firstAttribute="trailing" secondItem="r1G-eL-fYj" secondAttribute="trailing" id="gss-pj-ryy"/>
+                            <constraint firstItem="mEZ-xL-PPm" firstAttribute="leading" secondItem="r1G-eL-fYj" secondAttribute="leading" id="ohn-Zc-PP4"/>
+                            <constraint firstItem="NuL-HD-KFQ" firstAttribute="leading" secondItem="r1G-eL-fYj" secondAttribute="leading" id="wxD-71-LZO"/>
+                            <constraint firstItem="NuL-HD-KFQ" firstAttribute="trailing" secondItem="r1G-eL-fYj" secondAttribute="trailing" id="zAu-bo-IqJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="r1G-eL-fYj"/>
                     </view>
                     <navigationItem key="navigationItem" title="Your Wall" id="XUI-UR-3K5"/>
-                    <size key="freeformSize" width="375" height="1000"/>
+                    <size key="freeformSize" width="375" height="1630"/>
                     <connections>
                         <outlet property="collectionView" destination="O8J-vF-URY" id="9Cm-SR-faD"/>
-                        <outlet property="imageCardLayout" destination="lwp-c0-i9v" id="5Ak-My-ET4"/>
+                        <outlet property="first" destination="9TS-f5-Suq" id="fo0-2a-RZI"/>
                         <outlet property="searchBar" destination="mEZ-xL-PPm" id="NvX-Il-YRh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YIB-au-iMF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1604" y="-602.69865067466276"/>
+            <point key="canvasLocation" x="1604" y="-790.70464767616193"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4jm-rK-KpY">
@@ -209,5 +618,6 @@
         <image name="shadow" width="289" height="363"/>
         <image name="wall1" width="493" height="315"/>
         <image name="wall2" width="987" height="657"/>
+        <image name="wall3" width="493" height="328"/>
     </resources>
 </document>

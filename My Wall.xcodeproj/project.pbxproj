@@ -182,8 +182,8 @@
 		40AF54611FC8345300E3D019 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				401763A91FCAB79400FD51D8 /* CardView.swift */,
 				40AF54341FC753AC00E3D019 /* Main.storyboard */,
+				401763A91FCAB79400FD51D8 /* CardView.swift */,
 				40AF54631FC8349700E3D019 /* ViewCustomization.swift */,
 			);
 			path = View;
@@ -473,10 +473,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-My Wall/Pods-My Wall-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cards/Cards.framework",
+				"${BUILT_PRODUCTS_DIR}/Player/Player.framework",
 				"${BUILT_PRODUCTS_DIR}/UPCarouselFlowLayout/UPCarouselFlowLayout.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cards.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Player.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UPCarouselFlowLayout.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
