@@ -27,5 +27,13 @@ class ViewCustomization {
         }
     }
     
+    class func customiseCard(s:UIView) {
+        s.layer.shadowColor = (UIColor(red:0.66, green:0.71, blue:0.78, alpha:0.8)).cgColor
+        s.layer.shadowOffset = CGSize(width: 0, height: 0)
+        s.layer.shadowOpacity = 0.7
+        s.layer.shadowRadius = 6.0 //Here your control your blur
+//        s.layer.masksToBounds =  true
+    }
+    
 }
 

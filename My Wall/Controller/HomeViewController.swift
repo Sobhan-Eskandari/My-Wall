@@ -11,37 +11,25 @@ import UPCarouselFlowLayout
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    // MARK: - Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var imageCardLayout: UIImageView!
     
-    var items = [UIImage]()
+    // MARK: - Variables
+    var items = [UIImage]() // for now fake images
     var currentPage: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        items.append(UIImage(named: "wall1")!)
-        items.append(UIImage(named: "wall2")!)
-        items.append(UIImage(named: "wall3")!)
+        items.append(UIImage(named: "wall1")!) // fake images
+        items.append(UIImage(named: "wall2")!) // fake images
+        items.append(UIImage(named: "wall3")!) // fake images
         self.setupLayout()
 
         // Do any additional setup after loading the view.
         ViewCustomization.customiseSearchBox(searchBar: searchBar)
-    }
-    
-    var pageSize: CGSize {
-        let layout = self.collectionView.collectionViewLayout as! UPCarouselFlowLayout
-        var pageSize = layout.itemSize
-        if layout.scrollDirection == .horizontal {
-            pageSize.width += layout.minimumLineSpacing
-        } else {
-            pageSize.height += layout.minimumLineSpacing
-        }
-        return pageSize
-    }
-    
-    func setupLayout() {
-        let layout = self.collectionView.collectionViewLayout as! UPCarouselFlowLayout
-        layout.spacingMode = UPCarouselFlowLayoutSpacingMode.overlap(visibleOffset: 30)
+        ViewCustomization.customiseCard(s: imageCardLayout)
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,21 +37,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Dispose of any resources that can be recreated.
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        var size = CGSize.zero
-        
-        if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
-            size = layout.itemSize;
-            size.width = collectionView.bounds.width
-        }
-        
-        return size
-    }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        collectionView.collectionViewLayout.invalidateLayout()
-    }
     /*
     // MARK: - Navigation
 
@@ -109,6 +82,38 @@ extension HomeViewController {
         let pageSide = (layout.scrollDirection == .horizontal) ? self.pageSize.width : self.pageSize.height
         let offset = (layout.scrollDirection == .horizontal) ? scrollView.contentOffset.x : scrollView.contentOffset.y
         currentPage = Int(floor((offset - pageSide / 2) / pageSide) + 1)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        var size = CGSize.zero
+        
+        if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
+            size = layout.itemSize;
+            size.width = collectionView.bounds.width
+        }
+        
+        return size
+    }
+    
+    var pageSize: CGSize {
+        let layout = self.collectionView.collectionViewLayout as! UPCarouselFlowLayout
+        var pageSize = layout.itemSize
+        if layout.scrollDirection == .horizontal {
+            pageSize.width += layout.minimumLineSpacing
+        } else {
+            pageSize.height += layout.minimumLineSpacing
+        }
+        return pageSize
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    func setupLayout() {
+        let layout = self.collectionView.collectionViewLayout as! UPCarouselFlowLayout
+        layout.spacingMode = UPCarouselFlowLayoutSpacingMode.overlap(visibleOffset: 30)
     }
 }
 
