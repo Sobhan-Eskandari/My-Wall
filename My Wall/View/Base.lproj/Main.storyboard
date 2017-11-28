@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="det-Xj-mPl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KZT-b1-pia">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -112,7 +112,6 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall3"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
                                                         <real key="value" value="16"/>
                                                     </userDefinedRuntimeAttribute>
@@ -144,7 +143,6 @@
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall3"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
                                                         <real key="value" value="16"/>
                                                     </userDefinedRuntimeAttribute>
@@ -180,7 +178,6 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall3"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
                                                         <real key="value" value="16"/>
@@ -213,7 +210,6 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall1"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
                                                         <real key="value" value="16"/>
@@ -246,7 +242,6 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall2"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
                                                         <real key="value" value="16"/>
@@ -279,7 +274,6 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall1"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
                                                         <real key="value" value="16"/>
                                                     </userDefinedRuntimeAttribute>
@@ -315,7 +309,6 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall3"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
                                                         <real key="value" value="16"/>
                                                     </userDefinedRuntimeAttribute>
@@ -351,7 +344,6 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall1"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
                                                         <real key="value" value="16"/>
                                                     </userDefinedRuntimeAttribute>
@@ -387,7 +379,6 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall3"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
                                                         <real key="value" value="16"/>
@@ -420,7 +411,6 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall1"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
                                                         <real key="value" value="16"/>
@@ -453,7 +443,6 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall2"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Hi"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
                                                         <real key="value" value="16"/>
@@ -552,6 +541,118 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YIB-au-iMF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1604" y="-790.70464767616193"/>
+        </scene>
+        <!--All Walls View Controller-->
+        <scene sceneID="72x-YF-9kC">
+            <objects>
+                <viewController id="KZT-b1-pia" customClass="AllWallsViewController" customModule="My_Wall" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EuW-mV-lqJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kcd-zL-3WN">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Nature" id="5Iz-Kk-nXI"/>
+                                </items>
+                            </navigationBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UJt-X6-7Sj">
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="r3Y-YZ-6Zn">
+                                    <size key="itemSize" width="187" height="230"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="5" maxX="0.0" maxY="5"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="WallCell" reuseIdentifier="wallCell" id="jmD-Rt-hcE" customClass="WallCell" customModule="My_Wall" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="5" width="187" height="230"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="187" height="230"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d3U-Yf-r7y" userLabel="Card1" customClass="CardGroup" customModule="Cards">
+                                                    <rect key="frame" x="17" y="17" width="153" height="196"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="wall2"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
+                                                            <real key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="subtitleSize">
+                                                            <real key="value" value="7"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="Category:"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="contentInset">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cardRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                                            <real key="value" value="7"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                            <color key="value" red="0.6588235294" green="0.71372549019999998" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="d3U-Yf-r7y" secondAttribute="bottom" constant="17" id="2kD-dc-3pE"/>
+                                            <constraint firstItem="d3U-Yf-r7y" firstAttribute="top" secondItem="jmD-Rt-hcE" secondAttribute="top" constant="17" id="ANO-gE-kFg"/>
+                                            <constraint firstItem="d3U-Yf-r7y" firstAttribute="leading" secondItem="jmD-Rt-hcE" secondAttribute="leading" constant="17" id="Une-Wc-RpT"/>
+                                            <constraint firstAttribute="trailing" secondItem="d3U-Yf-r7y" secondAttribute="trailing" constant="17" id="dip-Uk-cB9"/>
+                                        </constraints>
+                                        <size key="customSize" width="187" height="230"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="KZT-b1-pia" id="Vms-gQ-WYT"/>
+                                    <outlet property="delegate" destination="KZT-b1-pia" id="Hpy-2n-iZP"/>
+                                </connections>
+                            </collectionView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="KD4-vO-XBP">
+                                <rect key="frame" x="9" y="64" width="357" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KD4-vO-XBP" firstAttribute="top" secondItem="kcd-zL-3WN" secondAttribute="bottom" id="8lK-h8-ZFR"/>
+                            <constraint firstItem="UJt-X6-7Sj" firstAttribute="bottom" secondItem="0zI-Hc-PjI" secondAttribute="bottom" id="HdZ-Tg-UIZ"/>
+                            <constraint firstItem="kcd-zL-3WN" firstAttribute="top" secondItem="0zI-Hc-PjI" secondAttribute="top" id="J9r-gD-4qI"/>
+                            <constraint firstItem="UJt-X6-7Sj" firstAttribute="trailing" secondItem="0zI-Hc-PjI" secondAttribute="trailing" id="JLs-2G-OAz"/>
+                            <constraint firstItem="KD4-vO-XBP" firstAttribute="top" secondItem="kcd-zL-3WN" secondAttribute="bottom" id="Mfm-qi-lgG"/>
+                            <constraint firstItem="KD4-vO-XBP" firstAttribute="leading" secondItem="0zI-Hc-PjI" secondAttribute="leading" constant="9" id="UIZ-9M-rln"/>
+                            <constraint firstItem="UJt-X6-7Sj" firstAttribute="top" secondItem="KD4-vO-XBP" secondAttribute="bottom" id="W35-Oi-CLs"/>
+                            <constraint firstItem="kcd-zL-3WN" firstAttribute="trailing" secondItem="0zI-Hc-PjI" secondAttribute="trailing" id="agH-eK-xqh"/>
+                            <constraint firstItem="UJt-X6-7Sj" firstAttribute="leading" secondItem="0zI-Hc-PjI" secondAttribute="leading" id="c0z-q8-IBv"/>
+                            <constraint firstAttribute="trailing" secondItem="KD4-vO-XBP" secondAttribute="trailing" constant="9" id="dR8-mH-p6R"/>
+                            <constraint firstItem="kcd-zL-3WN" firstAttribute="leading" secondItem="0zI-Hc-PjI" secondAttribute="leading" id="gml-Uw-VzT"/>
+                            <constraint firstItem="UJt-X6-7Sj" firstAttribute="top" secondItem="KD4-vO-XBP" secondAttribute="bottom" id="r8W-Fe-QHF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0zI-Hc-PjI"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="KD4-vO-XBP" id="lZ5-kf-Lmi"/>
+                        <outlet property="wallsCollectionView" destination="UJt-X6-7Sj" id="Jrb-rJ-34H"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TdV-qX-VH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2447.1999999999998" y="-1228.3358320839582"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4jm-rK-KpY">
