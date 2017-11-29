@@ -10,6 +10,8 @@
 		401763AA1FCAB79400FD51D8 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401763A91FCAB79400FD51D8 /* CardView.swift */; };
 		401FD5A61FCDA24000C4B3A3 /* AllWallsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401FD5A51FCDA24000C4B3A3 /* AllWallsViewController.swift */; };
 		401FD5A81FCDA26000C4B3A3 /* WallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401FD5A71FCDA26000C4B3A3 /* WallCell.swift */; };
+		401FD5AB1FCE8F0A00C4B3A3 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401FD5AA1FCE8F0A00C4B3A3 /* SubscriptionViewController.swift */; };
+		401FD5AD1FCE8F2800C4B3A3 /* PlanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401FD5AC1FCE8F2800C4B3A3 /* PlanCell.swift */; };
 		40AF54311FC753AC00E3D019 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AF54301FC753AC00E3D019 /* AppDelegate.swift */; };
 		40AF54361FC753AC00E3D019 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AF54341FC753AC00E3D019 /* Main.storyboard */; };
 		40AF54381FC753AC00E3D019 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40AF54371FC753AC00E3D019 /* Assets.xcassets */; };
@@ -45,6 +47,8 @@
 		401763A91FCAB79400FD51D8 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		401FD5A51FCDA24000C4B3A3 /* AllWallsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllWallsViewController.swift; sourceTree = "<group>"; };
 		401FD5A71FCDA26000C4B3A3 /* WallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallCell.swift; sourceTree = "<group>"; };
+		401FD5AA1FCE8F0A00C4B3A3 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
+		401FD5AC1FCE8F2800C4B3A3 /* PlanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCell.swift; sourceTree = "<group>"; };
 		40AF542D1FC753AB00E3D019 /* My Wall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Wall.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40AF54301FC753AC00E3D019 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40AF54351FC753AC00E3D019 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -125,8 +129,8 @@
 		401FD5A31FCDA1F500C4B3A3 /* Homepage */ = {
 			isa = PBXGroup;
 			children = (
-				40AF545E1FC75D5D00E3D019 /* HomeViewController.swift */,
 				40AF54671FC839FD00E3D019 /* HomeCarouselCell.swift */,
+				40AF545E1FC75D5D00E3D019 /* HomeViewController.swift */,
 			);
 			path = Homepage;
 			sourceTree = "<group>";
@@ -138,6 +142,15 @@
 				401FD5A51FCDA24000C4B3A3 /* AllWallsViewController.swift */,
 			);
 			path = Wallspage;
+			sourceTree = "<group>";
+		};
+		401FD5A91FCE8EB200C4B3A3 /* SubscriptionPage */ = {
+			isa = PBXGroup;
+			children = (
+				401FD5AC1FCE8F2800C4B3A3 /* PlanCell.swift */,
+				401FD5AA1FCE8F0A00C4B3A3 /* SubscriptionViewController.swift */,
+			);
+			path = SubscriptionPage;
 			sourceTree = "<group>";
 		};
 		40AF54241FC753AB00E3D019 = {
@@ -214,6 +227,7 @@
 		40AF54621FC8345800E3D019 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				401FD5A91FCE8EB200C4B3A3 /* SubscriptionPage */,
 				401FD5A41FCDA20400C4B3A3 /* Wallspage */,
 				401FD5A31FCDA1F500C4B3A3 /* Homepage */,
 			);
@@ -517,12 +531,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				401FD5AD1FCE8F2800C4B3A3 /* PlanCell.swift in Sources */,
 				40AF54681FC839FD00E3D019 /* HomeCarouselCell.swift in Sources */,
 				40AF54641FC8349700E3D019 /* ViewCustomization.swift in Sources */,
 				40AF54311FC753AC00E3D019 /* AppDelegate.swift in Sources */,
 				40AF545F1FC75D5D00E3D019 /* HomeViewController.swift in Sources */,
 				401FD5A81FCDA26000C4B3A3 /* WallCell.swift in Sources */,
 				401FD5A61FCDA24000C4B3A3 /* AllWallsViewController.swift in Sources */,
+				401FD5AB1FCE8F0A00C4B3A3 /* SubscriptionViewController.swift in Sources */,
 				401763AA1FCAB79400FD51D8 /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
