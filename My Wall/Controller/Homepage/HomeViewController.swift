@@ -100,6 +100,7 @@ extension HomeViewController {
         return size
     }
     
+    
     var pageSize: CGSize {
         let layout = self.collectionView.collectionViewLayout as! UPCarouselFlowLayout
         var pageSize = layout.itemSize
@@ -125,7 +126,9 @@ extension HomeViewController {
 extension HomeViewController: CardDelegate {
 
     func cardDidTapInside(card: Card) {
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "AllWalls") as! AllWallsViewController
+        navigationController?.pushViewController(vc,animated: true)
     }
 }
 

@@ -23,6 +23,13 @@ class AllWallsViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         ViewCustomization.customiseSearchBox(searchBar: searchBar)
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.navigationBar.tintColor = UIColor.darkGray
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -42,45 +49,36 @@ class AllWallsViewController: UIViewController, UICollectionViewDelegate, UIColl
 
 }
 
-extension AllWallsViewController {
+extension AllWallsViewController:UICollectionViewDelegateFlowLayout {
     // MARK: - Card Collection Delegate & DataSource
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let theWidth = (view.frame.width - 10)/2    // it will generate 2 column
+        let theHeight = (view.frame.height - (10*2))/3   // it will generate 3 Row
+        return CGSize(width: theWidth ,height: theHeight)
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallCell.identifier, for: indexPath) as! WallCell
         cell.layer.backgroundColor = UIColor.clear.cgColor
-        //        let image = items[indexPath.row]
-//        cell.image.image = image
-//        cell.image.clipsToBounds = true
-//        cell.image.layer.cornerRadius = 10
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("selected: \(indexPath.row)")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "wallDetail") as! WallDetailController
+        navigationController?.pushViewController(vc,animated: true)
     }
     
     
-    
-    // MARK: - UIScrollViewDelegate
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        var size = CGSize.zero
-        
-        if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
-            size = layout.itemSize;
-            size.width = collectionView.bounds.width
-        }
-        
-        return size
-    }
 
 }

@@ -12,6 +12,16 @@
 		401FD5A81FCDA26000C4B3A3 /* WallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401FD5A71FCDA26000C4B3A3 /* WallCell.swift */; };
 		401FD5AB1FCE8F0A00C4B3A3 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401FD5AA1FCE8F0A00C4B3A3 /* SubscriptionViewController.swift */; };
 		401FD5AD1FCE8F2800C4B3A3 /* PlanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401FD5AC1FCE8F2800C4B3A3 /* PlanCell.swift */; };
+		403921D11FD3EE1100F7799E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403921D01FD3EE1100F7799E /* Image.swift */; };
+		403921D31FD3F06E00F7799E /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403921D21FD3F06E00F7799E /* Metadata.swift */; };
+		403921D51FD3F07800F7799E /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403921D41FD3F07800F7799E /* Urls.swift */; };
+		403921D71FD4137D00F7799E /* Photographer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403921D61FD4137D00F7799E /* Photographer.swift */; };
+		404EC3231FD12F3B00C96A8D /* CollectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404EC3221FD12F3B00C96A8D /* CollectionsViewController.swift */; };
+		404EC3251FD12F6E00C96A8D /* CollectionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404EC3241FD12F6E00C96A8D /* CollectionTableCell.swift */; };
+		404EC3271FD2D90500C96A8D /* Wallpaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404EC3261FD2D90500C96A8D /* Wallpaper.swift */; };
+		4071F1BD1FD6737500AD3C9C /* WallDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4071F1BC1FD6737500AD3C9C /* WallDetailController.swift */; };
+		4071F1C11FD687F200AD3C9C /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4071F1C01FD687F200AD3C9C /* ActionButton.swift */; };
+		4071F1C31FD687F500AD3C9C /* ActionButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4071F1C21FD687F500AD3C9C /* ActionButtonItem.swift */; };
 		40AF54311FC753AC00E3D019 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AF54301FC753AC00E3D019 /* AppDelegate.swift */; };
 		40AF54361FC753AC00E3D019 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AF54341FC753AC00E3D019 /* Main.storyboard */; };
 		40AF54381FC753AC00E3D019 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40AF54371FC753AC00E3D019 /* Assets.xcassets */; };
@@ -49,6 +59,16 @@
 		401FD5A71FCDA26000C4B3A3 /* WallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallCell.swift; sourceTree = "<group>"; };
 		401FD5AA1FCE8F0A00C4B3A3 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		401FD5AC1FCE8F2800C4B3A3 /* PlanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCell.swift; sourceTree = "<group>"; };
+		403921D01FD3EE1100F7799E /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		403921D21FD3F06E00F7799E /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
+		403921D41FD3F07800F7799E /* Urls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Urls.swift; sourceTree = "<group>"; };
+		403921D61FD4137D00F7799E /* Photographer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photographer.swift; sourceTree = "<group>"; };
+		404EC3221FD12F3B00C96A8D /* CollectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsViewController.swift; sourceTree = "<group>"; };
+		404EC3241FD12F6E00C96A8D /* CollectionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableCell.swift; sourceTree = "<group>"; };
+		404EC3261FD2D90500C96A8D /* Wallpaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallpaper.swift; sourceTree = "<group>"; };
+		4071F1BC1FD6737500AD3C9C /* WallDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallDetailController.swift; sourceTree = "<group>"; };
+		4071F1C01FD687F200AD3C9C /* ActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		4071F1C21FD687F500AD3C9C /* ActionButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonItem.swift; sourceTree = "<group>"; };
 		40AF542D1FC753AB00E3D019 /* My Wall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Wall.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40AF54301FC753AC00E3D019 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40AF54351FC753AC00E3D019 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -153,6 +173,23 @@
 			path = SubscriptionPage;
 			sourceTree = "<group>";
 		};
+		404EC3211FD12F0700C96A8D /* CollectionPage */ = {
+			isa = PBXGroup;
+			children = (
+				404EC3241FD12F6E00C96A8D /* CollectionTableCell.swift */,
+				404EC3221FD12F3B00C96A8D /* CollectionsViewController.swift */,
+			);
+			path = CollectionPage;
+			sourceTree = "<group>";
+		};
+		4071F1BB1FD6735500AD3C9C /* WallDetailPage */ = {
+			isa = PBXGroup;
+			children = (
+				4071F1BC1FD6737500AD3C9C /* WallDetailController.swift */,
+			);
+			path = WallDetailPage;
+			sourceTree = "<group>";
+		};
 		40AF54241FC753AB00E3D019 = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +247,11 @@
 		40AF54601FC8344D00E3D019 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				404EC3261FD2D90500C96A8D /* Wallpaper.swift */,
+				403921D21FD3F06E00F7799E /* Metadata.swift */,
+				403921D01FD3EE1100F7799E /* Image.swift */,
+				403921D41FD3F07800F7799E /* Urls.swift */,
+				403921D61FD4137D00F7799E /* Photographer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -227,6 +269,10 @@
 		40AF54621FC8345800E3D019 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4071F1C01FD687F200AD3C9C /* ActionButton.swift */,
+				4071F1C21FD687F500AD3C9C /* ActionButtonItem.swift */,
+				4071F1BB1FD6735500AD3C9C /* WallDetailPage */,
+				404EC3211FD12F0700C96A8D /* CollectionPage */,
 				401FD5A91FCE8EB200C4B3A3 /* SubscriptionPage */,
 				401FD5A41FCDA20400C4B3A3 /* Wallspage */,
 				401FD5A31FCDA1F500C4B3A3 /* Homepage */,
@@ -531,14 +577,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				403921D31FD3F06E00F7799E /* Metadata.swift in Sources */,
+				404EC3251FD12F6E00C96A8D /* CollectionTableCell.swift in Sources */,
 				401FD5AD1FCE8F2800C4B3A3 /* PlanCell.swift in Sources */,
 				40AF54681FC839FD00E3D019 /* HomeCarouselCell.swift in Sources */,
+				4071F1C31FD687F500AD3C9C /* ActionButtonItem.swift in Sources */,
+				403921D71FD4137D00F7799E /* Photographer.swift in Sources */,
+				4071F1C11FD687F200AD3C9C /* ActionButton.swift in Sources */,
+				404EC3231FD12F3B00C96A8D /* CollectionsViewController.swift in Sources */,
 				40AF54641FC8349700E3D019 /* ViewCustomization.swift in Sources */,
 				40AF54311FC753AC00E3D019 /* AppDelegate.swift in Sources */,
+				403921D11FD3EE1100F7799E /* Image.swift in Sources */,
 				40AF545F1FC75D5D00E3D019 /* HomeViewController.swift in Sources */,
+				403921D51FD3F07800F7799E /* Urls.swift in Sources */,
 				401FD5A81FCDA26000C4B3A3 /* WallCell.swift in Sources */,
 				401FD5A61FCDA24000C4B3A3 /* AllWallsViewController.swift in Sources */,
 				401FD5AB1FCE8F0A00C4B3A3 /* SubscriptionViewController.swift in Sources */,
+				404EC3271FD2D90500C96A8D /* Wallpaper.swift in Sources */,
+				4071F1BD1FD6737500AD3C9C /* WallDetailController.swift in Sources */,
 				401763AA1FCAB79400FD51D8 /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

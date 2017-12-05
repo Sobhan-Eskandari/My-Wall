@@ -20,4 +20,6 @@ class PlanCell: UICollectionViewCell {
         super.init(coder: aDecoder)
         
     }
+    
+    
 }

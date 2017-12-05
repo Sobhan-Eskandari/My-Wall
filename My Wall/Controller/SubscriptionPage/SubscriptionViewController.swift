@@ -153,7 +153,7 @@ extension SubscriptionViewController {
 extension SubscriptionViewController: CardDelegate {
     
     func cardDidTapInside(card: Card) {
-        
+       
     }
 }
 
