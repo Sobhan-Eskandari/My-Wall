@@ -22,6 +22,8 @@
 		4071F1BD1FD6737500AD3C9C /* WallDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4071F1BC1FD6737500AD3C9C /* WallDetailController.swift */; };
 		4071F1C11FD687F200AD3C9C /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4071F1C01FD687F200AD3C9C /* ActionButton.swift */; };
 		4071F1C31FD687F500AD3C9C /* ActionButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4071F1C21FD687F500AD3C9C /* ActionButtonItem.swift */; };
+		407E24191FDC13F5002CFA1B /* CustomOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407E24181FDC13F5002CFA1B /* CustomOverlayView.swift */; };
+		407E241B1FDC13FF002CFA1B /* CustomOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 407E241A1FDC13FF002CFA1B /* CustomOverlayView.xib */; };
 		40AF54311FC753AC00E3D019 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AF54301FC753AC00E3D019 /* AppDelegate.swift */; };
 		40AF54361FC753AC00E3D019 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40AF54341FC753AC00E3D019 /* Main.storyboard */; };
 		40AF54381FC753AC00E3D019 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40AF54371FC753AC00E3D019 /* Assets.xcassets */; };
@@ -67,8 +69,10 @@
 		404EC3241FD12F6E00C96A8D /* CollectionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableCell.swift; sourceTree = "<group>"; };
 		404EC3261FD2D90500C96A8D /* Wallpaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallpaper.swift; sourceTree = "<group>"; };
 		4071F1BC1FD6737500AD3C9C /* WallDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallDetailController.swift; sourceTree = "<group>"; };
-		4071F1C01FD687F200AD3C9C /* ActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
-		4071F1C21FD687F500AD3C9C /* ActionButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonItem.swift; sourceTree = "<group>"; };
+		4071F1C01FD687F200AD3C9C /* ActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionButton.swift; path = ../../Pods/INSPhotoGallery/ActionButton.swift; sourceTree = "<group>"; };
+		4071F1C21FD687F500AD3C9C /* ActionButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActionButtonItem.swift; path = ../../Pods/INSPhotoGallery/ActionButtonItem.swift; sourceTree = "<group>"; };
+		407E24181FDC13F5002CFA1B /* CustomOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlayView.swift; sourceTree = "<group>"; };
+		407E241A1FDC13FF002CFA1B /* CustomOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomOverlayView.xib; sourceTree = "<group>"; };
 		40AF542D1FC753AB00E3D019 /* My Wall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Wall.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40AF54301FC753AC00E3D019 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40AF54351FC753AC00E3D019 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 		401FD5A41FCDA20400C4B3A3 /* Wallspage */ = {
 			isa = PBXGroup;
 			children = (
+				407E24181FDC13F5002CFA1B /* CustomOverlayView.swift */,
+				407E241A1FDC13FF002CFA1B /* CustomOverlayView.xib */,
 				401FD5A71FCDA26000C4B3A3 /* WallCell.swift */,
 				401FD5A51FCDA24000C4B3A3 /* AllWallsViewController.swift */,
 			);
@@ -398,6 +404,7 @@
 			files = (
 				40AF543B1FC753AC00E3D019 /* LaunchScreen.storyboard in Resources */,
 				40AF54381FC753AC00E3D019 /* Assets.xcassets in Resources */,
+				407E241B1FDC13FF002CFA1B /* CustomOverlayView.xib in Resources */,
 				40AF54361FC753AC00E3D019 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,12 +563,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-My Wall/Pods-My Wall-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Cards/Cards.framework",
+				"${BUILT_PRODUCTS_DIR}/INSNibLoading/INSNibLoading.framework",
+				"${BUILT_PRODUCTS_DIR}/INSPhotoGallery/INSPhotoGallery.framework",
 				"${BUILT_PRODUCTS_DIR}/Player/Player.framework",
 				"${BUILT_PRODUCTS_DIR}/UPCarouselFlowLayout/UPCarouselFlowLayout.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cards.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/INSNibLoading.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/INSPhotoGallery.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Player.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UPCarouselFlowLayout.framework",
 			);
@@ -595,6 +606,7 @@
 				401FD5AB1FCE8F0A00C4B3A3 /* SubscriptionViewController.swift in Sources */,
 				404EC3271FD2D90500C96A8D /* Wallpaper.swift in Sources */,
 				4071F1BD1FD6737500AD3C9C /* WallDetailController.swift in Sources */,
+				407E24191FDC13F5002CFA1B /* CustomOverlayView.swift in Sources */,
 				401763AA1FCAB79400FD51D8 /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

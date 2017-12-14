@@ -7,12 +7,26 @@
 //
 
 import UIKit
+import INSPhotoGallery
 
 class AllWallsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     // MARK: - Outlets
     @IBOutlet weak var wallsCollectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    lazy var photos: [INSPhotoViewable] = {
+        return [
+            INSPhoto(imageURL: URL(string: "https://www.nature.org/cs/groups/webcontent/@photopublic/documents/media/east-kalimantan-361x248.jpg"), thumbnailImage: UIImage(named: "https://www.nature.org/cs/groups/webcontent/@photopublic/documents/media/east-kalimantan-361x248.jpg")),
+            INSPhoto(imageURL: URL(string: "https://lh6.ggpht.com/2CvQXZEebo7M_XWJ0C5NVBxIsGgkHIz8RaeUq8wgpjM6bHt3-BpiJxoJieltDNsqJg=h900"), thumbnailImage: UIImage(named: "wall1")!),
+            INSPhoto(image: UIImage(named: "wall4")!, thumbnailImage: UIImage(named: "wall1")!),
+            INSPhoto(imageURL: URL(string: "http://inspace.io/assets/portfolio/thumb/6-d793b947f57cc3df688eeb1d36b04ddb.jpg"), thumbnailImageURL: URL(string: "http://inspace.io/assets/portfolio/thumb/6-d793b947f57cc3df688eeb1d36b04ddb.jpg")),
+            INSPhoto(imageURL: URL(string: "http://inspace.io/assets/portfolio/thumb/6-d793b947f57cc3df688eeb1d36b04ddb.jpg"), thumbnailImageURL: URL(string: "http://inspace.io/assets/portfolio/thumb/6-d793b947f57cc3df688eeb1d36b04ddb.jpg")),
+            INSPhoto(imageURL: URL(string: "http://inspace.io/assets/portfolio/thumb/6-d793b947f57cc3df688eeb1d36b04ddb.jpg"), thumbnailImageURL: URL(string: "http://inspace.io/assets/portfolio/thumb/6-d793b947f57cc3df688eeb1d36b04ddb.jpg"))
+            
+        ]
+    }()
+    var useCustomOverlay = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +71,7 @@ extension AllWallsViewController:UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -67,18 +81,42 @@ extension AllWallsViewController:UICollectionViewDelegateFlowLayout {
     }
     
     
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallCell.identifier, for: indexPath) as! WallCell
+//        cell.layer.backgroundColor = UIColor.clear.cgColor
+//        return cell
+//    }
+    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "wallDetail") as! WallDetailController
+//        navigationController?.pushViewController(vc,animated: true)
+//    }
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallCell.identifier, for: indexPath) as! WallCell
+        cell.populateWithPhoto(photos[(indexPath as NSIndexPath).row])
         cell.layer.backgroundColor = UIColor.clear.cgColor
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "wallDetail") as! WallDetailController
-        navigationController?.pushViewController(vc,animated: true)
+        let cell = collectionView.cellForItem(at: indexPath) as! WallCell
+        let currentPhoto = photos[(indexPath as NSIndexPath).row]
+        let galleryPreview = INSPhotosViewController(photos: photos, initialPhoto: currentPhoto, referenceView: cell)
+        if useCustomOverlay {
+            galleryPreview.overlayView = CustomOverlayView(frame: CGRect.zero)
+        }
+        
+        galleryPreview.referenceViewForPhotoWhenDismissingHandler = { [weak self] photo in
+            if let index = self?.photos.index(where: {$0 === photo}) {
+                let indexPath = IndexPath(item: index, section: 0)
+                return collectionView.cellForItem(at: indexPath) as? WallCell
+            }
+            return nil
+        }
+        present(galleryPreview, animated: true, completion: nil)
     }
-    
     
 
 }
