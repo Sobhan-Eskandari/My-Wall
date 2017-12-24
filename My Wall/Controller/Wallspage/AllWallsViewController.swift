@@ -36,6 +36,26 @@ class AllWallsViewController: UIViewController, UICollectionViewDelegate, UIColl
         wallsCollectionView.dataSource = self
         
         ViewCustomization.customiseSearchBox(searchBar: searchBar)
+        
+        wallsCollectionView.infiniteScrollIndicatorView = CustomInfiniteIndicator(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        
+        wallsCollectionView.addInfiniteScroll { (collectionView) -> Void in
+            // create new index paths
+            let photoCount = self.photos.count
+            self.photos.append(INSPhoto(image: UIImage(named: "wall4")!, thumbnailImage: UIImage(named: "wall1")!))
+            self.photos.append(INSPhoto(image: UIImage(named: "wall3")!, thumbnailImage: UIImage(named: "wall1")!))
+            let (start, end) = (photoCount, photoCount + 2)
+            let indexPaths = (start..<end).map { return IndexPath(row: $0, section: 0) }
+            
+            // update collection view
+            self.wallsCollectionView?.performBatchUpdates({ () -> Void in
+                self.wallsCollectionView?.insertItems(at: indexPaths)
+            }, completion: { (finished) -> Void in
+                
+            });
+            
+            collectionView.finishInfiniteScroll()
+        }
     }
     
     

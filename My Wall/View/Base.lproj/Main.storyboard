@@ -375,7 +375,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
                                                         <real key="value" value="16"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountain"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="subtitleSize">
                                                         <real key="value" value="7"/>
                                                     </userDefinedRuntimeAttribute>
@@ -631,9 +631,19 @@
                     <navigationItem key="navigationItem" title="Your Wall" id="XUI-UR-3K5"/>
                     <size key="freeformSize" width="375" height="1630"/>
                     <connections>
+                        <outlet property="bottomLeftBottomCard" destination="LZ9-pk-wPS" id="AeB-0L-heA"/>
+                        <outlet property="bottomLeftCard" destination="7NW-8K-PbC" id="yLS-Jy-sKd"/>
+                        <outlet property="bottomLeftMiddleCard" destination="KQM-LH-xfE" id="CGH-Tv-ea7"/>
+                        <outlet property="bottomRightBottomCard" destination="FOx-tY-OcB" id="CsS-QT-oQK"/>
+                        <outlet property="bottomRightCard" destination="u0d-A6-Z1L" id="dmb-yf-yFi"/>
                         <outlet property="collectionView" destination="O8J-vF-URY" id="9Cm-SR-faD"/>
-                        <outlet property="first" destination="9TS-f5-Suq" id="fo0-2a-RZI"/>
+                        <outlet property="middleCard" destination="2nE-gi-gTK" id="QSX-g4-j8k"/>
                         <outlet property="searchBar" destination="mEZ-xL-PPm" id="NvX-Il-YRh"/>
+                        <outlet property="topLeftBottomCard" destination="K77-Dj-CKx" id="1UP-ef-7RH"/>
+                        <outlet property="topLeftCard" destination="9TS-f5-Suq" id="4hj-TJ-RTv"/>
+                        <outlet property="topRightBottomCard" destination="E4d-g2-AWL" id="57o-Me-hy1"/>
+                        <outlet property="topRightCard" destination="PZp-2k-pqQ" id="SPT-f3-vyC"/>
+                        <outlet property="topRightMiddleCard" destination="lG2-yZ-3JW" id="O8M-QP-B4v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YIB-au-iMF" userLabel="First Responder" sceneMemberID="firstResponder"/>

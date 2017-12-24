@@ -20,8 +20,6 @@
 		404EC3251FD12F6E00C96A8D /* CollectionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404EC3241FD12F6E00C96A8D /* CollectionTableCell.swift */; };
 		404EC3271FD2D90500C96A8D /* Wallpaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404EC3261FD2D90500C96A8D /* Wallpaper.swift */; };
 		4071F1BD1FD6737500AD3C9C /* WallDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4071F1BC1FD6737500AD3C9C /* WallDetailController.swift */; };
-		4071F1C11FD687F200AD3C9C /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4071F1C01FD687F200AD3C9C /* ActionButton.swift */; };
-		4071F1C31FD687F500AD3C9C /* ActionButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4071F1C21FD687F500AD3C9C /* ActionButtonItem.swift */; };
 		407E24191FDC13F5002CFA1B /* CustomOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407E24181FDC13F5002CFA1B /* CustomOverlayView.swift */; };
 		407E241B1FDC13FF002CFA1B /* CustomOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 407E241A1FDC13FF002CFA1B /* CustomOverlayView.xib */; };
 		40AF54311FC753AC00E3D019 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AF54301FC753AC00E3D019 /* AppDelegate.swift */; };
@@ -33,6 +31,7 @@
 		40AF545F1FC75D5D00E3D019 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AF545E1FC75D5D00E3D019 /* HomeViewController.swift */; };
 		40AF54641FC8349700E3D019 /* ViewCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AF54631FC8349700E3D019 /* ViewCustomization.swift */; };
 		40AF54681FC839FD00E3D019 /* HomeCarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AF54671FC839FD00E3D019 /* HomeCarouselCell.swift */; };
+		40FB4C861FE2D2AF0027E707 /* CustomInfiniteIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FB4C851FE2D2AF0027E707 /* CustomInfiniteIndicator.swift */; };
 		773B0EF859E14D7B40FA1DA1 /* Pods_My_WallUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1B5B7B5ECE6B73C450AFE53 /* Pods_My_WallUITests.framework */; };
 		980036E978E80E6579098423 /* Pods_My_Wall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B0E023D557DDA65D1DE246 /* Pods_My_Wall.framework */; };
 		C2C4D25EFE90BB7C6A4A642A /* Pods_My_WallTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA6903D6D449A2E60A95F25 /* Pods_My_WallTests.framework */; };
@@ -69,8 +68,6 @@
 		404EC3241FD12F6E00C96A8D /* CollectionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableCell.swift; sourceTree = "<group>"; };
 		404EC3261FD2D90500C96A8D /* Wallpaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallpaper.swift; sourceTree = "<group>"; };
 		4071F1BC1FD6737500AD3C9C /* WallDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallDetailController.swift; sourceTree = "<group>"; };
-		4071F1C01FD687F200AD3C9C /* ActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionButton.swift; path = ../../Pods/INSPhotoGallery/ActionButton.swift; sourceTree = "<group>"; };
-		4071F1C21FD687F500AD3C9C /* ActionButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActionButtonItem.swift; path = ../../Pods/INSPhotoGallery/ActionButtonItem.swift; sourceTree = "<group>"; };
 		407E24181FDC13F5002CFA1B /* CustomOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlayView.swift; sourceTree = "<group>"; };
 		407E241A1FDC13FF002CFA1B /* CustomOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomOverlayView.xib; sourceTree = "<group>"; };
 		40AF542D1FC753AB00E3D019 /* My Wall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Wall.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +85,8 @@
 		40AF545E1FC75D5D00E3D019 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		40AF54631FC8349700E3D019 /* ViewCustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCustomization.swift; sourceTree = "<group>"; };
 		40AF54671FC839FD00E3D019 /* HomeCarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCarouselCell.swift; sourceTree = "<group>"; };
+		40FB4C841FE2C9640027E707 /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
+		40FB4C851FE2D2AF0027E707 /* CustomInfiniteIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInfiniteIndicator.swift; sourceTree = "<group>"; };
 		5158D92E1B1ECED7BF94077F /* Pods-My WallUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My WallUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-My WallUITests/Pods-My WallUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5485D966C43EE6B90A0B454D /* Pods-My WallUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My WallUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-My WallUITests/Pods-My WallUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5CA6903D6D449A2E60A95F25 /* Pods_My_WallTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_My_WallTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +181,7 @@
 		404EC3211FD12F0700C96A8D /* CollectionPage */ = {
 			isa = PBXGroup;
 			children = (
+				40FB4C851FE2D2AF0027E707 /* CustomInfiniteIndicator.swift */,
 				404EC3241FD12F6E00C96A8D /* CollectionTableCell.swift */,
 				404EC3221FD12F3B00C96A8D /* CollectionsViewController.swift */,
 			);
@@ -228,6 +228,7 @@
 				40AF54371FC753AC00E3D019 /* Assets.xcassets */,
 				40AF54391FC753AC00E3D019 /* LaunchScreen.storyboard */,
 				40AF543C1FC753AC00E3D019 /* Info.plist */,
+				40FB4C841FE2C9640027E707 /* Bridge.h */,
 			);
 			path = "My Wall";
 			sourceTree = "<group>";
@@ -275,8 +276,6 @@
 		40AF54621FC8345800E3D019 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				4071F1C01FD687F200AD3C9C /* ActionButton.swift */,
-				4071F1C21FD687F500AD3C9C /* ActionButtonItem.swift */,
 				4071F1BB1FD6735500AD3C9C /* WallDetailPage */,
 				404EC3211FD12F0700C96A8D /* CollectionPage */,
 				401FD5A91FCE8EB200C4B3A3 /* SubscriptionPage */,
@@ -562,18 +561,28 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-My Wall/Pods-My Wall-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Cards/Cards.framework",
 				"${BUILT_PRODUCTS_DIR}/INSNibLoading/INSNibLoading.framework",
 				"${BUILT_PRODUCTS_DIR}/INSPhotoGallery/INSPhotoGallery.framework",
 				"${BUILT_PRODUCTS_DIR}/Player/Player.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftGifOrigin/SwiftGifOrigin.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/UIScrollView-InfiniteScroll/UIScrollView_InfiniteScroll.framework",
 				"${BUILT_PRODUCTS_DIR}/UPCarouselFlowLayout/UPCarouselFlowLayout.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cards.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/INSNibLoading.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/INSPhotoGallery.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Player.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGifOrigin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIScrollView_InfiniteScroll.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UPCarouselFlowLayout.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,9 +601,7 @@
 				404EC3251FD12F6E00C96A8D /* CollectionTableCell.swift in Sources */,
 				401FD5AD1FCE8F2800C4B3A3 /* PlanCell.swift in Sources */,
 				40AF54681FC839FD00E3D019 /* HomeCarouselCell.swift in Sources */,
-				4071F1C31FD687F500AD3C9C /* ActionButtonItem.swift in Sources */,
 				403921D71FD4137D00F7799E /* Photographer.swift in Sources */,
-				4071F1C11FD687F200AD3C9C /* ActionButton.swift in Sources */,
 				404EC3231FD12F3B00C96A8D /* CollectionsViewController.swift in Sources */,
 				40AF54641FC8349700E3D019 /* ViewCustomization.swift in Sources */,
 				40AF54311FC753AC00E3D019 /* AppDelegate.swift in Sources */,
@@ -607,6 +614,7 @@
 				404EC3271FD2D90500C96A8D /* Wallpaper.swift in Sources */,
 				4071F1BD1FD6737500AD3C9C /* WallDetailController.swift in Sources */,
 				407E24191FDC13F5002CFA1B /* CustomOverlayView.swift in Sources */,
+				40FB4C861FE2D2AF0027E707 /* CustomInfiniteIndicator.swift in Sources */,
 				401763AA1FCAB79400FD51D8 /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -780,6 +788,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ir.ser.My-Wall";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "My Wall/Bridge.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -796,6 +805,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ir.ser.My-Wall";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "My Wall/Bridge.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

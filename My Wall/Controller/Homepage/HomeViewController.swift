@@ -9,33 +9,145 @@
 import UIKit
 import UPCarouselFlowLayout
 import Cards
+import SwiftyJSON
+import Alamofire
+import AlamofireImage
+import SwiftGifOrigin
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     // MARK: - Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var first: Card!
+    @IBOutlet weak var topLeftCard: Card! //done
+    @IBOutlet weak var topRightCard: Card! //done
+    @IBOutlet weak var topLeftBottomCard: Card! //done
+    @IBOutlet weak var topRightMiddleCard: Card! //done
+    @IBOutlet weak var topRightBottomCard: Card! //done
+    @IBOutlet weak var middleCard: Card! //done
+    @IBOutlet weak var bottomLeftCard: Card! //done
+    @IBOutlet weak var bottomRightCard: Card! //done
+    @IBOutlet weak var bottomLeftBottomCard: Card! //done
+    @IBOutlet weak var bottomLeftMiddleCard: Card! //done
+    @IBOutlet weak var bottomRightBottomCard: Card! //done
     
     // MARK: - Variables
     var items = [UIImage]() // for now fake images
     var currentPage: Int = 0
+    var cardsImages:[Image] = []
+    var carouselImages:[Image] = []
+    var downloadedImages:[UIImage] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        items.append(UIImage(named: "wall1")!) // fake images
-        items.append(UIImage(named: "wall2")!) // fake images
-        items.append(UIImage(named: "wall3")!) // fake images
+        downloadedImages.append(UIImage(named: "wall1")!) // fake images
+        downloadedImages.append(UIImage(named: "wall2")!) // fake images
+        downloadedImages.append(UIImage(named: "wall3")!) // fake images
         self.setupLayout()
         
-        first.delegate = self
-        first.hasParallax = true
+        // MARK: - Setting delegates of cards
+        topLeftCard.delegate = self
+        topLeftCard.hasParallax = true
+        topRightCard.delegate = self
+        topRightCard.hasParallax = true
+        topLeftBottomCard.delegate = self
+        topLeftBottomCard.hasParallax = true
+        topRightMiddleCard.delegate = self
+        topRightMiddleCard.hasParallax = true
+        topRightBottomCard.delegate = self
+        topRightBottomCard.hasParallax = true
+        middleCard.delegate = self
+        middleCard.hasParallax = true
+        bottomLeftCard.delegate = self
+        bottomLeftCard.hasParallax = true
+        bottomRightCard.delegate = self
+        bottomRightCard.hasParallax = true
+        bottomLeftBottomCard.delegate = self
+        bottomLeftBottomCard.hasParallax = true
+        bottomLeftCard.delegate = self
+        bottomLeftCard.hasParallax = true
+        bottomLeftMiddleCard.delegate = self
+        bottomLeftMiddleCard.hasParallax = true
+        bottomRightBottomCard.delegate = self
+        bottomRightBottomCard.hasParallax = true
       
-
+        let imageView = UIImageView()
+        imageView.loadGif(name: "jeremy")
+        topLeftCard.addSubview(imageView)
+        
         // Do any additional setup after loading the view.
         ViewCustomization.customiseSearchBox(searchBar: searchBar)
+        
+        let headers: HTTPHeaders = [
+            "Accept-Version": "v1",
+            "Authorization": "Client-ID e1fa9e9f79062543538b062e4a8d981d5a361856659bbdaf8c039a70e05a245c",
+        ]
+        // Requesting random images of cards
+        Alamofire.request("https://api.unsplash.com/photos/random?count=12",method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                for (_,subJson):(String, JSON) in json {
+                    // Do something you want
+                    let imgUrl:Urls = Urls(smallImage: subJson["urls"]["small"].string!)
+                    let image:Image = Image(url: imgUrl)
+                    self.cardsImages.append(image)
+                }
+                self.downloadCardsImages()
+            case .failure(let error):
+                print(error)
+            }
+        }
+        // Requesting random images of carousel
+        Alamofire.request("https://api.unsplash.com/photos/random?count=3",method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                for (_,subJson):(String, JSON) in json {
+                    // Do something you want
+                    let imgUrl:Urls = Urls(regularImage: subJson["urls"]["regular"].string!)
+                    let image:Image = Image(url: imgUrl)
+                    self.carouselImages.append(image)
+                }
+                self.downloadCarouselImage()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 
+    // Download cards images
+    func downloadCardsImages() {
+        let arrayOfCards:[Card] = [topLeftCard,topRightCard,topLeftBottomCard,topRightMiddleCard,topRightBottomCard,middleCard,bottomLeftCard,bottomRightCard,bottomLeftBottomCard,bottomLeftCard,bottomLeftMiddleCard,bottomRightBottomCard]
+        var imgnum = -1
+        for image in self.cardsImages{
+            Alamofire.request(image.imageUrl.small!).responseImage { response in
+                imgnum += 1
+                if let downloadedImage = response.result.value {
+                    arrayOfCards[imgnum].backgroundImage = downloadedImage
+                }
+            }
+        }
+    }
+    
+    // Download carousel images
+    func downloadCarouselImage(){
+        self.downloadedImages.removeAll()
+        for image in self.carouselImages{
+            Alamofire.request(image.imageUrl.regular!).responseImage { response in
+                if let downloadedImage = response.result.value {
+                    self.downloadedImages.append(downloadedImage)
+                    print(self.downloadedImages.capacity)
+                    if (self.downloadedImages.capacity == 4){
+                        self.collectionView.reloadData()
+                    }
+                }
+                
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -67,7 +179,7 @@ extension HomeViewController {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCarouselCell.identifier, for: indexPath) as! HomeCarouselCell
-        let image = items[indexPath.row]
+        let image = downloadedImages[indexPath.row]
         cell.image.image = image
         cell.image.clipsToBounds = true
         cell.image.layer.cornerRadius = 10

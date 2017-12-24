@@ -15,6 +15,6 @@ class HomeCarouselCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
+//        image.contentMode = .scaleToFill
     }
 }
