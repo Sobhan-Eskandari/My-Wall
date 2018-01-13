@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="det-Xj-mPl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="det-Xj-mPl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -375,7 +375,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="titleSize">
                                                         <real key="value" value="16"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountains"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mountain"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="subtitleSize">
                                                         <real key="value" value="7"/>
                                                     </userDefinedRuntimeAttribute>
@@ -631,9 +631,19 @@
                     <navigationItem key="navigationItem" title="Your Wall" id="XUI-UR-3K5"/>
                     <size key="freeformSize" width="375" height="1630"/>
                     <connections>
+                        <outlet property="bottomLeftBottomCard" destination="LZ9-pk-wPS" id="AeB-0L-heA"/>
+                        <outlet property="bottomLeftCard" destination="7NW-8K-PbC" id="yLS-Jy-sKd"/>
+                        <outlet property="bottomLeftMiddleCard" destination="KQM-LH-xfE" id="CGH-Tv-ea7"/>
+                        <outlet property="bottomRightBottomCard" destination="FOx-tY-OcB" id="CsS-QT-oQK"/>
+                        <outlet property="bottomRightCard" destination="u0d-A6-Z1L" id="dmb-yf-yFi"/>
                         <outlet property="collectionView" destination="O8J-vF-URY" id="9Cm-SR-faD"/>
-                        <outlet property="first" destination="9TS-f5-Suq" id="fo0-2a-RZI"/>
+                        <outlet property="middleCard" destination="2nE-gi-gTK" id="QSX-g4-j8k"/>
                         <outlet property="searchBar" destination="mEZ-xL-PPm" id="NvX-Il-YRh"/>
+                        <outlet property="topLeftBottomCard" destination="K77-Dj-CKx" id="1UP-ef-7RH"/>
+                        <outlet property="topLeftCard" destination="9TS-f5-Suq" id="4hj-TJ-RTv"/>
+                        <outlet property="topRightBottomCard" destination="E4d-g2-AWL" id="57o-Me-hy1"/>
+                        <outlet property="topRightCard" destination="PZp-2k-pqQ" id="SPT-f3-vyC"/>
+                        <outlet property="topRightMiddleCard" destination="lG2-yZ-3JW" id="O8M-QP-B4v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YIB-au-iMF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -774,11 +784,11 @@
             </objects>
             <point key="canvasLocation" x="-511" y="33"/>
         </scene>
-        <!--Item 1-->
+        <!--Wall-->
         <scene sceneID="JcI-AL-xiX">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cPH-Tq-dy8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="HLH-YP-JFO"/>
+                <navigationController title="Wall" automaticallyAdjustsScrollViewInsets="NO" id="cPH-Tq-dy8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Wall" image="wall_tab" id="HLH-YP-JFO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ddj-Ph-FPC">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -798,11 +808,11 @@
             </objects>
             <point key="canvasLocation" x="588.79999999999995" y="-347.22638680659674"/>
         </scene>
-        <!--Item 2-->
+        <!--Collections-->
         <scene sceneID="Bbg-dT-Izu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5wq-qg-otB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="611-6m-A1y"/>
+                    <tabBarItem key="tabBarItem" title="Collections" image="collection_tab" id="611-6m-A1y"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hL9-Wx-rAT">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -963,11 +973,11 @@
             </objects>
             <point key="canvasLocation" x="1653.5999999999999" y="1200.4497751124438"/>
         </scene>
-        <!--Item-->
+        <!--Subscription-->
         <scene sceneID="vz0-uL-y7D">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F44-KW-DSj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="VvG-gp-75u"/>
+                    <tabBarItem key="tabBarItem" title="Subscription" image="subscript_tab" id="VvG-gp-75u"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PT8-M3-qEW">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1011,10 +1021,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="collection_tab" width="35" height="35"/>
         <image name="shadow" width="289" height="363"/>
+        <image name="subscript_tab" width="35" height="35"/>
         <image name="wall1" width="493" height="315"/>
         <image name="wall2" width="987" height="657"/>
         <image name="wall3" width="493" height="328"/>
         <image name="wall4" width="1497" height="2160"/>
+        <image name="wall_tab" width="35" height="35"/>
     </resources>
 </document>

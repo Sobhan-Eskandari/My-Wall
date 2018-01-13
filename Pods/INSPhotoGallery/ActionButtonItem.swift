@@ -57,7 +57,7 @@ open class ActionButtonItem: NSObject {
     fileprivate let viewSize = CGSize(width: 200, height: 35)
     
     /// Button's size by default the button is 35x35
-    fileprivate let buttonSize = CGSize(width: 42, height: 42)
+    fileprivate let buttonSize = CGSize(width: 35, height: 35)
     
     fileprivate var labelBackground: UIView!
     fileprivate let backgroundInset = CGSize(width: 10, height: 10)
@@ -78,9 +78,8 @@ open class ActionButtonItem: NSObject {
         self.button.frame = CGRect(origin: CGPoint(x: self.viewSize.width - self.buttonSize.width, y: 0), size: buttonSize)
         self.button.layer.shadowOpacity = 1
         self.button.layer.shadowRadius = 2
-        self.button.layer.shadowOffset = CGSize(width: 0, height: 0)
-        self.button.layer.shadowColor = UIColor.darkGray.cgColor
-        
+        self.button.layer.shadowOffset = CGSize(width: 1, height: 1)
+        self.button.layer.shadowColor = UIColor.gray.cgColor
         self.button.addTarget(self, action: #selector(ActionButtonItem.buttonPressed(_:)), for: .touchUpInside)
 
         if let unwrappedImage = image {

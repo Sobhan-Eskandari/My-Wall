@@ -9,10 +9,19 @@
 import Foundation
 
 struct Image {
-    let width: Int
-    let height: Int
-    let loadingColor: String
+    let width: Int?
+    let height: Int?
+    let loadingColor: String?
     let imageUrl:Urls
-    let tags:[String]
-    let metadatas: Metadata
+    let tags:[String]?
+    let metadatas: Metadata?
+    
+    init(url:Urls) {
+        width = nil
+        height = nil
+        loadingColor = nil
+        tags = nil
+        metadatas = nil
+        self.imageUrl = url
+    }
 }
