@@ -9,9 +9,24 @@
 import Foundation
 
 struct Urls {
-    let raw:URL //fullHDURL in pixabay
-    let full:URL //largeImageURL in pixabay
-    let regular:URL?
-    let small:URL?
-    let thumb:URL
+    var raw:String? //fullHDURL in pixabay
+    var full:String? //largeImageURL in pixabay
+    var regular:String?
+    var small:String?
+    var thumb:String?
+    
+    init(smallImage:String) {
+        self.small = smallImage
+        raw = nil
+        full = nil
+        regular = nil
+        thumb = nil
+    }
+    init(regularImage:String) {
+        small = nil
+        raw = nil
+        full = nil
+        regular = regularImage
+        thumb = nil
+    }
 }

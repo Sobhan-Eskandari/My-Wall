@@ -19,6 +19,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
+
     @IBOutlet weak var topLeftCard: CardGroup! //done
     @IBOutlet weak var topRightCard: CardGroup! //done
     @IBOutlet weak var topLeftBottomCard: CardGroup! //done
@@ -30,6 +31,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var bottomLeftBottomCard: CardGroup! //done
     @IBOutlet weak var bottomLeftMiddleCard: CardGroup! //done
     @IBOutlet weak var bottomRightBottomCard: CardGroup! //done
+
     
     // MARK: - Variables
     struct CardLayoutInfo {
@@ -44,6 +46,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var carouselImages:[Image] = []
     var downloadedImages:[UIImage] = []
     let pixabayKey = "7252395-21cd2dae7af1a432c39d2c60f"
+
     
     
     override func viewDidLoad() {
@@ -78,7 +81,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         bottomLeftMiddleCard.hasParallax = true
         bottomRightBottomCard.delegate = self
         bottomRightBottomCard.hasParallax = true
-      
+
         
         // Do any additional setup after loading the view.
         ViewCustomization.customiseSearchBox(searchBar: searchBar)

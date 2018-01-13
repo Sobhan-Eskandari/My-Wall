@@ -1,0 +1,6 @@
+framework module Pods_My_WallTests {
+  umbrella header "Pods-My WallTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
