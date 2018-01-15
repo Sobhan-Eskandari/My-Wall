@@ -41,7 +41,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Featured" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWY-9s-xAR">
-                                                    <rect key="frame" x="15" y="11" width="69" height="21"/>
+                                                    <rect key="frame" x="15" y="11" width="249" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -83,9 +83,9 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfx-hs-iDg">
-                                                    <rect key="frame" x="272" y="6" width="66" height="30"/>
+                                                    <rect key="frame" x="290" y="6" width="70" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="See more">
+                                                    <state key="normal" title="See more ">
                                                         <color key="titleColor" red="0.98039215690000003" green="0.1647058824" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                 </button>
@@ -1021,9 +1021,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="collection_tab" width="35" height="35"/>
+        <image name="collection_tab" width="30" height="30"/>
         <image name="shadow" width="289" height="363"/>
-        <image name="subscript_tab" width="35" height="35"/>
+        <image name="subscript_tab" width="30" height="30"/>
         <image name="wall1" width="493" height="315"/>
         <image name="wall2" width="987" height="657"/>
         <image name="wall3" width="493" height="328"/>

@@ -86,12 +86,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Do any additional setup after loading the view.
         ViewCustomization.customiseSearchBox(searchBar: searchBar)
         
-        let headers: HTTPHeaders = [
-            "Accept-Version": "v1",
-            "Authorization": "Client-ID e1fa9e9f79062543538b062e4a8d981d5a361856659bbdaf8c039a70e05a245c",
-        ]
         let pageNumber = Int(arc4random_uniform(39))
-        print(pageNumber)
         let requestUrl = "https://pixabay.com/api/?key=\(pixabayKey)&per_page=12&page=\(pageNumber)&editors_choice=true&safesearch=true"
         // Requesting random images of cards
         Alamofire.request(requestUrl,method: .get,encoding: JSONEncoding.default, headers: nil).responseJSON { response in
@@ -104,7 +99,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         let imgUrl:Urls = Urls(smallImage: innerJson["webformatURL"].string!)
                         var cardTag:String = innerJson["tags"].string!
                         cardTag = cardTag.components(separatedBy: ",")[0].capitalizingFirstLetter()
-                        print(cardTag)
                         let image:Image = Image(url: imgUrl)
                         let cardInfo = CardLayoutInfo(cardImage: image, cardTitle: cardTag)
                         self.cardsInfo.append(cardInfo)
@@ -116,15 +110,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
         }
         // Requesting random images of carousel
-        Alamofire.request("https://api.unsplash.com/photos/random?count=3",method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+        Alamofire.request("https://pixabay.com/api/?key=\(pixabayKey)&per_page=3&page=\(pageNumber)&editors_choice=true&safesearch=true",method: .get,encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
                 for (_,subJson):(String, JSON) in json {
                     // Do something you want
-                    let imgUrl:Urls = Urls(regularImage: subJson["urls"]["regular"].string!)
-                    let image:Image = Image(url: imgUrl)
-                    self.carouselImages.append(image)
+                    for (_,innerJson):(String, JSON) in subJson {
+                        let imgUrl:Urls = Urls(regularImage: innerJson["webformatURL"].string!)
+                        let image:Image = Image(url: imgUrl)
+                        self.carouselImages.append(image)
+                    }
                 }
                 self.downloadCarouselImage()
             case .failure(let error):
@@ -138,7 +134,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let arrayOfCards:[CardGroup] = [topLeftCard,topRightCard,topLeftBottomCard,topRightMiddleCard,topRightBottomCard,middleCard,bottomLeftCard,bottomRightCard,bottomLeftBottomCard,bottomLeftCard,bottomLeftMiddleCard,bottomRightBottomCard]
         var imgnum = -1
         for cardInfo in self.cardsInfo{
-            print(cardInfo)
             Alamofire.request(cardInfo.cardImage.imageUrl.small!).responseImage { response in
                 imgnum += 1
                 if let downloadedImage = response.result.value {
@@ -156,11 +151,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             Alamofire.request(image.imageUrl.regular!).responseImage { response in
                 if let downloadedImage = response.result.value {
                     self.downloadedImages.append(downloadedImage)
-                    if (self.downloadedImages.capacity == 4){
+                    if (self.downloadedImages.count == 3){
+                        print("deeee")
                         self.collectionView.reloadData()
                     }
                 }
-                
             }
         }
     }
@@ -256,8 +251,10 @@ extension HomeViewController {
 extension HomeViewController: CardDelegate {
 
     func cardDidTapInside(card: Card) {
+        let cardgroup = card as! CardGroup
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "AllWalls") as! AllWallsViewController
+        vc.topicToSearch = cardgroup.title
         navigationController?.pushViewController(vc,animated: true)
     }
 }
