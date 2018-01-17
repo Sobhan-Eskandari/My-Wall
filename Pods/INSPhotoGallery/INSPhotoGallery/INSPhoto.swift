@@ -44,6 +44,12 @@ import UIKit
     
     @objc open var attributedTitle: NSAttributedString?
     
+    public func getImageUrl() -> URL {
+        return imageURL!
+    }
+    
+  
+    
     public init(image: UIImage?, thumbnailImage: UIImage?) {
         self.image = image
         self.thumbnailImage = thumbnailImage

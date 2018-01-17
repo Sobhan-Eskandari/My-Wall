@@ -16,12 +16,12 @@ class SubscriptionViewController: UIViewController, UICollectionViewDelegate, UI
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Variables
-    enum SubscriptionPlans {
-        case Monthly
-        case threeMonths
-        case sixMonths
-        case yearly
-        case forever
+    enum SubscriptionPlans:String {
+        case Monthly = "Monthly"
+        case threeMonths = "3 Months"
+        case sixMonths = "6 Months"
+        case yearly = "Yearly"
+        case forever = "Forever"
     }
     var subscrptionPlans = [SubscriptionPlans.Monthly,SubscriptionPlans.threeMonths,SubscriptionPlans.sixMonths,SubscriptionPlans.yearly,SubscriptionPlans.forever] // for now fake images
     var currentPage: Int = 0
@@ -65,8 +65,23 @@ extension SubscriptionViewController {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlanCell.identifier, for: indexPath) as! PlanCell
         setGradientGreenBlue(uiView: cell.gradientBc, plan: subscrptionPlans[indexPath.row])
+        
+        // corner radius
+        cell.purchaseBtnLayout.layer.cornerRadius = 10
+        
+        // border
+        cell.purchaseBtnLayout.layer.borderWidth = 1.0
+        cell.purchaseBtnLayout.layer.borderColor = UIColor.clear.cgColor
+        
+        // shadow
+        cell.purchaseBtnLayout.layer.shadowColor = UIColor.black.cgColor
+        cell.purchaseBtnLayout.layer.shadowOffset = CGSize(width: 0, height: 0)
+        cell.purchaseBtnLayout.layer.shadowOpacity = 0.5
+        cell.purchaseBtnLayout.layer.shadowRadius = 5.0
+        setGradientGreenBlue(uiView: cell.purchaseBtnLayout, plan: .forever)
         cell.gradientBc.clipsToBounds = true
         cell.gradientBc.layer.cornerRadius = 10
+        cell.subscriptionPlanTitle.text = subscrptionPlans[indexPath.row].rawValue
         return cell
     }
     
@@ -104,6 +119,8 @@ extension SubscriptionViewController {
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
         gradientLayer.frame = uiView.bounds
+        
+        gradientLayer.cornerRadius = 14
         
         uiView.layer.insertSublayer(gradientLayer, at: 0)
     }

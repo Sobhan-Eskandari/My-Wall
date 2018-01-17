@@ -13,6 +13,7 @@ class PlanCell: UICollectionViewCell {
     @IBOutlet weak var gradientBc: UIView!
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var purchaseBtnLayout: UIButton!
+    @IBOutlet weak var subscriptionPlanTitle: UILabel!
     
     static let identifier = "subscriptionCell"
     

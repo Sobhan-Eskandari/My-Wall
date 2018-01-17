@@ -34,6 +34,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>You can select photos to attach to reports.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>We want to save this wallpaper to your camera roll please Alow</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

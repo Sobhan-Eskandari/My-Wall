@@ -19,7 +19,7 @@
         <!--Collections-->
         <scene sceneID="KBB-FA-166">
             <objects>
-                <viewController id="Lqw-B4-lQ2" customClass="CollectionsViewController" customModule="My_Wall" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CollectionPage" id="Lqw-B4-lQ2" customClass="CollectionsViewController" customModule="My_Wall" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s0B-sk-ZLH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,11 +136,14 @@
                             <searchBar contentMode="redraw" placeholder="Search for your dream..." translatesAutoresizingMaskIntoConstraints="NO" id="mEZ-xL-PPm">
                                 <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
                                     <string>Title</string>
                                 </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="txT-DK-gTI" id="QEx-fG-hMy"/>
+                                </connections>
                             </searchBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NuL-HD-KFQ">
                                 <rect key="frame" x="0.0" y="120" width="375" height="1510"/>
@@ -711,7 +714,7 @@
                                     <outlet property="delegate" destination="KZT-b1-pia" id="Hpy-2n-iZP"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="KD4-vO-XBP">
+                            <searchBar contentMode="redraw" placeholder="Search for your dream..." translatesAutoresizingMaskIntoConstraints="NO" id="KD4-vO-XBP">
                                 <rect key="frame" x="9" y="64" width="357" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -861,15 +864,15 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrH-Gd-1TF">
                                                     <rect key="frame" x="0.0" y="0.0" width="260" height="405"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Monthly" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdF-4A-KQn">
-                                                            <rect key="frame" x="93" y="30" width="66" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Monthly" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdF-4A-KQn">
+                                                            <rect key="frame" x="39" y="30" width="182" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPX-R3-W25">
-                                                            <rect key="frame" x="76" y="55" width="100" height="1"/>
+                                                            <rect key="frame" x="80" y="59" width="100" height="1"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -897,14 +900,6 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTN-Bg-Bif">
-                                                            <rect key="frame" x="88" y="331" width="77" height="32"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
-                                                            <state key="normal" title="Purchase">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </state>
-                                                        </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100 Pages" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQw-WW-eiM">
                                                             <rect key="frame" x="53" y="168" width="147" height="23"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -926,6 +921,14 @@
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTN-Bg-Bif">
+                                                            <rect key="frame" x="56" y="329" width="149" height="41"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
+                                                            <state key="normal" title="Purchase">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </state>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -946,6 +949,7 @@
                                             <outlet property="costLabel" destination="9Dn-lN-lya" id="sui-2n-Cai"/>
                                             <outlet property="gradientBc" destination="jrH-Gd-1TF" id="wMz-EU-JSV"/>
                                             <outlet property="purchaseBtnLayout" destination="cTN-Bg-Bif" id="Fm6-FJ-Ltw"/>
+                                            <outlet property="subscriptionPlanTitle" destination="cdF-4A-KQn" id="xQA-RZ-IZA"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

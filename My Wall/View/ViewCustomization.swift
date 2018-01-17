@@ -9,6 +9,7 @@
 
 import UIKit
 
+
 class ViewCustomization {
     // MARK: - Customises Searchbox Design
     class func customiseSearchBox(searchBar:UISearchBar) {

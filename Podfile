@@ -13,6 +13,9 @@ target 'My Wall' do
     pod 'UIScrollView-InfiniteScroll', '~> 1.0.0'
     pod 'SwiftyJSON'
     pod 'AlamofireImage', '~> 3.3'
+    pod 'SVProgressHUD'
+    pod 'PopupDialog', '~> 0.7'
+    pod 'Ambience'
    
  target 'My WallTests' do
     inherit! :search_paths

@@ -12,9 +12,8 @@ import Cards
 import SwiftyJSON
 import Alamofire
 import AlamofireImage
-import SwiftGifOrigin
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UISearchBarDelegate {
 
     // MARK: - Outlets
     @IBOutlet weak var searchBar: UISearchBar!
@@ -56,6 +55,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         downloadedImages.append(UIImage(named: "wall3")!) // fake images
         self.setupLayout()
         
+        searchBar.delegate = self
         // MARK: - Setting delegates of cards
         topLeftCard.delegate = self
         topLeftCard.hasParallax = true
@@ -174,6 +174,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Pass the selected object to the new view controller.
     }
     */
+
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "AllWalls") as! AllWallsViewController
+        vc.topicToSearch = searchBar.text!
+        navigationController?.pushViewController(vc,animated: true)
+    }
 
     
 }

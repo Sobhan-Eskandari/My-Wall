@@ -19,6 +19,8 @@
 
 import UIKit
 
+
+
 public typealias INSPhotosViewControllerReferenceViewHandler = (_ photo: INSPhotoViewable) -> (UIView?)
 public typealias INSPhotosViewControllerNavigateToPhotoHandler = (_ photo: INSPhotoViewable) -> ()
 public typealias INSPhotosViewControllerDismissHandler = (_ viewController: INSPhotosViewController) -> ()
@@ -90,7 +92,7 @@ open class INSPhotosViewController: UIViewController, UIPageViewControllerDataSo
     // MARK: - Private
     private(set) var pageViewController: UIPageViewController!
     private(set) var dataSource: INSPhotosDataSource
-    var actionButton: ActionButton!
+    
     
     let interactiveAnimator: INSPhotosInteractionAnimator = INSPhotosInteractionAnimator()
     let transitionAnimator: INSPhotosTransitionAnimator = INSPhotosTransitionAnimator()
@@ -191,27 +193,29 @@ open class INSPhotosViewController: UIViewController, UIPageViewControllerDataSo
         pageViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         pageViewController.didMove(toParentViewController: self)
         
-        let downloadImage = UIImage(named: "download.png")!
-        let shareImage = UIImage(named: "shareBtn.png")!
-        let infoImage = UIImage(named: "infoBtn.png")!
-        
-        let downloadBtn = ActionButtonItem(title: "Save to Gallery", image: downloadImage)
-        downloadBtn.action = { item in print("Saved to gallery...") }
-        
-        let shareBtn = ActionButtonItem(title: "Share Wallpaper", image: shareImage)
-        shareBtn.action = { item in print("Shared Wall...") }
-        
-        let infoBtn = ActionButtonItem(title: "Wallpaper Information", image: infoImage)
-        infoBtn.action = { item in print("Image info...") }
-        
-        
-        actionButton = ActionButton(attachedToView: self.view, items: [downloadBtn,shareBtn,infoBtn])
-        actionButton.action = { button in button.toggleMenu() }
-        actionButton.setTitle("+", forState: UIControlState())
-        
-        actionButton.backgroundColor = UIColor(red: 250.0/255.0, green: 42.0/255.0, blue: 0.0/255.0, alpha:1.0)
-        
-        
+//        let downloadImage = UIImage(named: "download.png")!
+//        let shareImage = UIImage(named: "shareBtn.png")!
+//        let infoImage = UIImage(named: "infoBtn.png")!
+//        
+//        let downloadBtn = ActionButtonItem(title: "Save to Gallery", image: downloadImage)
+//        downloadBtn.action = { item in
+//            
+//        }
+//        
+//        let shareBtn = ActionButtonItem(title: "Share Wallpaper", image: shareImage)
+//        shareBtn.action = { item in print("Shared Wall...") }
+//        
+//        let infoBtn = ActionButtonItem(title: "Wallpaper Information", image: infoImage)
+//        infoBtn.action = { item in print("Image info...") }
+//        
+//        
+//        actionButton = ActionButton(attachedToView: self.view, items: [downloadBtn,shareBtn,infoBtn])
+//        actionButton.action = { button in button.toggleMenu() }
+//        actionButton.setTitle("+", forState: UIControlState())
+//        
+//        actionButton.backgroundColor = UIColor(red: 250.0/255.0, green: 42.0/255.0, blue: 0.0/255.0, alpha:1.0)
+//        
+//        
         setupOverlayView()
     }
     

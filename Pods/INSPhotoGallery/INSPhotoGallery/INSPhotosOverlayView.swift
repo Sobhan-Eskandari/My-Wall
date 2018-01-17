@@ -25,15 +25,20 @@ public protocol INSPhotosOverlayViewable:class {
     func populateWithPhoto(_ photo: INSPhotoViewable)
     func setHidden(_ hidden: Bool, animated: Bool)
     func view() -> UIView
+    
 }
 
 extension INSPhotosOverlayViewable where Self: UIView {
     public func view() -> UIView {
         return self
     }
+    public func controller() -> INSPhotosViewController {
+        return photosViewController!
+    }
 }
 
 open class INSPhotosOverlayView: UIView , INSPhotosOverlayViewable {
+    
     open private(set) var navigationBar: UINavigationBar!
     open private(set) var captionLabel: UILabel!
     open private(set) var deleteToolbar: UIToolbar!
@@ -41,6 +46,7 @@ open class INSPhotosOverlayView: UIView , INSPhotosOverlayViewable {
     open private(set) var navigationItem: UINavigationItem!
     open weak var photosViewController: INSPhotosViewController?
     private var currentPhoto: INSPhotoViewable?
+    public var photoController: INSPhotosViewController?
     
     private var topShadow: CAGradientLayer!
     private var bottomShadow: CAGradientLayer!

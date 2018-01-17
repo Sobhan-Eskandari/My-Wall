@@ -10,33 +10,35 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 import AlamofireImage
+import SVProgressHUD
 
-class CollectionsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class CollectionsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate {
     
     // MARK: - Outlets
     @IBOutlet weak var collectionsTableview: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-
-    
     // MARK: - Variables
     let pixabayKey = "7252395-21cd2dae7af1a432c39d2c60f"
     class CardLayoutInfo {
+        let collectionId:Int
         var cardImages:[Image]
         var cardTitle: String
         var downloadedImages:[UIImage] = []
         
-        init(cardImages:[Image],cardTitle: String) {
+        init(cardImages:[Image],cardTitle: String,collectionID:Int) {
             self.cardImages = cardImages
             self.cardTitle = cardTitle
+            self.collectionId = collectionID
         }
     }
     var cardsInfo:[CardLayoutInfo] = []
     var downloadingImages:[UIImage] = []
     var indexPaths : [IndexPath] = []
+    var isSearchingCollection = false
+    var searchQuery = "Collections"
+    var requestUrl = ""
     
-    
-    var collections = ["hi","helloe","buy"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,31 +48,52 @@ class CollectionsViewController: UIViewController,UITableViewDelegate,UITableVie
         collectionsTableview.dataSource = self
         collectionsTableview.rowHeight = 200.0
         
+        searchBar.delegate = self
+        self.navigationItem.title = self.searchQuery
+        
         var pageNumber = Int(arc4random_uniform(39))
 //        let pageNumber = 50
         let headers: HTTPHeaders = [
             "Accept-Version": "v1",
             "Authorization": "Client-ID e1fa9e9f79062543538b062e4a8d981d5a361856659bbdaf8c039a70e05a245c",
             ]
-        let requestUrl = "https://api.unsplash.com/collections/featured?per_page=3&page=\(pageNumber)"
+        if(self.isSearchingCollection){
+            self.requestUrl = "https://api.unsplash.com/search/collections?query=\(self.searchQuery)&per_page=3&page=1"
+        }else{
+            self.requestUrl = "https://api.unsplash.com/collections/featured?per_page=3&page=\(pageNumber)"
+        }
         var arrayOfCollectionImages:[Image] = []
         // Requesting random images of cards
-        Alamofire.request(requestUrl,method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+        Alamofire.request(self.requestUrl,method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                for (_,subJson):(String, JSON) in json {
-                    // Do something you want
-                    for (index,innerJson):(String, JSON) in subJson["preview_photos"] {
-//                        print("index:\(index) -> \(innerJson["urls"]["small"])")
-//                        print("------\(subJson["title"])")
-                        let imgUrl:Urls = Urls(smallImage: innerJson["urls"]["small"].string!)
-                        let image:Image = Image(url: imgUrl)
-                        arrayOfCollectionImages.append(image)
-                        if(Int(index) == 3){
-                            let cardInfo = CardLayoutInfo(cardImages: arrayOfCollectionImages, cardTitle: subJson["title"].string!)
-                            self.cardsInfo.append(cardInfo)
-                            arrayOfCollectionImages.removeAll()
+                if(self.isSearchingCollection){
+                    for (_,subJson):(String, JSON) in json["results"] {
+                        // Do something you want
+                        for (index,innerJson):(String, JSON) in subJson["preview_photos"] {
+                            let imgUrl:Urls = Urls(smallImage: innerJson["urls"]["small"].string!)
+                            let image:Image = Image(url: imgUrl)
+                            arrayOfCollectionImages.append(image)
+                            if(Int(index) == 3){
+                                let cardInfo = CardLayoutInfo(cardImages: arrayOfCollectionImages, cardTitle: subJson["title"].string!, collectionID: subJson["id"].intValue)
+                                self.cardsInfo.append(cardInfo)
+                                arrayOfCollectionImages.removeAll()
+                            }
+                        }
+                    }
+                }else{
+                    for (_,subJson):(String, JSON) in json {
+                        // Do something you want
+                        for (index,innerJson):(String, JSON) in subJson["preview_photos"] {
+                            let imgUrl:Urls = Urls(smallImage: innerJson["urls"]["small"].string!)
+                            let image:Image = Image(url: imgUrl)
+                            arrayOfCollectionImages.append(image)
+                            if(Int(index) == 3){
+                                let cardInfo = CardLayoutInfo(cardImages: arrayOfCollectionImages, cardTitle: subJson["title"].string!, collectionID: subJson["id"].intValue)
+                                self.cardsInfo.append(cardInfo)
+                                arrayOfCollectionImages.removeAll()
+                            }
                         }
                     }
                 }
@@ -86,34 +109,55 @@ class CollectionsViewController: UIViewController,UITableViewDelegate,UITableVie
         collectionsTableview.infiniteScrollIndicatorView = CustomInfiniteIndicator(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
         
         var indexNumber = 0
+        var searchPageNumber = 0
         collectionsTableview.addInfiniteScroll { (tableView) -> Void in
             // update table view
             
             indexNumber += 2
             let collCount = self.cardsInfo.count
             pageNumber += 1
-            let requestUrl = "https://api.unsplash.com/collections/featured?per_page=2&page=\(pageNumber)"
+            searchPageNumber += 1
+            if(self.isSearchingCollection){
+                self.requestUrl = "https://api.unsplash.com/search/collections?query=\(self.searchQuery)&per_page=2&page=\(searchPageNumber)"
+            }else{
+                self.requestUrl = "https://api.unsplash.com/collections/featured?per_page=2&page=\(pageNumber)"
+            }
             var arrayOfNewImages:[Image] = []
             // Requesting random images of cards
-            Alamofire.request(requestUrl,method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            Alamofire.request(self.requestUrl,method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON { response in
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
-                    for (_,subJson):(String, JSON) in json {
-                        // Do something you want
-                        for (index,innerJson):(String, JSON) in subJson["preview_photos"] {
-                            let imgUrl:Urls = Urls(smallImage: innerJson["urls"]["small"].string!)
-                            let image:Image = Image(url: imgUrl)
-                            arrayOfNewImages.append(image)
-                            if(Int(index) == 3){
-                                let cardInfo = CardLayoutInfo(cardImages: arrayOfNewImages, cardTitle: subJson["title"].string!)
-                                self.cardsInfo.append(cardInfo)
-//                                print("->\(cardInfo.cardImages)")
-                                arrayOfNewImages.removeAll()
+                    
+                    if(self.isSearchingCollection){
+                        for (_,subJson):(String, JSON) in json["results"] {
+                            // Do something you want
+                            for (index,innerJson):(String, JSON) in subJson["preview_photos"] {
+                                let imgUrl:Urls = Urls(smallImage: innerJson["urls"]["small"].string!)
+                                let image:Image = Image(url: imgUrl)
+                                arrayOfNewImages.append(image)
+                                if(Int(index) == 3){
+                                    let cardInfo = CardLayoutInfo(cardImages: arrayOfNewImages, cardTitle: subJson["title"].string!, collectionID: subJson["id"].intValue)
+                                    self.cardsInfo.append(cardInfo)
+                                    arrayOfNewImages.removeAll()
+                                }
+                            }
+                        }
+                    }else{
+                        for (_,subJson):(String, JSON) in json {
+                            // Do something you want
+                            for (index,innerJson):(String, JSON) in subJson["preview_photos"] {
+                                let imgUrl:Urls = Urls(smallImage: innerJson["urls"]["small"].string!)
+                                let image:Image = Image(url: imgUrl)
+                                arrayOfNewImages.append(image)
+                                if(Int(index) == 3){
+                                    let cardInfo = CardLayoutInfo(cardImages: arrayOfNewImages, cardTitle: subJson["title"].string!, collectionID: subJson["id"].intValue)
+                                    self.cardsInfo.append(cardInfo)
+                                    arrayOfNewImages.removeAll()
+                                }
                             }
                         }
                     }
-                    
                     
                     var cardnum = 0
                     var cardindex = indexNumber+1
@@ -230,7 +274,6 @@ class CollectionsViewController: UIViewController,UITableViewDelegate,UITableVie
                             self.downloadingImages.removeAll()
                         }
                         if (self.cardsInfo[0].downloadedImages.count == 4 && self.cardsInfo[1].downloadedImages.count == 4 && self.cardsInfo[2].downloadedImages.count == 4){
-                           
                         }
                     }
                 }
@@ -238,19 +281,16 @@ class CollectionsViewController: UIViewController,UITableViewDelegate,UITableVie
             }
         }
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CollectionPage") as! CollectionsViewController
+        vc.searchQuery = searchBar.text!
+        vc.isSearchingCollection = true
+        navigationController?.pushViewController(vc,animated: true)
+    }
 }
 
-//cardCounter += 1
-//if let downloadedImage = response.result.value {
-//    downloadingImagesCounter += 1
-//    downloadingImages.append(downloadedImage)
-//    if (downloadingImagesCounter % 2 == 0){
-//
-//    }
-//    if (downloadingImagesCounter == 11){
-//        self.collectionsTableview.reloadData()
-//    }
-//}
 
 extension CollectionsViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -269,5 +309,15 @@ extension CollectionsViewController {
         cell.topRightImage.contentMode = .scaleAspectFill
         cell.featuredTitle.text = cardInfo.cardTitle
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cardInfo = self.cardsInfo[indexPath.row]
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "AllWalls") as! AllWallsViewController
+        vc.isCollectionDetailPage = true
+        vc.collectionID = cardInfo.collectionId
+        vc.topicToSearch = cardInfo.cardTitle
+        navigationController?.pushViewController(vc,animated: true)
     }
 }

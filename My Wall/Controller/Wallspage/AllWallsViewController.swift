@@ -12,39 +12,25 @@ import SwiftyJSON
 import Alamofire
 import AlamofireImage
 
-class AllWallsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class AllWallsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UISearchBarDelegate {
 
     // MARK: - Outlets
     @IBOutlet weak var wallsCollectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
     lazy var photos: [INSPhotoViewable] = {
-        return [
-            INSPhoto(imageURL: URL(string: "https://www.nature.org/cs/groups/webcontent/@photopublic/documents/media/east-kalimantan-361x248.jpg"), thumbnailImage: UIImage(named: "https://www.nature.org/cs/groups/webcontent/@photopublic/documents/media/east-kalimantan-361x248.jpg")),
-            INSPhoto(imageURL: URL(string: "https://lh6.ggpht.com/2CvQXZEebo7M_XWJ0C5NVBxIsGgkHIz8RaeUq8wgpjM6bHt3-BpiJxoJieltDNsqJg=h900"), thumbnailImage: UIImage(named: "wall1")!),
-            INSPhoto(image: UIImage(named: "wall4")!, thumbnailImage: UIImage(named: "wall1")!),
-            INSPhoto(imageURL: URL(string: "http://inspace.io/assets/portfolio/thumb/6-d793b947f57cc3df688eeb1d36b04ddb.jpg"), thumbnailImageURL: URL(string: "http://inspace.io/assets/portfolio/thumb/6-d793b947f57cc3df688eeb1d36b04ddb.jpg")),
-            INSPhoto(imageURL: URL(string: "http://inspace.io/assets/portfolio/thumb/6-d793b947f57cc3df688eeb1d36b04ddb.jpg"), thumbnailImageURL: URL(string: "http://inspace.io/assets/portfolio/thumb/6-d793b947f57cc3df688eeb1d36b04ddb.jpg")),
-            INSPhoto(imageURL: URL(string: "http://inspace.io/assets/portfolio/thumb/6-d793b947f57cc3df688eeb1d36b04ddb.jpg"), thumbnailImageURL: URL(string: "http://inspace.io/assets/portfolio/thumb/6-d793b947f57cc3df688eeb1d36b04ddb.jpg"))
-            
-        ]
+        return []
     }()
     var useCustomOverlay = true
     
     // MARK: - Variables
     let pixabayKey = "7252395-21cd2dae7af1a432c39d2c60f"
-    class CardLayoutInfo {
-        var cardImages:Image
-        var fullQualityUrl: String
-        var downloadedImage:[UIImage] = []
-        
-        init(cardImages:Image,fullQualityUrl: String) {
-            self.cardImages = cardImages
-            self.fullQualityUrl = fullQualityUrl
-        }
-    }
+    
     var cardsInfo:[CardLayoutInfo] = []
     var topicToSearch = ""
+    var collectionID = 0
+    var isCollectionDetailPage = false
+    var requestUrl = ""
     
     
     override func viewDidLoad() {
@@ -53,6 +39,10 @@ class AllWallsViewController: UIViewController, UICollectionViewDelegate, UIColl
         // Do any additional setup after loading the view.
         wallsCollectionView.delegate = self
         wallsCollectionView.dataSource = self
+        
+        searchBar.delegate = self
+        
+        self.navigationItem.title = topicToSearch
         
         ViewCustomization.customiseSearchBox(searchBar: searchBar)
         
@@ -63,19 +53,38 @@ class AllWallsViewController: UIViewController, UICollectionViewDelegate, UIColl
             "Authorization": "Client-ID e1fa9e9f79062543538b062e4a8d981d5a361856659bbdaf8c039a70e05a245c",
             ]
         topicToSearch = topicToSearch.replacingOccurrences(of: " ", with: "+")
-        let requestUrl = "https://api.unsplash.com/search/photos?query=\(topicToSearch)&per_page=6&page=1"
+        if(self.isCollectionDetailPage){
+            self.requestUrl = "https://api.unsplash.com/collections/\(self.collectionID)/photos?per_page=6&page=1"
+        }else{
+            self.requestUrl = "https://api.unsplash.com/search/photos?query=\(topicToSearch)&per_page=6&page=1"
+        }
         // Requesting random images of cards
         
         Alamofire.request(requestUrl,method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                for (_,subJson):(String, JSON) in json["results"] {
-                    // Do something you want
-                    let imgUrl:Urls = Urls(smallImage: subJson["urls"]["small"].string!)
-                    let imaged:Image = Image(url: imgUrl)
-                    let cardInfo = CardLayoutInfo(cardImages: imaged, fullQualityUrl: subJson["urls"]["regular"].string!)
-                    self.cardsInfo.append(cardInfo)
+                if(self.isCollectionDetailPage){
+                    for (_,subJson):(String, JSON) in json {
+                        // Do something you want
+                        let imgUrl:Urls = Urls(smallImage: subJson["urls"]["small"].string!)
+                        let imaged:Image = Image(url: imgUrl)
+                        let cardInfo = CardLayoutInfo(cardImages: imaged,
+                                                      fullQualityUrl: subJson["links"]["download"].string!,
+                                                      photographerURL:subJson["user"]["links"]["html"].string!,
+                                                      photographerName: subJson["user"]["name"].string!, imageUrl: subJson["links"]["html"].string!)
+                    
+                        self.cardsInfo.append(cardInfo)
+                    }
+                }else{
+                    for (_,subJson):(String, JSON) in json["results"] {
+                        // Do something you want
+                        let imgUrl:Urls = Urls(smallImage: subJson["urls"]["small"].string!)
+                        let imaged:Image = Image(url: imgUrl)
+                        print("photoName: \(subJson["user"]["links"]["html"])")
+                        let cardInfo = CardLayoutInfo(cardImages: imaged, fullQualityUrl: subJson["links"]["download"].string!, photographerURL: subJson["user"]["links"]["html"].string!, photographerName: subJson["user"]["name"].string!, imageUrl: subJson["links"]["html"].string!)
+                        self.cardsInfo.append(cardInfo)
+                    }
                 }
                 self.downloadCardsImages()
             case .failure(let error):
@@ -85,43 +94,63 @@ class AllWallsViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         wallsCollectionView.infiniteScrollIndicatorView = CustomInfiniteIndicator(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
         
-        var indexNumber = 3
+        var indexNumber = 5
+        var cardindex = 5
+        var collectionPageNumber = 1
         wallsCollectionView.addInfiniteScroll { (collectionView) -> Void in
             // create new index paths
             
-        
-            indexNumber += 2
+            
             let photoCount = self.photos.count
+            print("photoCount:\(photoCount)")
             pageNumber += 1
-            let requestUrl = "https://api.unsplash.com/search/photos?query=\(self.topicToSearch)?per_page=2&page=\(pageNumber)"
+            collectionPageNumber += 1
+            if(self.isCollectionDetailPage){
+                self.requestUrl = "https://api.unsplash.com/collections/\(self.collectionID)/photos?per_page=6&page=\(collectionPageNumber)"
+                print(self.requestUrl)
+            }else{
+                self.requestUrl = "https://api.unsplash.com/search/photos?query=\(self.topicToSearch)&per_page=6&page=\(pageNumber)"
+            }
             var downloadedImgCount = 0
             // Requesting random images of cards
-            Alamofire.request(requestUrl,method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            Alamofire.request(self.requestUrl,method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON { response in
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
-                    for (_,subJson):(String, JSON) in json {
-                        // Do something you want
-                        let imgUrl:Urls = Urls(smallImage: subJson["urls"]["small"].string!)
-                        let imaged:Image = Image(url: imgUrl)
-                        let cardInfo = CardLayoutInfo(cardImages: imaged, fullQualityUrl: subJson["urls"]["regular"].string!)
-                        self.cardsInfo.append(cardInfo)
+                    if(self.isCollectionDetailPage){
+                        for (_,subJson):(String, JSON) in json {
+                            // Do something you want
+                            let imgUrl:Urls = Urls(smallImage: subJson["urls"]["small"].string!)
+                            let imaged:Image = Image(url: imgUrl)
+                            let cardInfo = CardLayoutInfo(cardImages: imaged, fullQualityUrl: subJson["links"]["download"].string!,photographerURL:subJson["user"]["links"]["html"].string!, photographerName: subJson["user"]["name"].string!, imageUrl: subJson["links"]["html"].string!)
+                            self.cardsInfo.append(cardInfo)
+                        }
+                    }else{
+                        for (_,subJson):(String, JSON) in json["results"] {
+                            // Do something you want
+                            let imgUrl:Urls = Urls(smallImage: subJson["urls"]["small"].string!)
+                            let imaged:Image = Image(url: imgUrl)
+                            let cardInfo = CardLayoutInfo(cardImages: imaged, fullQualityUrl: subJson["links"]["download"].string!, photographerURL: subJson["user"]["links"]["html"].string!, photographerName: subJson["user"]["name"].string!, imageUrl: subJson["links"]["html"].string!)
+                            self.cardsInfo.append(cardInfo)
+                        }
                     }
-                    print(self.cardsInfo)
+                    print("ccount:\(self.cardsInfo.count)")
+                    print("indexNumber:\(indexNumber)")
                     for (index,cardInfo) in self.cardsInfo.enumerated(){
                         if(index <= indexNumber){
                             continue
                         }
-                        print("index:\(index)->\(cardInfo.cardImages)")
                         Alamofire.request(cardInfo.cardImages.imageUrl.small!).responseImage { response in
+                            cardindex += 1
                             if let downloadedImage = response.result.value {
                                 print(downloadedImage)
                                 print("-------------------")
                                 downloadedImgCount += 1
                                 self.photos.append( INSPhoto(imageURL: URL(string: cardInfo.fullQualityUrl), thumbnailImage:downloadedImage))
-                                if(downloadedImgCount == 2){
+                                if(downloadedImgCount == 6){
                                     downloadedImgCount = 0
-                                    let (start, end) = (photoCount, photoCount + 2)
+                                    indexNumber = cardindex
+                                    let (start, end) = (photoCount, photoCount + 6)
                                     let indexPaths = (start..<end).map { return IndexPath(row: $0, section: 0) }
                                     
                                     // update collection view
@@ -140,31 +169,13 @@ class AllWallsViewController: UIViewController, UICollectionViewDelegate, UIColl
                 }
             }
             
-            
-            
-//            let photoCount = self.photos.count
-////            self.photos.append(INSPhoto(image: UIImage(named: "wall4")!, thumbnailImage: UIImage(named: "wall1")!))
-////            self.photos.append(INSPhoto(image: UIImage(named: "wall3")!, thumbnailImage: UIImage(named: "wall1")!))
-////
-//
-//            let (start, end) = (photoCount, photoCount + 2)
-//            let indexPaths = (start..<end).map { return IndexPath(row: $0, section: 0) }
-//
-//            // update collection view
-//            self.wallsCollectionView?.performBatchUpdates({ () -> Void in
-//                self.wallsCollectionView?.insertItems(at: indexPaths)
-//            }, completion: { (finished) -> Void in
-//
-//            });
-//
-//            collectionView.finishInfiniteScroll()
         }
     }
     
     
     // Download carousel images
     func downloadCardsImages(){
-        self.photos.removeAll()
+//        self.photos.removeAll()
         for image in self.cardsInfo{
             Alamofire.request(image.cardImages.imageUrl.small!).responseImage { response in
                 if let downloadedImage = response.result.value {
@@ -197,6 +208,13 @@ class AllWallsViewController: UIViewController, UICollectionViewDelegate, UIColl
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "AllWalls") as! AllWallsViewController
+        vc.topicToSearch = searchBar.text!
+        navigationController?.pushViewController(vc,animated: true)
+    }
 
 }
 
@@ -217,19 +235,6 @@ extension AllWallsViewController:UICollectionViewDelegateFlowLayout {
         return CGSize(width: theWidth ,height: theHeight)
     }
     
-    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallCell.identifier, for: indexPath) as! WallCell
-//        cell.layer.backgroundColor = UIColor.clear.cgColor
-//        return cell
-//    }
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "wallDetail") as! WallDetailController
-//        navigationController?.pushViewController(vc,animated: true)
-//    }
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallCell.identifier, for: indexPath) as! WallCell
         cell.populateWithPhoto(self.photos[(indexPath as NSIndexPath).row])
@@ -241,6 +246,8 @@ extension AllWallsViewController:UICollectionViewDelegateFlowLayout {
         let cell = collectionView.cellForItem(at: indexPath) as! WallCell
         let currentPhoto = photos[(indexPath as NSIndexPath).row]
         let galleryPreview = INSPhotosViewController(photos: photos, initialPhoto: currentPhoto, referenceView: cell)
+       
+        CustomOverlayView.imageInfo = self.cardsInfo[indexPath.row]
         if useCustomOverlay {
             galleryPreview.overlayView = CustomOverlayView(frame: CGRect.zero)
         }

@@ -9,5 +9,6 @@
 import Foundation
 
 struct Photographer {
-    let name:String
+    var name:String
+    var url:String
 }
