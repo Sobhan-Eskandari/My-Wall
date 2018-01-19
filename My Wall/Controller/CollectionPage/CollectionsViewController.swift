@@ -50,6 +50,8 @@ class CollectionsViewController: UIViewController,UITableViewDelegate,UITableVie
         
         searchBar.delegate = self
         self.navigationItem.title = self.searchQuery
+        SVProgressHUD.show(withStatus: "Getting Images...")
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
         
         var pageNumber = Int(arc4random_uniform(39))
 //        let pageNumber = 50
@@ -242,6 +244,7 @@ class CollectionsViewController: UIViewController,UITableViewDelegate,UITableVie
                         }
                         if (self.cardsInfo[0].downloadedImages.count == 4 && self.cardsInfo[1].downloadedImages.count == 4 && self.cardsInfo[2].downloadedImages.count == 4){
                             self.collectionsTableview.reloadData()
+                            SVProgressHUD.dismiss()
                         }
                     }
                 }
@@ -250,37 +253,6 @@ class CollectionsViewController: UIViewController,UITableViewDelegate,UITableVie
         }
     }
     
-    // Download cards images
-    func downloadNewImages(indexNumber:Int) {
-        var cardnum = 0
-        var cardindex = 0
-        for (index,cardInfo) in self.cardsInfo.enumerated(){
-            if(index<indexNumber){
-                continue
-            }
-            for cardImageAddress in cardInfo.cardImages{
-                Alamofire.request(cardImageAddress.imageUrl.small!).responseImage { response in
-                    cardnum += 1
-                    if let downloadedImage = response.result.value {
-                        print(cardnum)
-                        self.downloadingImages.append(downloadedImage)
-                        if(self.downloadingImages.count == 2){
-                            self.cardsInfo[cardindex].downloadedImages = self.downloadingImages
-                            if(cardnum % 4 == 0){
-                                cardindex += 1
-                            }
-                            print("index:\(index) -> \(self.cardsInfo[index].downloadedImages)")
-                            print("counter:\(self.cardsInfo[0].downloadedImages.count == 4)||\(self.cardsInfo[1].downloadedImages.count == 4)||\(self.cardsInfo[2].downloadedImages.count == 4)||")
-                            self.downloadingImages.removeAll()
-                        }
-                        if (self.cardsInfo[0].downloadedImages.count == 4 && self.cardsInfo[1].downloadedImages.count == 4 && self.cardsInfo[2].downloadedImages.count == 4){
-                        }
-                    }
-                }
-                
-            }
-        }
-    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

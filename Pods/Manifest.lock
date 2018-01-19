@@ -2,9 +2,11 @@ PODS:
   - Alamofire (4.5.1)
   - AlamofireImage (3.3.0):
     - Alamofire (~> 4.5)
+  - Ambience (0.1.0)
   - Cards (1.3.0):
     - Player
   - DynamicBlurView (2.0.1)
+  - Eureka (4.0.1)
   - INSNibLoading (1.0.2)
   - INSPhotoGallery (1.2.3)
   - Player (0.8.4)
@@ -17,7 +19,9 @@ PODS:
 
 DEPENDENCIES:
   - AlamofireImage (~> 3.3)
+  - Ambience
   - Cards
+  - Eureka
   - INSNibLoading
   - INSPhotoGallery
   - PopupDialog (~> 0.7)
@@ -29,8 +33,10 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
+  Ambience: 753124d6c853199950a643dcc17a6419c2acf0e5
   Cards: 40bd9052b7ffca2ff621ed282fe596c474af80c8
   DynamicBlurView: 5e6babd80cc0ddfd3ddfc4f5dacf2fe4181e7c52
+  Eureka: c8bd5cc07143b6f66268c208d28a246c99b41955
   INSNibLoading: 0244d5b9c30d4642c77b31469cbfd905e8b1efb3
   INSPhotoGallery: 2c07e4a5b5be1b4fd49c0c1f16eed28c6fe8a15d
   Player: e45514e9e5fb8ff18f50eb2ba6f84dac9b6a0024
@@ -40,6 +46,6 @@ SPEC CHECKSUMS:
   UIScrollView-InfiniteScroll: c132d6d5851daff229ab4a1060ccf70a05a051c9
   UPCarouselFlowLayout: 02045c1505d63057fba3d9975be880a8d16bf17d
 
-PODFILE CHECKSUM: 3a2129cd9a0525a6f67aafb750d43eedb35df457
+PODFILE CHECKSUM: 4a1e34b3d74377eaec7113cdba1855633ce21693
 
 COCOAPODS: 1.3.1

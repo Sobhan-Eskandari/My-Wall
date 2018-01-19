@@ -14,6 +14,7 @@
 		401FD5AD1FCE8F2800C4B3A3 /* PlanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401FD5AC1FCE8F2800C4B3A3 /* PlanCell.swift */; };
 		402DBED1200FBD8A005C2ADB /* ActionButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402DBECF200FBD8A005C2ADB /* ActionButtonItem.swift */; };
 		402DBED2200FBD8A005C2ADB /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402DBED0200FBD8A005C2ADB /* ActionButton.swift */; };
+		402DBED520109063005C2ADB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402DBED420109063005C2ADB /* SettingsController.swift */; };
 		403921D11FD3EE1100F7799E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403921D01FD3EE1100F7799E /* Image.swift */; };
 		403921D31FD3F06E00F7799E /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403921D21FD3F06E00F7799E /* Metadata.swift */; };
 		403921D51FD3F07800F7799E /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403921D41FD3F07800F7799E /* Urls.swift */; };
@@ -65,6 +66,7 @@
 		401FD5AC1FCE8F2800C4B3A3 /* PlanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCell.swift; sourceTree = "<group>"; };
 		402DBECF200FBD8A005C2ADB /* ActionButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButtonItem.swift; sourceTree = "<group>"; };
 		402DBED0200FBD8A005C2ADB /* ActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		402DBED420109063005C2ADB /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		403921D01FD3EE1100F7799E /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		403921D21FD3F06E00F7799E /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
 		403921D41FD3F07800F7799E /* Urls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Urls.swift; sourceTree = "<group>"; };
@@ -185,6 +187,14 @@
 			path = SubscriptionPage;
 			sourceTree = "<group>";
 		};
+		402DBED32010903E005C2ADB /* SettingsPage */ = {
+			isa = PBXGroup;
+			children = (
+				402DBED420109063005C2ADB /* SettingsController.swift */,
+			);
+			path = SettingsPage;
+			sourceTree = "<group>";
+		};
 		404EC3211FD12F0700C96A8D /* CollectionPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +295,7 @@
 		40AF54621FC8345800E3D019 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				402DBED32010903E005C2ADB /* SettingsPage */,
 				4071F1BB1FD6735500AD3C9C /* WallDetailPage */,
 				404EC3211FD12F0700C96A8D /* CollectionPage */,
 				401FD5A91FCE8EB200C4B3A3 /* SubscriptionPage */,
@@ -572,8 +583,10 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-My Wall/Pods-My Wall-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Ambience/Ambience.framework",
 				"${BUILT_PRODUCTS_DIR}/Cards/Cards.framework",
 				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/INSNibLoading/INSNibLoading.framework",
 				"${BUILT_PRODUCTS_DIR}/INSPhotoGallery/INSPhotoGallery.framework",
 				"${BUILT_PRODUCTS_DIR}/Player/Player.framework",
@@ -587,8 +600,10 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Ambience.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cards.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/INSNibLoading.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/INSPhotoGallery.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Player.framework",
@@ -630,6 +645,7 @@
 				404EC3271FD2D90500C96A8D /* Wallpaper.swift in Sources */,
 				4071F1BD1FD6737500AD3C9C /* WallDetailController.swift in Sources */,
 				407E24191FDC13F5002CFA1B /* CustomOverlayView.swift in Sources */,
+				402DBED520109063005C2ADB /* SettingsController.swift in Sources */,
 				40FB4C861FE2D2AF0027E707 /* CustomInfiniteIndicator.swift in Sources */,
 				401763AA1FCAB79400FD51D8 /* CardView.swift in Sources */,
 			);

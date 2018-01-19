@@ -11,6 +11,7 @@ import INSPhotoGallery
 import SwiftyJSON
 import Alamofire
 import AlamofireImage
+import SVProgressHUD
 
 class AllWallsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UISearchBarDelegate {
 
@@ -59,7 +60,8 @@ class AllWallsViewController: UIViewController, UICollectionViewDelegate, UIColl
             self.requestUrl = "https://api.unsplash.com/search/photos?query=\(topicToSearch)&per_page=6&page=1"
         }
         // Requesting random images of cards
-        
+        SVProgressHUD.show(withStatus: "Getting Images...")
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
         Alamofire.request(requestUrl,method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON { response in
             switch response.result {
             case .success(let value):
@@ -180,6 +182,7 @@ class AllWallsViewController: UIViewController, UICollectionViewDelegate, UIColl
             Alamofire.request(image.cardImages.imageUrl.small!).responseImage { response in
                 if let downloadedImage = response.result.value {
                     self.photos.append( INSPhoto(imageURL: URL(string: image.fullQualityUrl), thumbnailImage:downloadedImage))
+                    SVProgressHUD.dismiss()
                     self.wallsCollectionView.reloadData()
                 }
             }

@@ -77,21 +77,22 @@ import UIKit
         //Draw
         super.draw(rect)
         
-        subtitleLbl.text = subtitle.uppercased()
-        subtitleLbl.textColor = textColor
-        subtitleLbl.font = UIFont.systemFont(ofSize: subtitleSize, weight: .semibold)
-        subtitleLbl.adjustsFontSizeToFitWidth = true
-        subtitleLbl.minimumScaleFactor = 0.1
-        subtitleLbl.lineBreakMode = .byTruncatingTail
-        subtitleLbl.numberOfLines = 0
+//        subtitleLbl.text = subtitle.uppercased()
+//        subtitleLbl.textColor = textColor
+//        subtitleLbl.font = UIFont.systemFont(ofSize: subtitleSize, weight: .semibold)
+//        subtitleLbl.adjustsFontSizeToFitWidth = true
+//        subtitleLbl.minimumScaleFactor = 0.1
+//        subtitleLbl.lineBreakMode = .byTruncatingTail
+//        subtitleLbl.numberOfLines = 0
 //
         titleLbl.textColor = textColor
         titleLbl.text = title
         titleLbl.font = UIFont.systemFont(ofSize: titleSize, weight: .bold)
         titleLbl.adjustsFontSizeToFitWidth = true
         titleLbl.minimumScaleFactor = 0.1
-        titleLbl.lineBreakMode = .byTruncatingTail
-        titleLbl.numberOfLines = 2
+        titleLbl.lineBreakMode = .byClipping
+        titleLbl.numberOfLines = 1
+        titleLbl.baselineAdjustment = .alignCenters
         
         let blur = UIBlurEffect(style: blurEffect)
         blurV.effect = blur
@@ -112,15 +113,16 @@ import UIKit
                                    width: gimme.X(80),
                                    height: gimme.Y(6))
         
-        titleLbl.frame = CGRect(x: insets,
-                                y: 10,
-                                width: gimme.X(80),
-                                height: gimme.Y(20))
         
         blurV.frame = CGRect(x: 0,
                              y: 0,
                              width: backgroundIV.bounds.width,
                              height: 40)
+        
+        titleLbl.frame = CGRect(x: insets,
+                                y: blurV.bounds.midY-10,
+                                width: gimme.X(80),
+                                height: 20)
         
         titleLbl.sizeToFit()
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0920"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F4589684011E3601C2DAD0A456DCBACE"
+               BlueprintIdentifier = "22B245C7283E24243BA76B7FC3AD7257"
                BuildableName = "UIScrollView_InfiniteScroll.framework"
                BlueprintName = "UIScrollView-InfiniteScroll"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F4589684011E3601C2DAD0A456DCBACE"
+            BlueprintIdentifier = "22B245C7283E24243BA76B7FC3AD7257"
             BuildableName = "UIScrollView_InfiniteScroll.framework"
             BlueprintName = "UIScrollView-InfiniteScroll"
             ReferencedContainer = "container:Pods.xcodeproj">

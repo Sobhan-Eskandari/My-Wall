@@ -16,6 +16,7 @@ target 'My Wall' do
     pod 'SVProgressHUD'
     pod 'PopupDialog', '~> 0.7'
     pod 'Ambience'
+    pod 'Eureka'
    
  target 'My WallTests' do
     inherit! :search_paths

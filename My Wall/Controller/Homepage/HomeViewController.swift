@@ -50,9 +50,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        downloadedImages.append(UIImage(named: "wall1")!) // fake images
-        downloadedImages.append(UIImage(named: "wall2")!) // fake images
-        downloadedImages.append(UIImage(named: "wall3")!) // fake images
+        downloadedImages.append(UIImage(named: "nick-de-partee-97063")!) // fake images
+        downloadedImages.append(UIImage(named: "nick-de-partee-97063")!) // fake images
+        downloadedImages.append(UIImage(named: "nick-de-partee-97063")!) // fake images
         self.setupLayout()
         
         searchBar.delegate = self
@@ -82,7 +82,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         bottomRightBottomCard.delegate = self
         bottomRightBottomCard.hasParallax = true
 
-        
+    
         // Do any additional setup after loading the view.
         ViewCustomization.customiseSearchBox(searchBar: searchBar)
         

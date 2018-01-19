@@ -44,12 +44,14 @@ extension CustomOverlayView: INSPhotosOverlayViewable {
         let downloadBtn = ActionButtonItem(title: "Save to Gallery", image: downloadImage)
         downloadBtn.action = { item in
             print(selectedPhoto.getImageUrl())
-            
+            SVProgressHUD.show(withStatus: "Downloading...")
+            SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
             Alamofire.request(selectedPhoto.getImageUrl().absoluteString).responseImage { response in
                 debugPrint(response)
                 if let image = response.result.value {
                     print("image downloaded: \(image)")
                     self.saveImageToCammeraRoll(image: image)
+                    SVProgressHUD.dismiss()
                 }
             }
         }

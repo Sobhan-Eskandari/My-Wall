@@ -104,8 +104,10 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Ambience/Ambience.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Cards/Cards.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/INSNibLoading/INSNibLoading.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/INSPhotoGallery/INSPhotoGallery.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Player/Player.framework"
@@ -118,8 +120,10 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Ambience/Ambience.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Cards/Cards.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/INSNibLoading/INSNibLoading.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/INSPhotoGallery/INSPhotoGallery.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Player/Player.framework"
