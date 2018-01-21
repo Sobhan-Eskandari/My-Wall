@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Ambience
 
 class CollectionTableCell: UITableViewCell {
 
@@ -39,6 +40,26 @@ class CollectionTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    public override func ambience(_ notification : Notification) {
+        
+        super.ambience(notification)
+        
+        guard let currentState = notification.userInfo?["currentState"] as? AmbienceState else { return }
+        
+        let defaults = UserDefaults.standard
+        let darkMode = defaults.bool(forKey: "darkMode")
+        
+        print("Darkmode",currentState)
+        if(currentState.rawValue == "invert"){
+            defaults.set(true, forKey: "darkMode")
+           collectionBc.layer.shadowColor = UIColor.clear.cgColor
+        }else if (currentState.rawValue == "regular" && darkMode){
+            defaults.set(false, forKey: "darkMode")
+            collectionBc.layer.shadowColor = UIColor(red:168/255.0 , green:182/255.0 , blue:200/255.0 , alpha: 1.0).cgColor
+        }
+    }
+
 
 }
 

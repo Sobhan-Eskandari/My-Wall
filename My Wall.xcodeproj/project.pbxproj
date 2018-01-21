@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4001EDC72014679D00F206A3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4001EDC62014679D00F206A3 /* StoreKit.framework */; };
+		4001EDCA2014750200F206A3 /* IAPProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001EDC92014750200F206A3 /* IAPProduct.swift */; };
+		4001EDCC2014768A00F206A3 /* IAPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001EDCB2014768A00F206A3 /* IAPService.swift */; };
 		401763AA1FCAB79400FD51D8 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401763A91FCAB79400FD51D8 /* CardView.swift */; };
 		401FD5A61FCDA24000C4B3A3 /* AllWallsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401FD5A51FCDA24000C4B3A3 /* AllWallsViewController.swift */; };
 		401FD5A81FCDA26000C4B3A3 /* WallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401FD5A71FCDA26000C4B3A3 /* WallCell.swift */; };
@@ -59,6 +62,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4001EDC62014679D00F206A3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		4001EDC92014750200F206A3 /* IAPProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProduct.swift; sourceTree = "<group>"; };
+		4001EDCB2014768A00F206A3 /* IAPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPService.swift; sourceTree = "<group>"; };
 		401763A91FCAB79400FD51D8 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		401FD5A51FCDA24000C4B3A3 /* AllWallsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllWallsViewController.swift; sourceTree = "<group>"; };
 		401FD5A71FCDA26000C4B3A3 /* WallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallCell.swift; sourceTree = "<group>"; };
@@ -112,6 +118,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				980036E978E80E6579098423 /* Pods_My_Wall.framework in Frameworks */,
+				4001EDC72014679D00F206A3 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +144,7 @@
 		093B832B194A521A3C3D9E1C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4001EDC62014679D00F206A3 /* StoreKit.framework */,
 				80B0E023D557DDA65D1DE246 /* Pods_My_Wall.framework */,
 				5CA6903D6D449A2E60A95F25 /* Pods_My_WallTests.framework */,
 				E1B5B7B5ECE6B73C450AFE53 /* Pods_My_WallUITests.framework */,
@@ -155,6 +163,15 @@
 				5485D966C43EE6B90A0B454D /* Pods-My WallUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		4001EDC8201474E800F206A3 /* InappPurchase */ = {
+			isa = PBXGroup;
+			children = (
+				4001EDC92014750200F206A3 /* IAPProduct.swift */,
+				4001EDCB2014768A00F206A3 /* IAPService.swift */,
+			);
+			path = InappPurchase;
 			sourceTree = "<group>";
 		};
 		401FD5A31FCDA1F500C4B3A3 /* Homepage */ = {
@@ -240,6 +257,7 @@
 		40AF542F1FC753AB00E3D019 /* My Wall */ = {
 			isa = PBXGroup;
 			children = (
+				4001EDC8201474E800F206A3 /* InappPurchase */,
 				40AF54601FC8344D00E3D019 /* Model */,
 				40AF54611FC8345300E3D019 /* View */,
 				40AF54621FC8345800E3D019 /* Controller */,
@@ -383,6 +401,11 @@
 					40AF542C1FC753AB00E3D019 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					40AF54401FC753AC00E3D019 = {
 						CreatedOnToolsVersion = 9.1;
@@ -532,9 +555,34 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-My Wall/Pods-My Wall-resources.sh",
+				"${PODS_ROOT}/Appodeal/Appodeal.bundle",
+				"${PODS_ROOT}/Appodeal/APDStartAppAdapter.embeddedframework/Resources/StartApp.bundle",
+				"${PODS_ROOT}/Appodeal/APDTapjoyAdapter.embeddedframework/Resources/TapjoyResources.bundle",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPAdBrowserController.xib",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseBtn.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseBtn@2x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseBtn@3x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseButtonX.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseButtonX@2x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseButtonX@3x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPDAAIcon.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPDAAIcon@2x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPDAAIcon@3x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPMutedBtn.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPMutedBtn@2x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPMutedBtn@3x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPPlayBtn.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPPlayBtn@2x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPPlayBtn@3x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPUnmutedBtn.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPUnmutedBtn@2x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPUnmutedBtn@3x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MRAID.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -584,6 +632,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Ambience/Ambience.framework",
+				"${BUILT_PRODUCTS_DIR}/Armchair/Armchair.framework",
 				"${BUILT_PRODUCTS_DIR}/Cards/Cards.framework",
 				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
@@ -593,6 +642,7 @@
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyOnboard/SwiftyOnboard.framework",
 				"${BUILT_PRODUCTS_DIR}/UIScrollView-InfiniteScroll/UIScrollView_InfiniteScroll.framework",
 				"${BUILT_PRODUCTS_DIR}/UPCarouselFlowLayout/UPCarouselFlowLayout.framework",
 			);
@@ -601,6 +651,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Ambience.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Armchair.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cards.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
@@ -610,6 +661,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyOnboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIScrollView_InfiniteScroll.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UPCarouselFlowLayout.framework",
 			);
@@ -626,11 +678,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				403921D31FD3F06E00F7799E /* Metadata.swift in Sources */,
+				4001EDCC2014768A00F206A3 /* IAPService.swift in Sources */,
 				404EC3251FD12F6E00C96A8D /* CollectionTableCell.swift in Sources */,
 				401FD5AD1FCE8F2800C4B3A3 /* PlanCell.swift in Sources */,
 				402DBED2200FBD8A005C2ADB /* ActionButton.swift in Sources */,
 				40AF54681FC839FD00E3D019 /* HomeCarouselCell.swift in Sources */,
 				403921D71FD4137D00F7799E /* Photographer.swift in Sources */,
+				4001EDCA2014750200F206A3 /* IAPProduct.swift in Sources */,
 				404EC3231FD12F3B00C96A8D /* CollectionsViewController.swift in Sources */,
 				40AF54641FC8349700E3D019 /* ViewCustomization.swift in Sources */,
 				40D95B72200E736300D8B962 /* CardInfoLayout.swift in Sources */,

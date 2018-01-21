@@ -13,8 +13,8 @@ import UIKit
 class ViewCustomization {
     // MARK: - Customises Searchbox Design
     class func customiseSearchBox(searchBar:UISearchBar) {
-        searchBar.barTintColor = UIColor.clear
-        searchBar.backgroundColor = UIColor.clear
+//        searchBar.barTintColor = UIColor.clear
+//        searchBar.backgroundColor = UIColor.clear
         searchBar.isTranslucent = true
         searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         for s in searchBar.subviews[0].subviews {

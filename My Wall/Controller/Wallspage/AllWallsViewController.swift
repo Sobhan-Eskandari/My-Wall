@@ -12,6 +12,8 @@ import SwiftyJSON
 import Alamofire
 import AlamofireImage
 import SVProgressHUD
+import Appodeal
+import Ambience
 
 class AllWallsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UISearchBarDelegate {
 
@@ -46,8 +48,12 @@ class AllWallsViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.navigationItem.title = topicToSearch
         
         ViewCustomization.customiseSearchBox(searchBar: searchBar)
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
         
-        var pageNumber = Int(arc4random_uniform(60))
+        var pageNumber = 1
         //        let pageNumber = 50
         let headers: HTTPHeaders = [
             "Accept-Version": "v1",
@@ -57,7 +63,7 @@ class AllWallsViewController: UIViewController, UICollectionViewDelegate, UIColl
         if(self.isCollectionDetailPage){
             self.requestUrl = "https://api.unsplash.com/collections/\(self.collectionID)/photos?per_page=6&page=1"
         }else{
-            self.requestUrl = "https://api.unsplash.com/search/photos?query=\(topicToSearch)&per_page=6&page=1"
+            self.requestUrl = "https://api.unsplash.com/search/photos?query=\(topicToSearch)&per_page=6&page=\(pageNumber)"
         }
         // Requesting random images of cards
         SVProgressHUD.show(withStatus: "Getting Images...")
@@ -102,6 +108,11 @@ class AllWallsViewController: UIViewController, UICollectionViewDelegate, UIColl
         wallsCollectionView.addInfiniteScroll { (collectionView) -> Void in
             // create new index paths
             
+            let defaults = UserDefaults.standard
+            let hasPurchased = defaults.bool(forKey: "InappPurchaseBought")
+            if (!hasPurchased){
+                Appodeal.showAd(AppodealShowStyle.interstitial, rootViewController: self)
+            }
             
             let photoCount = self.photos.count
             print("photoCount:\(photoCount)")
@@ -218,6 +229,58 @@ class AllWallsViewController: UIViewController, UICollectionViewDelegate, UIColl
         vc.topicToSearch = searchBar.text!
         navigationController?.pushViewController(vc,animated: true)
     }
+    
+    
+    public override func ambience(_ notification : Notification) {
+        
+        super.ambience(notification)
+        
+        guard let currentState = notification.userInfo?["currentState"] as? AmbienceState else { return }
+        
+        let defaults = UserDefaults.standard
+        let darkMode = defaults.bool(forKey: "darkMode")
+        
+        print("Darkmode",currentState)
+        if(currentState.rawValue == "invert"){
+            defaults.set(true, forKey: "darkMode")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                self.navigationController?.navigationBar.barTintColor = UIColor(red: 43.0, green: 44.0, blue: 46.0, alpha: 1.0)
+                self.navigationController?.navigationBar.isTranslucent = false
+                self.navigationController?.navigationBar.barTintColor = UIColor.black
+                ViewCustomization.customiseSearchBox(searchBar: self.searchBar)
+                self.searchBar.barTintColor = UIColor.black
+                self.searchBar.backgroundColor = UIColor.black
+                self.searchBar.searchBarStyle = UISearchBarStyle.default
+                UIApplication.shared.statusBarStyle = .lightContent
+                
+            })
+            let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+            if statusBar.responds(to: #selector(setter: UIView.backgroundColor)){
+                statusBar.backgroundColor = UIColor.black
+            }
+            
+        }else if (currentState.rawValue == "regular" && darkMode){
+            defaults.set(false, forKey: "darkMode")
+            print("switched to regular mode")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+                self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+                self.navigationController?.navigationBar.shadowImage = UIImage()
+                self.navigationController?.navigationBar.isTranslucent = true
+                ViewCustomization.customiseSearchBox(searchBar: self.searchBar)
+                self.searchBar.barTintColor = UIColor.clear
+                self.searchBar.backgroundColor = UIColor.clear
+                self.searchBar.searchBarStyle = UISearchBarStyle.default
+                UIApplication.shared.statusBarStyle = .lightContent
+                let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+                if statusBar.responds(to: #selector(setter: UIView.backgroundColor)){
+                    statusBar.backgroundColor = UIColor.white
+                }
+            })
+        }
+    }
+    
+    
 
 }
 

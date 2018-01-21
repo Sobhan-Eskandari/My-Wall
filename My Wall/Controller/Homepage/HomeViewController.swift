@@ -12,6 +12,8 @@ import Cards
 import SwiftyJSON
 import Alamofire
 import AlamofireImage
+import Ambience
+
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UISearchBarDelegate {
 
@@ -42,9 +44,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var currentPage: Int = 0
     var cardsImages:[Image] = []
     var cardsImagesTags:[String] = []
-    var carouselImages:[Image] = []
+    var carouselImages:[CardLayoutInfo] = []
     var downloadedImages:[UIImage] = []
     let pixabayKey = "7252395-21cd2dae7af1a432c39d2c60f"
+    weak var timer: Timer?
+    var timerDispatchSourceTimer : DispatchSourceTimer?
 
     
     
@@ -55,6 +59,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         downloadedImages.append(UIImage(named: "nick-de-partee-97063")!) // fake images
         self.setupLayout()
         
+        
+        collectionView.showsHorizontalScrollIndicator = false
         searchBar.delegate = self
         // MARK: - Setting delegates of cards
         topLeftCard.delegate = self
@@ -85,6 +91,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
         // Do any additional setup after loading the view.
         ViewCustomization.customiseSearchBox(searchBar: searchBar)
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
         
         let pageNumber = Int(arc4random_uniform(39))
         let requestUrl = "https://pixabay.com/api/?key=\(pixabayKey)&per_page=12&page=\(pageNumber)&editors_choice=true&safesearch=true"
@@ -118,8 +128,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     // Do something you want
                     for (_,innerJson):(String, JSON) in subJson {
                         let imgUrl:Urls = Urls(regularImage: innerJson["webformatURL"].string!)
+                        var cardTag:String = innerJson["tags"].string!
+                        cardTag = cardTag.components(separatedBy: ",")[0].capitalizingFirstLetter()
                         let image:Image = Image(url: imgUrl)
-                        self.carouselImages.append(image)
+                        let cardInfo = CardLayoutInfo(cardImage: image, cardTitle: cardTag)
+                        self.carouselImages.append(cardInfo)
                     }
                 }
                 self.downloadCarouselImage()
@@ -127,6 +140,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 print(error)
             }
         }
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
     }
 
     // Download cards images
@@ -148,7 +166,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func downloadCarouselImage(){
         self.downloadedImages.removeAll()
         for image in self.carouselImages{
-            Alamofire.request(image.imageUrl.regular!).responseImage { response in
+            Alamofire.request(image.cardImage.imageUrl.regular!).responseImage { response in
                 if let downloadedImage = response.result.value {
                     self.downloadedImages.append(downloadedImage)
                     if (self.downloadedImages.count == 3){
@@ -182,8 +200,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         vc.topicToSearch = searchBar.text!
         navigationController?.pushViewController(vc,animated: true)
     }
-
-    
 }
 
 extension HomeViewController {
@@ -209,6 +225,10 @@ extension HomeViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("selected: \(indexPath.row)")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "AllWalls") as! AllWallsViewController
+        vc.topicToSearch = self.carouselImages[indexPath.row].cardTitle
+        navigationController?.pushViewController(vc,animated: true)
     }
     
     
@@ -236,6 +256,7 @@ extension HomeViewController {
     
     var pageSize: CGSize {
         let layout = self.collectionView.collectionViewLayout as! UPCarouselFlowLayout
+    
         var pageSize = layout.itemSize
         if layout.scrollDirection == .horizontal {
             pageSize.width += layout.minimumLineSpacing
@@ -252,7 +273,88 @@ extension HomeViewController {
     func setupLayout() {
         let layout = self.collectionView.collectionViewLayout as! UPCarouselFlowLayout
         layout.spacingMode = UPCarouselFlowLayoutSpacingMode.overlap(visibleOffset: 30)
+        
     }
+    
+    override func ambience(_ notification : Notification) {
+    
+        super.ambience(notification)
+        
+        guard let currentState = notification.userInfo?["currentState"] as? AmbienceState else { return }
+        
+        let defaults = UserDefaults.standard
+        let darkMode = defaults.bool(forKey: "darkMode")
+        
+        print("Darkmode",currentState)
+        if(currentState.rawValue == "invert"){
+            defaults.set(true, forKey: "darkMode")
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                self.navigationController?.navigationBar.barTintColor = UIColor(red: 43.0, green: 44.0, blue: 46.0, alpha: 1.0)
+//                self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//                self.navigationController?.navigationBar.shadowImage = UIImage()
+                self.navigationController?.navigationBar.isTranslucent = false
+                self.navigationController?.navigationBar.barTintColor = UIColor.black
+                
+                self.topLeftCard.shadowColor = UIColor.clear
+                self.topRightCard.shadowColor = UIColor.clear
+                self.topLeftBottomCard.shadowColor = UIColor.clear
+                self.topRightBottomCard.shadowColor = UIColor.clear
+                self.topRightMiddleCard.shadowColor = UIColor.clear
+                self.middleCard.shadowColor = UIColor.clear
+                self.bottomLeftCard.shadowColor = UIColor.clear
+                self.bottomRightCard.shadowColor = UIColor.clear
+                self.bottomLeftBottomCard.shadowColor = UIColor.clear
+                self.bottomRightBottomCard.shadowColor = UIColor.clear
+                self.bottomLeftMiddleCard.shadowColor = UIColor.clear
+                print("its fuckingggg hereeeeeee")
+                ViewCustomization.customiseSearchBox(searchBar: self.searchBar)
+                self.searchBar.barTintColor = UIColor.black
+                self.searchBar.backgroundColor = UIColor.black
+//                self.searchBar.barStyle = UIBarStyle.blackTranslucent
+                self.searchBar.searchBarStyle = UISearchBarStyle.minimal
+                UIApplication.shared.statusBarStyle = .lightContent
+                let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+                if statusBar.responds(to: #selector(setter: UIView.backgroundColor)){
+                    statusBar.backgroundColor = UIColor.black
+                }
+            })
+            
+        }else if (currentState.rawValue == "regular" && darkMode){
+            defaults.set(false, forKey: "darkMode")
+            print("switched to regular mode")
+            let shadowColor = UIColor(red: 0.715315, green: 0.765404, blue: 0.824527, alpha: 1.0)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                self.topLeftCard.shadowColor = shadowColor
+                self.topRightCard.shadowColor = shadowColor
+                self.topLeftBottomCard.shadowColor = shadowColor
+                self.topRightBottomCard.shadowColor = shadowColor
+                self.topRightMiddleCard.shadowColor = shadowColor
+                self.middleCard.shadowColor = shadowColor
+                self.bottomLeftCard.shadowColor = shadowColor
+                self.bottomRightCard.shadowColor = shadowColor
+                self.bottomLeftBottomCard.shadowColor = shadowColor
+                self.bottomRightBottomCard.shadowColor = shadowColor
+                self.bottomLeftMiddleCard.shadowColor = shadowColor
+                ViewCustomization.customiseSearchBox(searchBar: self.searchBar)
+                self.searchBar.barTintColor = UIColor.clear
+                self.searchBar.backgroundColor = UIColor.clear
+                self.searchBar.searchBarStyle = UISearchBarStyle.default
+                UIApplication.shared.statusBarStyle = .lightContent
+                
+                self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+                self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+                self.navigationController?.navigationBar.shadowImage = UIImage()
+                self.navigationController?.navigationBar.isTranslucent = true
+                
+                let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+                if statusBar.responds(to: #selector(setter: UIView.backgroundColor)){
+                    statusBar.backgroundColor = UIColor.white
+                }
+            })
+        }
+    }
+
 }
 
 

@@ -69,7 +69,7 @@ import UIKit
         blurV.contentView.addSubview(titleLbl)
         blurV.contentView.addSubview(vibrancyV)
         vibrancyV.contentView.addSubview(subtitleLbl)
-
+        
     }
     
     override open func draw(_ rect: CGRect) {
@@ -77,14 +77,14 @@ import UIKit
         //Draw
         super.draw(rect)
         
-//        subtitleLbl.text = subtitle.uppercased()
-//        subtitleLbl.textColor = textColor
-//        subtitleLbl.font = UIFont.systemFont(ofSize: subtitleSize, weight: .semibold)
-//        subtitleLbl.adjustsFontSizeToFitWidth = true
-//        subtitleLbl.minimumScaleFactor = 0.1
-//        subtitleLbl.lineBreakMode = .byTruncatingTail
-//        subtitleLbl.numberOfLines = 0
-//
+        //        subtitleLbl.text = subtitle.uppercased()
+        //        subtitleLbl.textColor = textColor
+        //        subtitleLbl.font = UIFont.systemFont(ofSize: subtitleSize, weight: .semibold)
+        //        subtitleLbl.adjustsFontSizeToFitWidth = true
+        //        subtitleLbl.minimumScaleFactor = 0.1
+        //        subtitleLbl.lineBreakMode = .byTruncatingTail
+        //        subtitleLbl.numberOfLines = 0
+        //
         titleLbl.textColor = textColor
         titleLbl.text = title
         titleLbl.font = UIFont.systemFont(ofSize: titleSize, weight: .bold)
@@ -126,7 +126,7 @@ import UIKit
         
         titleLbl.sizeToFit()
     }
-
+    
 }
 
 

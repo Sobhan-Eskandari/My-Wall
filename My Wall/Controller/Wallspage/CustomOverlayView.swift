@@ -13,6 +13,7 @@ import SVProgressHUD
 import Alamofire
 import AlamofireImage
 import PopupDialog
+import Appodeal
 
 class CustomOverlayView: INSNibLoadedView {
     weak var photosViewController: INSPhotosViewController?
@@ -52,6 +53,11 @@ extension CustomOverlayView: INSPhotosOverlayViewable {
                     print("image downloaded: \(image)")
                     self.saveImageToCammeraRoll(image: image)
                     SVProgressHUD.dismiss()
+                    let defaults = UserDefaults.standard
+                    let hasPurchased = defaults.bool(forKey: "InappPurchaseBought")
+                    if (!hasPurchased){
+                        Appodeal.showAd(AppodealShowStyle.interstitial, rootViewController: self.photosViewController)
+                    }
                 }
             }
         }
@@ -69,7 +75,7 @@ extension CustomOverlayView: INSPhotosOverlayViewable {
         infoBtn.action = { item in
             // Prepare the popup assets
             let title = "Wallpaper Information"
-            let message = "Photo By: \(CustomOverlayView.imageInfo?.photographerName ?? "Photographer") \n See more in Uplash"
+            let message = "Photo By: \(CustomOverlayView.imageInfo?.photographerName ?? "Photographer") \n See more in Unsplash"
             let image = UIImage(named: "pexels-photo-103290")
 
             
@@ -83,7 +89,7 @@ extension CustomOverlayView: INSPhotosOverlayViewable {
             
             // This button will not the dismiss the dialog
             let buttonTwo = DefaultButton(title: "Visit Unsplash", dismissOnTap: false) {
-                let url = URL(string: "https://unsplash.com/?utm_source=your_app_name&utm_medium=referral")
+                let url = URL(string: "https://unsplash.com/?utm_source=My_Wall&utm_medium=referral")
                 if #available(iOS 10.0, *) {
                     UIApplication.shared.open(url!, options: [:], completionHandler: nil)
                 } else {
@@ -92,7 +98,7 @@ extension CustomOverlayView: INSPhotosOverlayViewable {
             }
             
             let buttonThree = DefaultButton(title: "View more of \(CustomOverlayView.imageInfo?.photographerName ?? "Photographer")", height: 60) {
-                let url = URL(string: "\(CustomOverlayView.imageInfo!.photographerURL)?utm_source=your_app_name&utm_medium=referral")
+                let url = URL(string: "\(CustomOverlayView.imageInfo!.photographerURL)?utm_source=My_Wall&utm_medium=referral")
                 if #available(iOS 10.0, *) {
                     UIApplication.shared.open(url!, options: [:], completionHandler: nil)
                 } else {

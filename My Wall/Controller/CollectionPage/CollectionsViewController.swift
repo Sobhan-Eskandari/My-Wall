@@ -11,6 +11,8 @@ import SwiftyJSON
 import Alamofire
 import AlamofireImage
 import SVProgressHUD
+import Appodeal
+import Ambience
 
 class CollectionsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate {
     
@@ -32,6 +34,7 @@ class CollectionsViewController: UIViewController,UITableViewDelegate,UITableVie
             self.collectionId = collectionID
         }
     }
+    var cell:CollectionTableCell? = nil
     var cardsInfo:[CardLayoutInfo] = []
     var downloadingImages:[UIImage] = []
     var indexPaths : [IndexPath] = []
@@ -52,6 +55,10 @@ class CollectionsViewController: UIViewController,UITableViewDelegate,UITableVie
         self.navigationItem.title = self.searchQuery
         SVProgressHUD.show(withStatus: "Getting Images...")
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
         
         var pageNumber = Int(arc4random_uniform(39))
 //        let pageNumber = 50
@@ -114,6 +121,12 @@ class CollectionsViewController: UIViewController,UITableViewDelegate,UITableVie
         var searchPageNumber = 0
         collectionsTableview.addInfiniteScroll { (tableView) -> Void in
             // update table view
+            
+            let defaults = UserDefaults.standard
+            let hasPurchased = defaults.bool(forKey: "InappPurchaseBought")
+            if (!hasPurchased){
+                Appodeal.showAd(AppodealShowStyle.interstitial, rootViewController: self)
+            }
             
             indexNumber += 2
             let collCount = self.cardsInfo.count
@@ -261,6 +274,52 @@ class CollectionsViewController: UIViewController,UITableViewDelegate,UITableVie
         vc.isSearchingCollection = true
         navigationController?.pushViewController(vc,animated: true)
     }
+    
+    
+    public override func ambience(_ notification : Notification) {
+        
+        super.ambience(notification)
+        
+        guard let currentState = notification.userInfo?["currentState"] as? AmbienceState else { return }
+        
+        let defaults = UserDefaults.standard
+        let darkMode = defaults.bool(forKey: "darkMode")
+        
+        print("Darkmode",currentState)
+        if(currentState.rawValue == "invert"){
+            defaults.set(true, forKey: "darkMode")
+            self.navigationController?.navigationBar.barTintColor = UIColor(red: 43.0, green: 44.0, blue: 46.0, alpha: 1.0)
+            self.navigationController?.navigationBar.isTranslucent = false
+            self.navigationController?.navigationBar.barTintColor = UIColor.black
+            ViewCustomization.customiseSearchBox(searchBar: searchBar)
+            searchBar.barStyle = UIBarStyle.blackTranslucent
+            searchBar.searchBarStyle = UISearchBarStyle.minimal
+            ViewCustomization.customiseSearchBox(searchBar: searchBar)
+            UIApplication.shared.statusBarStyle = .lightContent
+            let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+            if statusBar.responds(to: #selector(setter: UIView.backgroundColor)){
+                statusBar.backgroundColor = UIColor.black
+            }
+        }else if (currentState.rawValue == "regular" && darkMode){
+            defaults.set(false, forKey: "darkMode")
+            print("switched to regular mode")
+            navigationController?.navigationBar.barTintColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+            navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            navigationController?.navigationBar.shadowImage = UIImage()
+            navigationController?.navigationBar.isTranslucent = true
+            ViewCustomization.customiseSearchBox(searchBar: searchBar)
+            searchBar.barStyle = UIBarStyle.blackTranslucent
+            searchBar.searchBarStyle = UISearchBarStyle.default
+            ViewCustomization.customiseSearchBox(searchBar: searchBar)
+            UIApplication.shared.statusBarStyle = .lightContent
+            let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+            if statusBar.responds(to: #selector(setter: UIView.backgroundColor)){
+                statusBar.backgroundColor = UIColor.white
+            }
+        }
+    }
+
+    
 }
 
 
@@ -270,17 +329,17 @@ extension CollectionsViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableCell.identifier, for: indexPath) as! CollectionTableCell
+        cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableCell.identifier, for: indexPath) as? CollectionTableCell
         let cardInfo = self.cardsInfo[indexPath.row]
         print(indexPath.row)
-        cell.mainImage.image = cardInfo.downloadedImages[0]
-        cell.topRightImage.image = cardInfo.downloadedImages[1]
-        cell.bottomRightImage.image = cardInfo.downloadedImages[2]
-        cell.mainImage.contentMode = .scaleAspectFill
-        cell.bottomRightImage.contentMode = .scaleAspectFill
-        cell.topRightImage.contentMode = .scaleAspectFill
-        cell.featuredTitle.text = cardInfo.cardTitle
-        return cell
+        cell?.mainImage.image = cardInfo.downloadedImages[0]
+        cell?.topRightImage.image = cardInfo.downloadedImages[1]
+        cell?.bottomRightImage.image = cardInfo.downloadedImages[2]
+        cell?.mainImage.contentMode = .scaleAspectFill
+        cell?.bottomRightImage.contentMode = .scaleAspectFill
+        cell?.topRightImage.contentMode = .scaleAspectFill
+        cell?.featuredTitle.text = cardInfo.cardTitle
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

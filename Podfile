@@ -17,6 +17,25 @@ target 'My Wall' do
     pod 'PopupDialog', '~> 0.7'
     pod 'Ambience'
     pod 'Eureka'
+    pod 'Appodeal', '~> 2.1.7'
+    pod 'SwiftyOnboard'
+    
+    pod 'Armchair', '>= 0.3'
+    
+    #Add the following in order to automatically set debug flags for armchair in debug builds
+    post_install do |installer|
+        installer.pods_project.targets.each do |target|
+            if target.name == 'Armchair'
+                target.build_configurations.each do |config|
+                    if config.name == 'Debug'
+                        config.build_settings['OTHER_SWIFT_FLAGS'] = '-DDebug'
+                        else
+                        config.build_settings['OTHER_SWIFT_FLAGS'] = ''
+                    end
+                end
+            end
+        end
+    end
    
  target 'My WallTests' do
     inherit! :search_paths

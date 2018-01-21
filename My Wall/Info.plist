@@ -38,6 +38,11 @@
 	<string>You can select photos to attach to reports.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>We want to save this wallpaper to your camera roll please Alow</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
