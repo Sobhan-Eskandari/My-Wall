@@ -30,6 +30,19 @@ class WallCell: UICollectionViewCell {
         wallImageView.layer.shadowColor = UIColor(red:168/255.0 , green:182/255.0 , blue:200/255.0 , alpha: 1.0).cgColor
         wallImageView.layer.cornerRadius = 10
         
+        let defaults = UserDefaults.standard
+        let darkMode = defaults.bool(forKey: "darkMode")
+        
+        
+        if(darkMode){
+            defaults.set(true, forKey: "darkMode")
+            wallImageView.layer.shadowColor = UIColor.clear.cgColor
+            wallImageView.layer.shadowOpacity = 0.0
+            print("Dar1")
+        }else if (!darkMode){
+            defaults.set(false, forKey: "darkMode")
+            wallImageView.layer.shadowColor = UIColor(red:168/255.0 , green:182/255.0 , blue:200/255.0 , alpha: 1.0).cgColor
+        }
     }
     
     public override func ambience(_ notification : Notification) {

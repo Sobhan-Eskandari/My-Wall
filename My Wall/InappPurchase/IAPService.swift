@@ -19,7 +19,10 @@ class IAPService: NSObject {
     let paymentQueue = SKPaymentQueue.default()
     
     func getProducts() {
-        let products:Set = [IAPProduct.ForeverPlan.rawValue,IAPProduct.MonthlyPlan.rawValue,IAPProduct.SixMonthsPlan.rawValue,IAPProduct.YearlyPlan.rawValue]
+        let products:Set = [IAPProduct.ForeverPlan.rawValue,
+                            IAPProduct.MonthlyPlan.rawValue,
+                            IAPProduct.SixMonthsPlan.rawValue,
+                            IAPProduct.YearlyPlan.rawValue]
     
         let request = SKProductsRequest(productIdentifiers: products)
         request.delegate = self
@@ -28,24 +31,24 @@ class IAPService: NSObject {
     }
     
     func purchase(product: IAPProduct) {
-        guard let productToPurchase = products.filter({ $0.productIdentifier == product.rawValue }).first else {
-            return
-        }
+        guard let productToPurchase = products.filter({ $0.productIdentifier == product.rawValue }).first else { return }
         let payment = SKPayment(product: productToPurchase)
         paymentQueue.add(payment)
         SVProgressHUD.show()
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
     }
     
-    func restorePurchase() {
-        print("restoring purchases")
+    func restorePurchases() {
+        print("restore purchases")
         paymentQueue.restoreCompletedTransactions()
+        SVProgressHUD.show()
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
     }
 }
 
-extension IAPService: SKProductsRequestDelegate{
-    
+extension IAPService: SKProductsRequestDelegate {
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        self.products = response.products
+        products = response.products
         for product in response.products {
             print(product.localizedTitle)
         }
@@ -70,6 +73,8 @@ extension IAPService: SKPaymentTransactionObserver{
                 print("restored successful")
                 queue.finishTransaction(transaction)
                 SVProgressHUD.dismiss()
+                SVProgressHUD.showSuccess(withStatus: "Purchase restored successfully")
+               
             default:
                 SVProgressHUD.dismiss()
                 queue.finishTransaction(transaction)
@@ -78,15 +83,15 @@ extension IAPService: SKPaymentTransactionObserver{
     }
 }
 
+
 extension SKPaymentTransactionState {
     func status() -> String {
         switch self {
-            case .deferred: return "deferred"
-            case .failed: return "failed"
-            case .purchased: return "purchased"
-            case .purchasing: return "purchasing"
-            case .restored: return "restored"
+        case .deferred: return "deferred"
+        case .failed: return "failed"
+        case .purchased: return "purchased"
+        case .purchasing: return "purchasing"
+        case .restored: return "restored"
         }
     }
 }
-

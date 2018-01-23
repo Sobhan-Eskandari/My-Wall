@@ -33,6 +33,20 @@ class CollectionTableCell: UITableViewCell {
         mainImage.roundCorners([.topLeft, .bottomLeft], radius: 10)
         topRightImage.roundCorners([.topRight], radius: 10)
         bottomRightImage.roundCorners([.bottomRight], radius: 10)
+        print("Dar2")
+        let defaults = UserDefaults.standard
+        let darkMode = defaults.bool(forKey: "darkMode")
+        
+        
+        if(darkMode){
+            defaults.set(true, forKey: "darkMode")
+            collectionBc.layer.shadowColor = UIColor.clear.cgColor
+            collectionBc.layer.shadowOpacity = 0.0
+            print("Dar1")
+        }else if (!darkMode){
+            defaults.set(false, forKey: "darkMode")
+            collectionBc.layer.shadowColor = UIColor(red:168/255.0 , green:182/255.0 , blue:200/255.0 , alpha: 1.0).cgColor
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -50,10 +64,12 @@ class CollectionTableCell: UITableViewCell {
         let defaults = UserDefaults.standard
         let darkMode = defaults.bool(forKey: "darkMode")
         
-        print("Darkmode",currentState)
+        
         if(currentState.rawValue == "invert"){
             defaults.set(true, forKey: "darkMode")
-           collectionBc.layer.shadowColor = UIColor.clear.cgColor
+            collectionBc.layer.shadowColor = UIColor.clear.cgColor
+            collectionBc.layer.shadowOpacity = 0.0
+            print("Dar1")
         }else if (currentState.rawValue == "regular" && darkMode){
             defaults.set(false, forKey: "darkMode")
             collectionBc.layer.shadowColor = UIColor(red:168/255.0 , green:182/255.0 , blue:200/255.0 , alpha: 1.0).cgColor

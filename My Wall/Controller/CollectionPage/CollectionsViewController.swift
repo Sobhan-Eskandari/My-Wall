@@ -300,6 +300,7 @@ class CollectionsViewController: UIViewController,UITableViewDelegate,UITableVie
             if statusBar.responds(to: #selector(setter: UIView.backgroundColor)){
                 statusBar.backgroundColor = UIColor.black
             }
+            cell?.collectionBc.layer.shadowColor = UIColor.clear.cgColor
         }else if (currentState.rawValue == "regular" && darkMode){
             defaults.set(false, forKey: "darkMode")
             print("switched to regular mode")

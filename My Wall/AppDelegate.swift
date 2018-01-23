@@ -29,8 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaults = UserDefaults.standard
         let defaultValue = ["InappPurchaseBought" : false]
         let darkMode = ["darkMode" : false]
+        let hasrated = ["hasrated" : false]
         defaults.register(defaults: defaultValue)
         defaults.register(defaults: darkMode)
+        defaults.register(defaults: hasrated)
         
         // Setting Appodeal
         let adTypes: AppodealAdType = [.interstitial]
@@ -64,17 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     class func setupArmchair() {
-        // Normally, all the setup would be here.
-        // But, because we are presenting a few different setups in the example,
-        // The config will be in the view controllers
-        //     Armchair.appID("408981381") // Pages
-        //
-        // It is always best to load Armchair as early as possible
-        // because it needs to receive application life-cycle notifications
-        //
-        // NOTE: The appID call always has to go before any other Armchair calls
-        Armchair.appID("361309726")
-        Armchair.debugEnabled(true)
+        Armchair.appID("1338211909")
     }
 
 }

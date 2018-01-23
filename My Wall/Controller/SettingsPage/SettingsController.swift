@@ -22,30 +22,51 @@ class SettingsController: FormViewController,MFMailComposeViewControllerDelegate
             Section("Bonus")
             
             <<< SwitchRow("Dark Mode") {
-                $0.title = $0.tag
+                    $0.title = $0.tag
+                    let defaults = UserDefaults.standard
+                    let darkMode = defaults.bool(forKey: "darkMode")
+                    if(darkMode){
+                        $0.value = true
+                    }else if (!darkMode){
+                        $0.value = false
+                    }
                 }.onChange { row in
                     if(row.value)!{
-//                        SKStoreReviewController.requestReview()
-//                        Ambience.forcedState =  .invert
-                        // The AppID is the only required setup
-                        Armchair.appID(appID)
-                        
-                        // Debug means that it will popup on the next available change
-                        Armchair.debugEnabled(true)
-                        
-                        // This overrides the default of NO in iOS 7. Instead of going to the review page in the App Store App,
-                        //  the user goes to the main page of the app, in side of this app. Downsides are that it doesn't go directly to
-                        //  reviews and doesn't take af sfiliate codes
-                        Armchair.opensInStoreKit(true)
-                        
-                        // If you are opening in StoreKit, you can change whether or not to animated the push of the View Controller
-                        Armchair.usesAnimation(true)
-                        
-                        // true here means it is ok to show, but it doesn't matter because we have debug on.
-                        Armchair.userDidSignificantEvent(true)
+                        let defaults = UserDefaults.standard
+                        let hasrated = defaults.bool(forKey: "hasrated")
+                        if(!hasrated){
+                            // The AppID is the only required setup
+                            row.value = false
+                            Armchair.appID(appID)
+                            Armchair.debugEnabled(true)
+                            Armchair.appName("My Wall")
+                            Armchair.reviewTitle("Please Rate My Wall")
+                            Armchair.reviewMessage("We've worked so hard on this app we will be happy if you give us a 5star rating and as appericiation Dark Mode will be avaibale for you")
+                            Armchair.cancelButtonTitle("No, i don't care")
+                            Armchair.rateButtonTitle("Yes i want Dark Mode!")
+                            Armchair.remindButtonTitle("Hit me up later...")
+                            Armchair.shouldPromptIfRated(false)
+                            // Explicitly disable the storeKit as the default may be true if on iOS 8
+                            Armchair.opensInStoreKit(true)
+                            Armchair.onDidDeclineToRate() {
+                                defaults.set(false, forKey: "hasrated")
+                            }
+                            Armchair.onDidOptToRate() {
+                                defaults.set(true, forKey: "hasrated")
+                                Ambience.forcedState =  .invert
+                            }
+                            Armchair.onDidOptToRemindLater({
+                                defaults.set(false, forKey: "hasrated")
+                            })
+                            Armchair.userDidSignificantEvent(true)
+                        }else{
+                            Ambience.forcedState =  .invert
+                        }
                         print("true")
                     }else{
+                        let defaults = UserDefaults.standard
                         Ambience.forcedState =  .regular
+                        defaults.set(false, forKey: "darkMode")
                     }
                 }
             
@@ -59,8 +80,9 @@ class SettingsController: FormViewController,MFMailComposeViewControllerDelegate
             <<< ButtonRow("Restore Purchase") {
                 $0.title = $0.tag
                 }.onCellSelection { cell, row in
-                    IAPService.shared.restorePurchase()
-            }
+                    IAPService.shared.getProducts()
+                    IAPService.shared.restorePurchases()
+                }
     }
     
     func sendEmail() {
