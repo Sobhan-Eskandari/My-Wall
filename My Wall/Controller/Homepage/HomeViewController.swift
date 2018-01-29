@@ -15,12 +15,13 @@ import AlamofireImage
 import Ambience
 
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UISearchBarDelegate {
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UISearchBarDelegate,UIScrollViewDelegate {
 
     // MARK: - Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
-
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var topLeftCard: CardGroup! //done
     @IBOutlet weak var topRightCard: CardGroup! //done
     @IBOutlet weak var topLeftBottomCard: CardGroup! //done
@@ -59,6 +60,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         downloadedImages.append(UIImage(named: "nick-de-partee-97063")!) // fake images
         self.setupLayout()
         
+        self.scrollView.delegate = self
         
         collectionView.showsHorizontalScrollIndicator = false
         searchBar.delegate = self
@@ -89,6 +91,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         bottomRightBottomCard.hasParallax = true
 
     
+    
         // Do any additional setup after loading the view.
         ViewCustomization.customiseSearchBox(searchBar: searchBar)
         navigationController?.navigationBar.barTintColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
@@ -96,7 +99,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         
-        let pageNumber = Int(arc4random_uniform(39))
+        let pageNumber = Int(arc4random_uniform(50))
         let requestUrl = "https://pixabay.com/api/?key=\(pixabayKey)&per_page=12&page=\(pageNumber)&editors_choice=true&safesearch=true"
         // Requesting random images of cards
         Alamofire.request(requestUrl,method: .get,encoding: JSONEncoding.default, headers: nil).responseJSON { response in
@@ -143,6 +146,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let actualPosition = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
+        self.searchBar.endEditing(true)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
     }
@@ -177,6 +185,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
         }
     }
+    
+ 
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -275,6 +285,7 @@ extension HomeViewController {
         layout.spacingMode = UPCarouselFlowLayoutSpacingMode.overlap(visibleOffset: 30)
         
     }
+    
     
     override func ambience(_ notification : Notification) {
     

@@ -760,6 +760,7 @@
                         <outlet property="bottomRightCard" destination="u0d-A6-Z1L" id="dmb-yf-yFi"/>
                         <outlet property="collectionView" destination="O8J-vF-URY" id="9Cm-SR-faD"/>
                         <outlet property="middleCard" destination="2nE-gi-gTK" id="QSX-g4-j8k"/>
+                        <outlet property="scrollView" destination="NuL-HD-KFQ" id="Ep1-GA-maA"/>
                         <outlet property="searchBar" destination="mEZ-xL-PPm" id="NvX-Il-YRh"/>
                         <outlet property="topLeftBottomCard" destination="K77-Dj-CKx" id="1UP-ef-7RH"/>
                         <outlet property="topLeftCard" destination="9TS-f5-Suq" id="4hj-TJ-RTv"/>

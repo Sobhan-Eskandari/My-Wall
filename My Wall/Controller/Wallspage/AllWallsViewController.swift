@@ -15,7 +15,7 @@ import SVProgressHUD
 import Appodeal
 import Ambience
 
-class AllWallsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UISearchBarDelegate {
+class AllWallsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UISearchBarDelegate,UIScrollViewDelegate {
 
     // MARK: - Outlets
     @IBOutlet weak var wallsCollectionView: UICollectionView!
@@ -44,7 +44,7 @@ class AllWallsViewController: UIViewController, UICollectionViewDelegate, UIColl
         wallsCollectionView.dataSource = self
         
         searchBar.delegate = self
-        
+        wallsCollectionView.delegate = self
         self.navigationItem.title = topicToSearch
         
         ViewCustomization.customiseSearchBox(searchBar: searchBar)
@@ -54,45 +54,22 @@ class AllWallsViewController: UIViewController, UICollectionViewDelegate, UIColl
         navigationController?.navigationBar.isTranslucent = true
         
         var pageNumber = 1
-        //        let pageNumber = 50
-        let headers: HTTPHeaders = [
-            "Accept-Version": "v1",
-            "Authorization": "Client-ID e1fa9e9f79062543538b062e4a8d981d5a361856659bbdaf8c039a70e05a245c",
-            ]
         topicToSearch = topicToSearch.replacingOccurrences(of: " ", with: "+")
-        if(self.isCollectionDetailPage){
-            self.requestUrl = "https://api.unsplash.com/collections/\(self.collectionID)/photos?per_page=6&page=1"
-        }else{
-            self.requestUrl = "https://api.unsplash.com/search/photos?query=\(topicToSearch)&per_page=6&page=\(pageNumber)"
-        }
+        self.requestUrl = "https://pixabay.com/api/?key=\(self.pixabayKey)&per_page=6&response_group=high_resolution&page=1&safesearch=true&q=\(self.topicToSearch)"
         // Requesting random images of cards
         SVProgressHUD.show(withStatus: "Getting Images...")
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
-        Alamofire.request(requestUrl,method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+        Alamofire.request(requestUrl,method: .get,encoding: JSONEncoding.default, headers: nil).responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                if(self.isCollectionDetailPage){
-                    for (_,subJson):(String, JSON) in json {
-                        // Do something you want
-                        let imgUrl:Urls = Urls(smallImage: subJson["urls"]["small"].string!)
-                        let imaged:Image = Image(url: imgUrl)
-                        let cardInfo = CardLayoutInfo(cardImages: imaged,
-                                                      fullQualityUrl: subJson["links"]["download"].string!,
-                                                      photographerURL:subJson["user"]["links"]["html"].string!,
-                                                      photographerName: subJson["user"]["name"].string!, imageUrl: subJson["links"]["html"].string!)
-                    
-                        self.cardsInfo.append(cardInfo)
-                    }
-                }else{
-                    for (_,subJson):(String, JSON) in json["results"] {
-                        // Do something you want
-                        let imgUrl:Urls = Urls(smallImage: subJson["urls"]["small"].string!)
-                        let imaged:Image = Image(url: imgUrl)
-                        print("photoName: \(subJson["user"]["links"]["html"])")
-                        let cardInfo = CardLayoutInfo(cardImages: imaged, fullQualityUrl: subJson["links"]["download"].string!, photographerURL: subJson["user"]["links"]["html"].string!, photographerName: subJson["user"]["name"].string!, imageUrl: subJson["links"]["html"].string!)
-                        self.cardsInfo.append(cardInfo)
-                    }
+                for (_,subJson):(String, JSON) in json["hits"] {
+                    // Do something you want
+                    print("jsonnn",subJson)
+                    let imgUrl:Urls = Urls(smallImage: subJson["webformatURL"].string!)
+                    let imaged:Image = Image(url: imgUrl)
+                    let cardInfo = CardLayoutInfo(cardImages: imaged, fullQualityUrl: subJson["fullHDURL"].string!, photographerURL: "https://pixabay.com", photographerName: subJson["user"].string!, imageUrl: "https://pixabay.com")
+                    self.cardsInfo.append(cardInfo)
                 }
                 self.downloadCardsImages()
             case .failure(let error):
@@ -118,34 +95,19 @@ class AllWallsViewController: UIViewController, UICollectionViewDelegate, UIColl
             print("photoCount:\(photoCount)")
             pageNumber += 1
             collectionPageNumber += 1
-            if(self.isCollectionDetailPage){
-                self.requestUrl = "https://api.unsplash.com/collections/\(self.collectionID)/photos?per_page=6&page=\(collectionPageNumber)"
-                print(self.requestUrl)
-            }else{
-                self.requestUrl = "https://api.unsplash.com/search/photos?query=\(self.topicToSearch)&per_page=6&page=\(pageNumber)"
-            }
+            self.requestUrl = "https://pixabay.com/api/?key=\(self.pixabayKey)&per_page=6&response_group=high_resolution&page=\(pageNumber)&safesearch=true&q=\(self.topicToSearch)"
             var downloadedImgCount = 0
             // Requesting random images of cards
-            Alamofire.request(self.requestUrl,method: .get,encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            Alamofire.request(self.requestUrl,method: .get,encoding: JSONEncoding.default, headers: nil).responseJSON { response in
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
-                    if(self.isCollectionDetailPage){
-                        for (_,subJson):(String, JSON) in json {
-                            // Do something you want
-                            let imgUrl:Urls = Urls(smallImage: subJson["urls"]["small"].string!)
-                            let imaged:Image = Image(url: imgUrl)
-                            let cardInfo = CardLayoutInfo(cardImages: imaged, fullQualityUrl: subJson["links"]["download"].string!,photographerURL:subJson["user"]["links"]["html"].string!, photographerName: subJson["user"]["name"].string!, imageUrl: subJson["links"]["html"].string!)
-                            self.cardsInfo.append(cardInfo)
-                        }
-                    }else{
-                        for (_,subJson):(String, JSON) in json["results"] {
-                            // Do something you want
-                            let imgUrl:Urls = Urls(smallImage: subJson["urls"]["small"].string!)
-                            let imaged:Image = Image(url: imgUrl)
-                            let cardInfo = CardLayoutInfo(cardImages: imaged, fullQualityUrl: subJson["links"]["download"].string!, photographerURL: subJson["user"]["links"]["html"].string!, photographerName: subJson["user"]["name"].string!, imageUrl: subJson["links"]["html"].string!)
-                            self.cardsInfo.append(cardInfo)
-                        }
+                    for (_,subJson):(String, JSON) in json["hits"] {
+                        // Do something you want
+                        let imgUrl:Urls = Urls(smallImage: subJson["webformatURL"].string!)
+                        let imaged:Image = Image(url: imgUrl)
+                        let cardInfo = CardLayoutInfo(cardImages: imaged, fullQualityUrl: subJson["fullHDURL"].string!, photographerURL: "https://pixabay.com", photographerName: subJson["user"].string!, imageUrl: "https://pixabay.com")
+                        self.cardsInfo.append(cardInfo)
                     }
                     print("ccount:\(self.cardsInfo.count)")
                     print("indexNumber:\(indexNumber)")
@@ -183,6 +145,10 @@ class AllWallsViewController: UIViewController, UICollectionViewDelegate, UIColl
             }
             
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+         self.searchBar.endEditing(true)
     }
     
     
