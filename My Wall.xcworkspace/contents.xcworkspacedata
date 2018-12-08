@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/sobhaneskandari/Programming/iOS Programming/Appstore/My Wall/My Wall/Model/Bookmark+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/sobhaneskandari/Programming/iOS Programming/Appstore/My Wall/My Wall/Model/Bookmark+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:My Wall.xcodeproj">
    </FileRef>
    <FileRef

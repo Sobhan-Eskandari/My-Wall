@@ -6,36 +6,16 @@ target 'My Wall' do
   use_frameworks!
 
   # Pods for My Wall
-    pod "UPCarouselFlowLayout"
-    pod 'Cards'     
-    pod 'INSPhotoGallery'
-    pod 'INSNibLoading'
-    pod 'UIScrollView-InfiniteScroll', '~> 1.0.0'
     pod 'SwiftyJSON'
-    pod 'AlamofireImage', '~> 3.3'
     pod 'SVProgressHUD'
-    pod 'PopupDialog', '~> 0.7'
-    pod 'Ambience'
-    pod 'Eureka'
-    pod 'Appodeal', '~> 2.1.7'
-    pod 'SwiftyOnboard'
-    
-    pod 'Armchair', '>= 0.3'
-    
-    #Add the following in order to automatically set debug flags for armchair in debug builds
-    post_install do |installer|
-        installer.pods_project.targets.each do |target|
-            if target.name == 'Armchair'
-                target.build_configurations.each do |config|
-                    if config.name == 'Debug'
-                        config.build_settings['OTHER_SWIFT_FLAGS'] = '-DDebug'
-                        else
-                        config.build_settings['OTHER_SWIFT_FLAGS'] = ''
-                    end
-                end
-            end
-        end
-    end
+    pod 'Kingfisher', '~> 4.0'
+    pod 'Hero'
+    pod 'AZDialogView'
+    pod 'Firebase/Core'
+    pod 'Firebase/Performance'
+    pod 'Firebase/Messaging'
+    pod 'Firebase/AdMob'
+    pod 'SwiftyStoreKit'
    
  target 'My WallTests' do
     inherit! :search_paths

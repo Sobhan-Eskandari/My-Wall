@@ -1,139 +1,168 @@
 PODS:
-  - Alamofire (4.5.1)
-  - AlamofireImage (3.3.0):
-    - Alamofire (~> 4.5)
-  - Ambience (0.1.0)
-  - Appodeal (2.1.7):
-    - Appodeal/Full (= 2.1.7)
-  - Appodeal/AdColonyAdapter (2.1.7):
-    - Appodeal/Core
-  - Appodeal/AmazonAdsAdapter (2.1.7):
-    - Appodeal/Core
-  - Appodeal/AppLovinAdapter (2.1.7):
-    - Appodeal/Core
-  - Appodeal/Banner (2.1.7):
-    - Appodeal/AmazonAdsAdapter
-    - Appodeal/FacebookAudienceAdapter
-    - Appodeal/GoogleAdMobAdapter
-    - Appodeal/InMobiAdapter
-    - Appodeal/MyTargetAdapter
-    - Appodeal/StartAppAdapter
-    - Appodeal/TwitterMoPubAdapter
-    - Appodeal/YandexAdapter
-  - Appodeal/ChartboostAdapter (2.1.7):
-    - Appodeal/Core
-  - Appodeal/Core (2.1.7)
-  - Appodeal/FacebookAudienceAdapter (2.1.7):
-    - Appodeal/Core
-  - Appodeal/FlurryAdapter (2.1.7):
-    - Appodeal/Core
-  - Appodeal/Full (2.1.7):
-    - Appodeal/Banner
-    - Appodeal/Core
-    - Appodeal/Interstitial
-    - Appodeal/Native
-    - Appodeal/Video
-  - Appodeal/GoogleAdMobAdapter (2.1.7):
-    - Appodeal/Core
-  - Appodeal/InMobiAdapter (2.1.7):
-    - Appodeal/Core
-  - Appodeal/Interstitial (2.1.7):
-    - Appodeal/AmazonAdsAdapter
-    - Appodeal/FacebookAudienceAdapter
-    - Appodeal/GoogleAdMobAdapter
-    - Appodeal/InMobiAdapter
-    - Appodeal/Video
-    - Appodeal/YandexAdapter
-  - Appodeal/IronSource (2.1.7):
-    - Appodeal/Core
-  - Appodeal/MyTargetAdapter (2.1.7):
-    - Appodeal/Core
-  - Appodeal/Native (2.1.7):
-    - Appodeal/AppLovinAdapter
-    - Appodeal/FacebookAudienceAdapter
-    - Appodeal/FlurryAdapter
-    - Appodeal/InMobiAdapter
-    - Appodeal/MyTargetAdapter
-    - Appodeal/PubnativeAdapter
-    - Appodeal/StartAppAdapter
-    - Appodeal/TwitterMoPubAdapter
-  - Appodeal/PubnativeAdapter (2.1.7):
-    - Appodeal/Core
-  - Appodeal/StartAppAdapter (2.1.7):
-    - Appodeal/Core
-  - Appodeal/TapjoyAdapter (2.1.7):
-    - Appodeal/Core
-  - Appodeal/TwitterMoPubAdapter (2.1.7):
-    - Appodeal/Core
-  - Appodeal/UnityAdapter (2.1.7):
-    - Appodeal/Core
-  - Appodeal/Video (2.1.7):
-    - Appodeal/AdColonyAdapter
-    - Appodeal/AppLovinAdapter
-    - Appodeal/ChartboostAdapter
-    - Appodeal/InMobiAdapter
-    - Appodeal/IronSource
-    - Appodeal/MyTargetAdapter
-    - Appodeal/StartAppAdapter
-    - Appodeal/TapjoyAdapter
-    - Appodeal/TwitterMoPubAdapter
-    - Appodeal/UnityAdapter
-    - Appodeal/VungleAdapter
-  - Appodeal/VungleAdapter (2.1.7):
-    - Appodeal/Core
-  - Appodeal/YandexAdapter (2.1.7):
-    - Appodeal/Core
-  - Armchair (0.3.5)
-  - Cards (1.3.0):
-    - Player
-  - DynamicBlurView (2.0.1)
-  - Eureka (4.0.1)
-  - INSNibLoading (1.0.2)
-  - INSPhotoGallery (1.2.3)
-  - Player (0.8.4)
-  - PopupDialog (0.7.0):
-    - DynamicBlurView (~> 2.0)
+  - AZDialogView (1.3.0)
+  - Firebase/AdMob (5.11.0):
+    - Firebase/Core
+    - Google-Mobile-Ads-SDK (~> 7.35)
+  - Firebase/Core (5.11.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.3.0)
+  - Firebase/CoreOnly (5.11.0):
+    - FirebaseCore (= 5.1.6)
+  - Firebase/Messaging (5.11.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.2.1)
+  - Firebase/Performance (5.11.0):
+    - Firebase/Core
+    - FirebasePerformance (= 2.2.0)
+  - FirebaseABTesting (2.0.0):
+    - FirebaseCore (~> 5.0)
+    - Protobuf (~> 3.5)
+  - FirebaseAnalytics (5.3.0):
+    - FirebaseCore (~> 5.1)
+    - FirebaseInstanceID (~> 3.3)
+    - GoogleAppMeasurement (~> 5.3)
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - FirebaseAnalyticsInterop (1.1.0)
+  - FirebaseCore (5.1.6):
+    - GoogleUtilities/Logger (~> 5.2)
+  - FirebaseInstanceID (3.3.0):
+    - FirebaseCore (~> 5.1)
+    - GoogleUtilities/Environment (~> 5.3)
+    - GoogleUtilities/UserDefaults (~> 5.3)
+  - FirebaseMessaging (3.2.1):
+    - FirebaseAnalyticsInterop (~> 1.1)
+    - FirebaseCore (~> 5.1)
+    - FirebaseInstanceID (~> 3.0)
+    - GoogleUtilities/Environment (~> 5.2)
+    - GoogleUtilities/Reachability (~> 5.2)
+    - Protobuf (~> 3.1)
+  - FirebasePerformance (2.2.0):
+    - FirebaseAnalytics (~> 5.3)
+    - FirebaseInstanceID (~> 3.3)
+    - FirebaseRemoteConfig (~> 3.1)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GoogleUtilities/ISASwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GTMSessionFetcher/Core (~> 1.1)
+    - Protobuf (~> 3.5)
+  - FirebaseRemoteConfig (3.1.0):
+    - FirebaseABTesting (~> 2.0)
+    - FirebaseAnalytics (~> 5.3)
+    - FirebaseCore (~> 5.1)
+    - FirebaseInstanceID (~> 3.3)
+    - GoogleUtilities/Environment (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - Protobuf (~> 3.5)
+  - Google-Mobile-Ads-SDK (7.35.1)
+  - GoogleAppMeasurement (5.3.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - GoogleToolboxForMac/Logger (2.1.4):
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - GoogleUtilities/AppDelegateSwizzler (5.3.4):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (5.3.4)
+  - GoogleUtilities/ISASwizzler (5.3.4)
+  - GoogleUtilities/Logger (5.3.4):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (5.3.4):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (5.3.4):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (5.3.4)"
+  - GoogleUtilities/Reachability (5.3.4):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (5.3.4):
+    - GoogleUtilities/Logger
+  - GTMSessionFetcher/Core (1.2.0)
+  - Hero (1.4.0)
+  - Kingfisher (4.10.0)
+  - nanopb (0.3.901):
+    - nanopb/decode (= 0.3.901)
+    - nanopb/encode (= 0.3.901)
+  - nanopb/decode (0.3.901)
+  - nanopb/encode (0.3.901)
+  - Protobuf (3.6.1)
   - SVProgressHUD (2.2.2)
   - SwiftyJSON (4.0.0)
-  - SwiftyOnboard (1.3.6)
-  - UIScrollView-InfiniteScroll (1.0.2)
-  - UPCarouselFlowLayout (1.1.1)
+  - SwiftyStoreKit (0.13.3)
 
 DEPENDENCIES:
-  - AlamofireImage (~> 3.3)
-  - Ambience
-  - Appodeal (~> 2.1.7)
-  - Armchair (>= 0.3)
-  - Cards
-  - Eureka
-  - INSNibLoading
-  - INSPhotoGallery
-  - PopupDialog (~> 0.7)
+  - AZDialogView
+  - Firebase/AdMob
+  - Firebase/Core
+  - Firebase/Messaging
+  - Firebase/Performance
+  - Hero
+  - Kingfisher (~> 4.0)
   - SVProgressHUD
   - SwiftyJSON
-  - SwiftyOnboard
-  - UIScrollView-InfiniteScroll (~> 1.0.0)
-  - UPCarouselFlowLayout
+  - SwiftyStoreKit
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AZDialogView
+    - Firebase
+    - FirebaseABTesting
+    - FirebaseAnalytics
+    - FirebaseAnalyticsInterop
+    - FirebaseCore
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - FirebasePerformance
+    - FirebaseRemoteConfig
+    - Google-Mobile-Ads-SDK
+    - GoogleAppMeasurement
+    - GoogleToolboxForMac
+    - GoogleUtilities
+    - GTMSessionFetcher
+    - Hero
+    - Kingfisher
+    - nanopb
+    - Protobuf
+    - SVProgressHUD
+    - SwiftyJSON
+    - SwiftyStoreKit
 
 SPEC CHECKSUMS:
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
-  AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
-  Ambience: 753124d6c853199950a643dcc17a6419c2acf0e5
-  Appodeal: a2ff6b690c081388881fa053b23c04630fa8fac5
-  Armchair: 0ab9237bc373e26245c7651acf193d85fb9c033a
-  Cards: 40bd9052b7ffca2ff621ed282fe596c474af80c8
-  DynamicBlurView: 5e6babd80cc0ddfd3ddfc4f5dacf2fe4181e7c52
-  Eureka: c8bd5cc07143b6f66268c208d28a246c99b41955
-  INSNibLoading: 0244d5b9c30d4642c77b31469cbfd905e8b1efb3
-  INSPhotoGallery: 2c07e4a5b5be1b4fd49c0c1f16eed28c6fe8a15d
-  Player: e45514e9e5fb8ff18f50eb2ba6f84dac9b6a0024
-  PopupDialog: 4abc6db5b22b7c8029e2162bde8891ee6aa4b6c8
+  AZDialogView: 9301351cb2e12d36f2757ccdaec56f016d89575d
+  Firebase: b48f9e653da971ecce5b8c749684bc8bb2d26bd3
+  FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
+  FirebaseAnalytics: 63202d2665de4e6adcbdce189135255d8b5962ba
+  FirebaseAnalyticsInterop: e5f21be9af6548372e2f0815834ff909bff395a2
+  FirebaseCore: d16552f06821489ce1affe2e5e3e5593402ddfe3
+  FirebaseInstanceID: e2fa4cb35ef5558c200f7f0ad8a53e212215f93e
+  FirebaseMessaging: 0f14a264b0d7f867e8eff5d3556bc5d0d4e57888
+  FirebasePerformance: 4adfe91a2c696bc43429822ad0e4aa8753b283b4
+  FirebaseRemoteConfig: 7e11c65f0769c09bff6947997c209515058c5318
+  Google-Mobile-Ads-SDK: 151d5e87b4a0ae6d7d07e2cd8d55d1b41ea2e61e
+  GoogleAppMeasurement: 5029d78f2b438bd30ffb44e6c558b57c21622727
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  GoogleUtilities: abb092d2c12e817fa3e0e7b274987dd72fb86ec3
+  GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
+  Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
+  Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
+  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
-  SwiftyOnboard: 8dec41d4725b3e6ebcae276dd206d7f74c1b7f61
-  UIScrollView-InfiniteScroll: c132d6d5851daff229ab4a1060ccf70a05a051c9
-  UPCarouselFlowLayout: 02045c1505d63057fba3d9975be880a8d16bf17d
+  SwiftyStoreKit: 9ebd15971e28aa2989825fe8bc092eb5f75dd0b2
 
-PODFILE CHECKSUM: f618a74cb2094a7b9adf4c39489a7ef1bd47777d
+PODFILE CHECKSUM: f22db4bb69f78fb78cf979956ced7f8b3bcf159a
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.3
