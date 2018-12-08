@@ -9,7 +9,7 @@ You can see and download and bookmark your favorite wallpapers.
 
 opbox** or **GitHub** by opening the **Synchronize** sub-menu and clicking **Open from**. Once opened in the workspace, any modification in the file will be automatically synced.
 
-![My Wall iOS App](https://assets.materialup.com/uploads/6210c4c1-143c-4163-a2a5-712fc87740b5/attachment.png)
+![My Wall iOS App](https://i.imgur.com/wuRZdud.jpg)
 
 Check our speech to text note app called "Penman" too :)
 
