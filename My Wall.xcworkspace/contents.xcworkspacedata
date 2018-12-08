@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:README.md">
+   </FileRef>
+   <FileRef
       location = "group:/Users/sobhaneskandari/Programming/iOS Programming/Appstore/My Wall/My Wall/Model/Bookmark+CoreDataClass.swift">
    </FileRef>
    <FileRef
