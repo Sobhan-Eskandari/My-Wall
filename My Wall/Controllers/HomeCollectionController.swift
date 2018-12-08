@@ -27,15 +27,10 @@ class HomeCollectionController: UICollectionViewController {
     var loadedMore = false
     var selectedPage = arc4random_uniform(6) + 1
     var params:[String:String] = [:]
-    var interstitial: GADInterstitial!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-6286619084449151/1582418876")
-        let request = GADRequest()
-        interstitial.load(request)
         
         var selectedCat = ""
         if let category = selectedCategory {
@@ -156,20 +151,8 @@ class HomeCollectionController: UICollectionViewController {
                     self.collectionView.reloadData()
                     self.loadedMore = false
                     print("loaded infos")
-                    self.showAd()
                 }
                 print("loading cell")
-            }
-        }
-    }
-    
-    func showAd() {
-        print("isPro:\(UserDefaults.standard.bool(forKey: "isPro"))")
-        if !UserDefaults.standard.bool(forKey: "isPro") {
-            if interstitial.isReady {
-                interstitial.present(fromRootViewController: self)
-            } else {
-                print("Ad wasn't ready")
             }
         }
     }

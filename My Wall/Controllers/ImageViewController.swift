@@ -21,16 +21,12 @@ class ImageViewController: UICollectionViewController {
     var panGR = UIPanGestureRecognizer()
     var wallpapers:WallpapersListVM!
     var bookmarkService:BookmarkService!
-    var interstitial: GADInterstitial!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
         preferredContentSize = CGSize(width: view.bounds.width, height: view.bounds.width)
         
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-6286619084449151/1582418876")
-        let request = GADRequest()
-        interstitial.load(request)
         view.layoutIfNeeded()
         collectionView!.reloadData()
         self.collectionView.backgroundColor = ColorPallet.MainColor()
@@ -62,7 +58,6 @@ class ImageViewController: UICollectionViewController {
             WebService.downloadImage(url: url) { (image) in
                 SVProgressHUD.showSuccess(withStatus: "Done")
                 self.save(savingImage: image)
-                self.showAd()
             }
         }
     }
@@ -213,16 +208,6 @@ class ImageViewController: UICollectionViewController {
         }
         
         self.collectionView.bringSubviewToFront(saveToGalleryBtn)
-    }
-    
-    func showAd() {
-        if !UserDefaults.standard.bool(forKey: "isPro") {
-            if interstitial.isReady {
-                interstitial.present(fromRootViewController: self)
-            } else {
-                print("Ad wasn't ready")
-            }
-        }
     }
     
     override func viewWillLayoutSubviews() {
